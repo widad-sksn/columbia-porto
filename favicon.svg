@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#070c24"/>
+  <text x="12" y="45" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="38" fill="#ffffff">C</text>
+  <rect x="38" y="16" width="5.5" height="32" rx="1.5" fill="#eff824"/>
+  <rect x="46.5" y="16" width="5.5" height="32" rx="1.5" fill="#f4ecb3"/>
+  <rect x="55" y="16" width="5.5" height="32" rx="1.5" fill="#d1dc9a"/>
+</svg>
