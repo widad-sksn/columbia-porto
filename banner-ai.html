@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Columbia - AI Interactive Visual Banner</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #070c24; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; font-family: -apple-system, sans-serif; }
+    .banner-card { position: relative; width: 100%; max-width: 800px; height: 500px; background: radial-gradient(circle at center, #0f1d52 0%, #070c24 80%); border: 1px solid #1d2a63; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+    canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .content { position: relative; z-index: 10; pointer-events: none; }
+    .title { font-size: clamp(24px, 4vw, 36px); font-weight: 800; letter-spacing: 2px; }
+    .title span { color: #eff824; text-shadow: 0 0 20px rgba(239,248,36,0.5); }
+    .sub { font-size: 13px; color: #9aa7c7; margin-top: 6px; letter-spacing: 1px; }
+    .wa-link { pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 12px 24px; border-radius: 50px; background: #25d366; color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; box-shadow: 0 10px 25px rgba(37,211,102,0.4); transition: .2s; }
+    .wa-link:hover { transform: translateY(-2px); filter: brightness(1.1); }
+  </style>
+</head>
+<body>
+  <div class="banner-card">
+    <canvas id="c"></canvas>
+    <div class="content">
+      <div class="title">COLUMBIA <span>INTELLIGENT TECH</span></div>
+      <div class="sub">Electrical Device Solutions & Partner</div>
+      <a class="wa-link" href="https://wa.me/6282229501992?text=Halo%20Columbia" target="_blank">
+        WhatsApp: +62 822-2950-1992
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const c = document.getElementById('c');
+    const ctx = c.getContext('2d');
+    let w, h, pts = [];
+    function resize() {
+      w = c.width = c.offsetWidth;
+      h = c.height = c.offsetHeight;
+      pts = [];
+      for(let i=0; i<60; i++) {
+        pts.push({
+          x: Math.random()*w, y: Math.random()*h,
+          vx: (Math.random()-0.5)*1.2, vy: (Math.random()-0.5)*1.2,
+          r: Math.random()*2.5+1,
+          col: Math.random()>0.5 ? '#eff824' : '#38bdf8'
+        });
+      }
+    }
+    function loop() {
+      ctx.clearRect(0,0,w,h);
+      for(let i=0; i<pts.length; i++) {
+        for(let j=i+1; j<pts.length; j++) {
+          const d = Math.hypot(pts[i].x-pts[j].x, pts[i].y-pts[j].y);
+          if (d < 120) {
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.strokeStyle = `rgba(56, 189, 248, ${0.35*(1-d/120)})`;
+            ctx.stroke();
+          }
+        }
+        pts[i].x += pts[i].vx;
+        pts[i].y += pts[i].vy;
+        if(pts[i].x<0||pts[i].x>w) pts[i].vx*=-1;
+        if(pts[i].y<0||pts[i].y>h) pts[i].vy*=-1;
+        ctx.beginPath();
+        ctx.arc(pts[i].x, pts[i].y, pts[i].r, 0, Math.PI*2);
+        ctx.fillStyle = pts[i].col;
+        ctx.shadowColor = pts[i].col;
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+      requestAnimationFrame(loop);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    loop();
+  </script>
+</body>
+</html>

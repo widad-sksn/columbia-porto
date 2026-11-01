@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COLUMBIA | Electrical Device Solutions & Partner</title>
+  <meta name="description" content="Jasa instalasi CCTV, pemasangan WiFi, jaringan internet, electrical, plumbing, website, DevOps, MikroTik, service komputer, dan penangkal petir.">
+  <style>
+    :root {
+      --bg: #070c24;
+      --card: #0d163d;
+      --card-hover: #132057;
+      --border: #1d2a63;
+      --text: #e6ebf5;
+      --muted: #9aa7c7;
+      --accent-1: #eff824;
+      --accent-2: #f4ecb3;
+      --accent-3: #d1dc9a;
+      --wa: #25d366;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1140px; margin: auto; padding: 0 20px; }
+
+    /* NAV */
+    header { position: sticky; top: 0; z-index: 50; background: rgba(7,12,36,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-title { font-size: 24px; font-weight: 800; letter-spacing: 2px; }
+    .brand-sub { font-size: 9px; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
+    .brand-bars { display: flex; gap: 4px; height: 26px; }
+    .bar { width: 7px; height: 100%; border-radius: 1px; }
+    .bar-1 { background: var(--accent-1); }
+    .bar-2 { background: var(--accent-2); }
+    .bar-3 { background: var(--accent-3); }
+    .nav-links { display: flex; gap: 24px; font-size: 14px; color: var(--muted); }
+    .nav-links a:hover { color: #fff; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 14px; transition: .2s; }
+    .btn-primary { background: var(--accent-1); color: #070c24; }
+    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-outline { border: 1px solid var(--border); color: #fff; }
+    .btn-outline:hover { background: var(--card); }
+    .btn-wa { background: var(--wa); color: #fff; }
+
+    /* HERO */
+    .hero { position: relative; padding: 70px 0 60px; text-align: center; overflow: hidden; }
+    #ai-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.65; z-index: 1; }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 50px; background: rgba(239,248,36,0.1); border: 1px solid rgba(239,248,36,0.3); color: var(--accent-1); font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+    .hero-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-1); box-shadow: 0 0 10px var(--accent-1); animation: pulseDot 1.5s infinite; }
+    .hero h1 { font-size: clamp(32px, 5vw, 54px); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+    .hero h1 span { color: var(--accent-1); text-shadow: 0 0 25px rgba(239,248,36,0.35); }
+    .hero p { max-width: 720px; margin: 0 auto 32px; color: var(--muted); font-size: 17px; }
+    .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+
+    /* AI HOLOGRAM VISUAL */
+    .ai-holo-wrap { max-width: 580px; margin: 20px auto 40px; position: relative; padding: 24px; background: radial-gradient(circle at center, rgba(19,32,87,0.7) 0%, rgba(7,12,36,0) 70%); border-radius: 16px; }
+    .ai-holo-svg { width: 100%; max-width: 460px; height: auto; filter: drop-shadow(0 0 20px rgba(239,248,36,0.25)); }
+    @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes spinRev { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+    @keyframes pulseGlow { 0%, 100% { opacity: 0.35; transform: scale(0.98); } 50% { opacity: 0.9; transform: scale(1.02); } }
+    @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+    .spin-ring { transform-origin: 200px 200px; animation: spinSlow 20s linear infinite; }
+    .spin-ring-rev { transform-origin: 200px 200px; animation: spinRev 14s linear infinite; }
+    .pulse-core { transform-origin: 200px 200px; animation: pulseGlow 3s ease-in-out infinite; }
+
+    /* FLOATING WA */
+    .floating-wa { position: fixed; bottom: 24px; right: 24px; z-index: 100; background: var(--wa); color: #fff; display: flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 50px; font-weight: 700; font-size: 14px; box-shadow: 0 10px 25px rgba(37,211,102,0.4); transition: .2s; }
+    .floating-wa:hover { transform: translateY(-3px) scale(1.03); filter: brightness(1.1); color: #fff; }
+
+    /* STATS */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 40px 0; }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px 14px; text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 800; color: var(--accent-1); }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* SERVICES */
+    .section { padding: 70px 0; }
+    .sec-head { text-align: center; margin-bottom: 48px; }
+    .sec-head h2 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+    .sec-head p { color: var(--muted); font-size: 15px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 24px; transition: .2s; position: relative; }
+    .card:hover { border-color: var(--accent-1); transform: translateY(-3px); background: var(--card-hover); }
+    .card-icon { width: 44px; height: 44px; border-radius: 8px; background: rgba(239,248,36,0.12); display: flex; align-items: center; justify-content: center; color: var(--accent-1); margin-bottom: 16px; }
+    .card h3 { font-size: 18px; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: 11px; padding: 3px 8px; border-radius: 4px; background: #070c24; color: var(--accent-2); border: 1px solid var(--border); }
+
+    /* WHY US */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .feature { padding: 22px; border-left: 3px solid var(--accent-1); background: var(--card); border-radius: 0 8px 8px 0; }
+    .feature h4 { font-size: 16px; margin-bottom: 6px; }
+    .feature p { font-size: 13px; color: var(--muted); }
+
+    /* CONTACT / CTA */
+    .contact-box { background: linear-gradient(135deg, #0d163d 0%, #15225c 100%); border: 1px solid var(--border); border-radius: 12px; padding: 40px 24px; text-align: center; }
+    .contact-box h2 { font-size: 30px; margin-bottom: 12px; }
+    .contact-box p { color: var(--muted); max-width: 600px; margin: 0 auto 24px; font-size: 15px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 30px 0; color: var(--muted); font-size: 13px; text-align: center; }
+
+    /* RESPONSIVE DESKTOP & MOBILE */
+    @media (max-width: 900px) {
+      .stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav { height: 64px; }
+      .brand-title { font-size: 19px; letter-spacing: 1px; }
+      .brand-sub { font-size: 8px; }
+      .brand-bars { height: 20px; }
+      .bar { width: 5px; }
+      .hero { padding: 40px 0 30px; }
+      .hero h1 { font-size: 28px; }
+      .hero p { font-size: 15px; margin-bottom: 24px; }
+      .hero-cta { flex-direction: column; align-items: stretch; }
+      .hero-cta .btn { justify-content: center; width: 100%; }
+      .ai-holo-wrap { padding: 10px; margin: 15px auto 30px; }
+      .grid { grid-template-columns: 1fr; }
+      .section { padding: 50px 0; }
+      .sec-head h2 { font-size: 26px; }
+      .features { grid-template-columns: 1fr; }
+      .contact-box h2 { font-size: 24px; }
+      .floating-wa span { display: none; }
+      .floating-wa { padding: 14px; bottom: 18px; right: 18px; }
+    }
+    @media (max-width: 420px) {
+      .stats { grid-template-columns: 1fr; }
+      .nav .btn-wa span { display: none; }
+      .nav .btn-wa { padding: 8px 12px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div>
+          <div class="brand-title">COLUMBIA</div>
+          <div class="brand-sub">Electrical Device Solutions And Partner</div>
+        </div>
+        <div class="brand-bars" aria-label="Logo Bars">
+          <div class="bar bar-1"></div>
+          <div class="bar bar-2"></div>
+          <div class="bar bar-3"></div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#layanan">Layanan</a>
+        <a href="#keunggulan">Keunggulan</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+      <a class="btn btn-wa" href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20ingin%20konsultasi%20layanan" target="_blank" rel="noopener">
+        WhatsApp: +62 822-2950-1992
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="ai-canvas"></canvas>
+    <div class="container hero-content">
+      <h1>Mitra Terpercaya <span>Teknologi, Listrik & Jaringan</span></h1>
+      <p>Layanan terpadu mulai dari CCTV, pemasangan WiFi, perbaikan komputer, instalasi jaringan & MikroTik, DevOps, web development, kelistrikan, pipa plumbing, hingga sistem penangkal petir.</p>
+      <div class="hero-cta">
+        <a href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20butuh%20penawaran%20harga" class="btn btn-primary" target="_blank" rel="noopener">Minta Penawaran Cepat</a>
+        <a href="#layanan" class="btn btn-outline">Lihat Layanan Kami</a>
+      </div>
+
+      <!-- AI ANIMATED HOLOGRAM GRAPHIC -->
+      <div class="ai-holo-wrap">
+        <svg class="ai-holo-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="aiGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#eff824" stop-opacity="0.6"/>
+              <stop offset="40%" stop-color="#22d3ee" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#070c24" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#eff824"/>
+              <stop offset="50%" stop-color="#38bdf8"/>
+              <stop offset="100%" stop-color="#d1dc9a"/>
+            </linearGradient>
+          </defs>
+          <!-- Background Glow -->
+          <circle cx="200" cy="200" r="160" fill="url(#aiGlow)" class="pulse-core"/>
+
+          <!-- Outer Tech Ring (Rotating) -->
+          <g class="spin-ring">
+            <circle cx="200" cy="200" r="145" stroke="#1d2a63" stroke-width="2" stroke-dasharray="8 6"/>
+            <circle cx="200" cy="200" r="130" stroke="#eff824" stroke-width="2.5" stroke-dasharray="40 25 15 25" opacity="0.85"/>
+            <circle cx="200" cy="55" r="5" fill="#eff824"/>
+            <circle cx="200" cy="345" r="5" fill="#38bdf8"/>
+            <circle cx="55" cy="200" r="4" fill="#eff824"/>
+            <circle cx="345" cy="200" r="4" fill="#d1dc9a"/>
+          </g>
+
+          <!-- Inner Reverse Tech Ring -->
+          <g class="spin-ring-rev">
+            <circle cx="200" cy="200" r="105" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="25 12 8 12" opacity="0.75"/>
+            <rect x="195" y="90" width="10" height="10" fill="#eff824" transform="rotate(45 200 95)"/>
+            <rect x="195" y="295" width="10" height="10" fill="#38bdf8" transform="rotate(45 200 300)"/>
+          </g>
+
+          <!-- Circuit Interconnect Lines -->
+          <path d="M 200 150 L 200 115 L 245 80" stroke="#38bdf8" stroke-width="2" fill="none" opacity="0.7"/>
+          <path d="M 200 250 L 200 285 L 155 320" stroke="#eff824" stroke-width="2" fill="none" opacity="0.7"/>
+          <path d="M 150 200 L 115 200 L 85 240" stroke="#d1dc9a" stroke-width="2" fill="none" opacity="0.7"/>
+          <path d="M 250 200 L 285 200 L 315 160" stroke="#eff824" stroke-width="2" fill="none" opacity="0.7"/>
+
+          <!-- Neural Core / AI Brain Polygon -->
+          <polygon points="200,140 250,170 250,230 200,260 150,230 150,170" stroke="url(#aiGrad)" stroke-width="3" fill="#0d163d" fill-opacity="0.9"/>
+
+          <!-- Core Central Chip / AI Symbol -->
+          <circle cx="200" cy="200" r="28" fill="#eff824" fill-opacity="0.15" stroke="#eff824" stroke-width="2"/>
+          <circle cx="200" cy="200" r="14" fill="#eff824" class="pulse-core"/>
+
+          <!-- Data nodes -->
+          <circle cx="200" cy="140" r="5" fill="#eff824"/>
+          <circle cx="250" cy="170" r="5" fill="#38bdf8"/>
+          <circle cx="250" cy="230" r="5" fill="#eff824"/>
+          <circle cx="200" cy="260" r="5" fill="#38bdf8"/>
+          <circle cx="150" cy="230" r="5" fill="#eff824"/>
+          <circle cx="150" cy="170" r="5" fill="#38bdf8"/>
+
+          <!-- Label HUD -->
+          <polygon points="201,192 195,201 199,201 197,208 205,199 201,199" fill="#070c24"/>
+          <text x="200" y="380" text-anchor="middle" fill="#9aa7c7" font-size="11" font-weight="600" letter-spacing="2">COLUMBIA ELECTRICAL & TECH</text>
+        </svg>
+      </div>
+
+      <div class="stats">
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Layanan Terintegrasi</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Teknisi Berpengalaman</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">Garansi</div>
+        <div class="stat-label">Pekerjaan & Purna Jual</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Dukungan Siap Tanggap</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="layanan" class="container section">
+    <div class="sec-head">
+      <h2>Daftar Layanan</h2>
+      <p>Solusi komprehensif untuk kantor, pabrik, gedung, rumah, dan bisnis online.</p>
+    </div>
+
+    <div class="grid">
+      <!-- 1. CCTV -->
+      <div class="card">
+        <div class="card-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <h3>Pemasangan CCTV</h3>
+        <p>Instalasi kamera IP/analog, konfigurasi DVR/NVR, setting live streaming ponsel, dan maintenance kamera pengawas.</p>
+        <div class="tags">
+          <span class="tag">IP Cam</span>
+          <span class="tag">Remote View</span>
+          <span class="tag">NVR/DVR</span>
+        </div>
+      </div>
+
+      <!-- 2. Pemasangan WiFi -->
+      <div class="card">
+        <div class="card-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg>
+        </div>
+        <h3>Pemasangan WiFi</h3>
+        <p>Instalasi Access Point indoor/outdoor, setup Mesh WiFi tanpa putus (seamless roaming), perluasan jangkauan, dan bebas dead zone.</p>
+        <div class="tags">
+          <span class="tag">Access Point</span>
+          <span class="tag">Mesh WiFi</span>
+          <span class="tag">Seamless Roaming</span>
+        </div>
+      </div>
+
+      <!-- 3. Jaringan Internet -->
+      <div class="card">
+        <div class="card-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        </div>
+        <h3>Jaringan Internet</h3>
+        <p>Penarikan kabel LAN/UTP & Fiber Optic, penataan rack server, instalasi switch hub, dan optimalisasi koneksi kantor/rumah.</p>
+        <div class="tags">
+          <span class="tag">Kabel UTP/FO</span>
+          <span class="tag">Rack Server</span>
+          <span class="tag">LAN/WAN</span>
+        </div>
+      </div>
+
+      <!-- 3. Electrical -->
+      <div class="card">
+        <div class="card-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Electrical</h3>
+        <p>Pemasangan panel listrik, instalasi kabel daya gedung/rumah, balancing beban 1 & 3 phase, dan perbaikan konsleting.</p>
+        <div class="tags">
+          <span class="tag">Instalasi Listrik</span>
+          <span class="tag">Panel MCB</span>
+          <span class="tag">3 Phase</span>
+        </div>
+      </div>
+
+      <!-- 4. Plumbing -->
+      <div class="card">
+        <div class="card-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <h3>Plumbing</h3>
+        <p>Instalasi pipa air bersih & air kotor, pompa pendorong (booster), toren, deteksi kebocoran, serta sistem sanitasi.</p>
+        <div class="tags">
+          <span class="tag">Pipa PPR/PVC</span>
+          <span class="tag">Pompa Booster</span>
+          <span class="tag">Drainase</span>
+        </div>
+      </div>
+
+      <!-- 5. Website Development -->
+      <div class="card">
+        <div class="card-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Pembuatan Website</h3>
+        <p>Website company profile, toko online, web apps cepat & responsif, integrasi SEO serta sistem pembayaran online.</p>
+        <div class="tags">
+          <span class="tag">Company Profile</span>
+          <span class="tag">Full-Stack</span>
+          <span class="tag">SEO Friendly</span>
+        </div>
+      </div>
+
+      <!-- 6. DevOps -->
+      <div class="card">
+        <div class="card-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        </div>
+        <h3>DevOps</h3>
+        <p>Setup cloud server (AWS, GCP, VPS), containerization Docker & Kubernetes, pipeline CI/CD, backup rutin, dan monitoring.</p>
+        <div class="tags">
+          <span class="tag">CI/CD</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Cloud Server</span>
+        </div>
+      </div>
+
+      <!-- 7. Setting MikroTik -->
+      <div class="card">
+        <div class="card-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        </div>
+        <h3>Setting MikroTik</h3>
+        <p>Bandwidth management, captive portal hotspot voucher, multi-WAN load balancing & failover, firewall protection, dan VPN.</p>
+        <div class="tags">
+          <span class="tag">Bandwidth Mgmt</span>
+          <span class="tag">Hotspot Voucher</span>
+          <span class="tag">Load Balancing</span>
+        </div>
+      </div>
+
+      <!-- 8. Service Computer -->
+      <div class="card">
+        <div class="card-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Service Computer</h3>
+        <p>Perbaikan PC desktop & laptop, install ulang OS, upgrade SSD/RAM, maintenance hardware rutin, dan pemulihan data.</p>
+        <div class="tags">
+          <span class="tag">Hardware Repair</span>
+          <span class="tag">Upgrade SSD</span>
+          <span class="tag">Maintenance</span>
+        </div>
+      </div>
+
+      <!-- 9. Penangkal Petir -->
+      <div class="card">
+        <div class="card-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Pemasangan Penangkal Petir</h3>
+        <p>Instalasi head terminal elektrostatis & konvensional, penanaman grounding rod (tahanan &lt; 5 ohm), dan sertifikasi kelayakan.</p>
+        <div class="tags">
+          <span class="tag">Grounding System</span>
+          <span class="tag">Elektrostatis</span>
+          <span class="tag">Proteksi Gedung</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="keunggulan" class="container section">
+    <div class="sec-head">
+      <h2>Mengapa Memilih Columbia?</h2>
+      <p>Kombinasi keahlian teknis mekanikal elektrikal dan teknologi informasi.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <h4>Satu Mitra, Semua Solusi</h4>
+        <p>Tidak perlu banyak vendor. Semua kebutuhan kabel, jaringan, dev, listrik hingga air kami tangani.</p>
+      </div>
+      <div class="feature">
+        <h4>Transparan & Terukur</h4>
+        <p>Survei lokasi, estimasi anggaran detail tanpa biaya tersembunyi, dan pengerjaan tepat waktu.</p>
+      </div>
+      <div class="feature">
+        <h4>Standar Keamanan Tinggi</h4>
+        <p>Semua instalasi listrik dan petir mengikuti regulasi teknis keselamatan kerja.</p>
+      </div>
+      <div class="feature">
+        <h4>Dukungan Pasca Instalasi</h4>
+        <p>Kami sediakan masa garansi servis dan dukungan responsif saat terjadi kendala teknis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="kontak" class="container section">
+    <div class="contact-box">
+      <h2>Konsultasi & Penjadwalan Survei</h2>
+      <p>Diskusikan proyek Anda bersama tim teknis Columbia. Kami siap melayani kebutuhan personal, kantor, hingga industri.</p>
+      <a class="btn btn-primary" href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20ingin%20jadwalkan%20survei%20lokasi" target="_blank" rel="noopener">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.795.815 3.18 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.767-5.767-5.767zm7.424 5.766c-.002 4.103-3.342 7.443-7.447 7.443-1.25 0-2.43-.314-3.473-.865l-4.535 1.19 1.213-4.426c-.636-1.096-.973-2.348-.973-3.64 0-4.103 3.342-7.443 7.447-7.443 4.104 0 7.445 3.341 7.446 7.443z"/></svg>
+        Hubungi WhatsApp: +62 822-2950-1992
+      </a>
+    </div>
+  </section>
+
+  <!-- FLOATING WA BUTTON -->
+  <a class="floating-wa" href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20ingin%20tanya%20layanan" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+    <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.795.815 3.18 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.767-5.767-5.767zm7.424 5.766c-.002 4.103-3.342 7.443-7.447 7.443-1.25 0-2.43-.314-3.473-.865l-4.535 1.19 1.213-4.426c-.636-1.096-.973-2.348-.973-3.64 0-4.103 3.342-7.443 7.447-7.443 4.104 0 7.445 3.341 7.446 7.443z"/></svg>
+    <span>Chat WhatsApp (+62 822-2950-1992)</span>
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 COLUMBIA - Electrical Device Solutions And Partner. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- NATIVE INTERACTIVE AI NEURAL CANVAS SCRIPT -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('ai-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w = 0, h = 0, particles = [];
+      function resize() {
+        w = canvas.width = canvas.parentElement.offsetWidth || window.innerWidth;
+        h = canvas.height = canvas.parentElement.offsetHeight || 600;
+        init();
+      }
+      function Particle() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.vx = (Math.random() - 0.5) * 0.7;
+        this.vy = (Math.random() - 0.5) * 0.7;
+        this.r = Math.random() * 2 + 1;
+        this.color = Math.random() > 0.45 ? '#eff824' : '#38bdf8';
+      }
+      Particle.prototype.update = function() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > w) this.vx *= -1;
+        if (this.y < 0 || this.y > h) this.vy *= -1;
+      };
+      Particle.prototype.draw = function() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 6;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      };
+      function init() {
+        particles = [];
+        const count = Math.min(Math.max(Math.floor((w * h) / 14000), 18), 45);
+        for (let i = 0; i < count; i++) {
+          particles.push(new Particle());
+        }
+      }
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < 100) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = 'rgba(56, 189, 248, ' + (0.22 * (1 - dist / 100)) + ')';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+          particles[i].update();
+          particles[i].draw();
+        }
+        requestAnimationFrame(animate);
+      }
+      window.addEventListener('resize', resize);
+      resize();
+      animate();
+    })();
+  </script>
+
+</body>
+</html>
