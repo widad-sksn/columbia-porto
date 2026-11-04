@@ -3,127 +3,951 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>COLUMBIA | Electrical Device Solutions & Partner</title>
-  <meta name="description" content="Jasa instalasi CCTV, pemasangan WiFi, jaringan internet, electrical, plumbing, website, DevOps, MikroTik, service komputer, dan penangkal petir.">
+  <title>COLUMBIA | Solusi Rekayasa IT & Kelistrikan Terpadu</title>
+  <meta name="description" content="Layanan profesional instalasi CCTV pintar, WiFi mesh, fiber optic, kelistrikan 3-phase, plumbing, web apps, DevOps, MikroTik, service komputer, dan proteksi petir.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('columbia_theme');
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.setAttribute('data-theme', t);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch(e) {}
+    })();
+  </script>
   <style>
-    :root {
-      --bg: #070c24;
-      --card: #0d163d;
-      --card-hover: #132057;
-      --border: #1d2a63;
-      --text: #e6ebf5;
-      --muted: #9aa7c7;
-      --accent-1: #eff824;
-      --accent-2: #f4ecb3;
-      --accent-3: #d1dc9a;
+    :root, [data-theme="dark"] {
+      --bg: #0b0f19;
+      --bg-pattern: radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+                    radial-gradient(circle at 85% 25%, rgba(37, 99, 235, 0.08) 0%, transparent 45%),
+                    radial-gradient(circle at 50% 65%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+                    radial-gradient(circle at 20% 90%, rgba(37, 211, 102, 0.04) 0%, transparent 40%);
+      --card: #111827;
+      --card-surface: #0c1220;
+      --card-hover: #172136;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(56, 189, 248, 0.45);
+      --text: #f1f5f9;
+      --text-heading: #ffffff;
+      --muted: #94a3b8;
+      --muted-bright: #cbd5e1;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-gradient: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --header-bg: rgba(11, 15, 25, 0.9);
+      --ticker-bg: rgba(15, 23, 42, 0.85);
+      --ticker-border: rgba(255, 255, 255, 0.08);
+      --ticker-text: #94a3b8;
+      --ticker-dot: #38bdf8;
+      --badge-bg: #0e2238;
+      --badge-border: #1e3a5f;
+      --badge-text: #38bdf8;
       --wa: #25d366;
+      --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
+      --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.65);
+
+      /* STAT CARDS PALETTE (DARK) */
+      --stat1-bg: linear-gradient(145deg, rgba(14, 165, 233, 0.16) 0%, rgba(15, 23, 42, 0.85) 100%);
+      --stat1-shadow: 0 8px 24px -4px rgba(14, 165, 233, 0.22);
+      --stat1-num: linear-gradient(135deg, #38bdf8 0%, #60a5fa 100%);
+      --stat1-label: #bae6fd;
+
+      --stat2-bg: linear-gradient(145deg, rgba(16, 185, 129, 0.16) 0%, rgba(15, 23, 42, 0.85) 100%);
+      --stat2-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.22);
+      --stat2-num: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+      --stat2-label: #a7f3d0;
+
+      --stat3-bg: linear-gradient(145deg, rgba(239, 248, 36, 0.14) 0%, rgba(15, 23, 42, 0.85) 100%);
+      --stat3-shadow: 0 8px 24px -4px rgba(239, 248, 36, 0.18);
+      --stat3-num: linear-gradient(135deg, #eff824 0%, #facc15 100%);
+      --stat3-label: #fef08a;
+
+      --stat4-bg: linear-gradient(145deg, rgba(139, 92, 246, 0.16) 0%, rgba(15, 23, 42, 0.85) 100%);
+      --stat4-shadow: 0 8px 24px -4px rgba(139, 92, 246, 0.22);
+      --stat4-num: linear-gradient(135deg, #c084fc 0%, #818cf8 100%);
+      --stat4-label: #ddd6fe;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    [data-theme="light"] {
+      /* EYE-FRIENDLY SOFT SLATE/MIST PALETTE (TIDAK SILAU / ANTI EYE-STRAIN) */
+      --bg: #edf2f7;
+      --bg-pattern: radial-gradient(circle at 18% 18%, rgba(37, 99, 235, 0.05) 0%, transparent 45%),
+                    radial-gradient(circle at 82% 22%, rgba(14, 165, 233, 0.05) 0%, transparent 45%),
+                    radial-gradient(circle at 50% 65%, rgba(99, 102, 241, 0.035) 0%, transparent 50%),
+                    radial-gradient(circle at 20% 90%, rgba(16, 185, 129, 0.03) 0%, transparent 40%);
+      --card: #ffffff;
+      --card-surface: #e2e8f0;
+      --card-hover: #ffffff;
+      --border: transparent;
+      --border-accent: rgba(37, 99, 235, 0.25);
+      --text: #475569;
+      --text-heading: #1e293b;
+      --muted: #64748b;
+      --muted-bright: #334155;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-gradient: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      --accent: #0284c7;
+      --accent-glow: rgba(37, 99, 235, 0.12);
+      --header-bg: rgba(237, 242, 247, 0.9);
+      --ticker-bg: #e2e8f0;
+      --ticker-border: transparent;
+      --ticker-text: #475569;
+      --ticker-dot: #2563eb;
+      --badge-bg: #e0f2fe;
+      --badge-border: #bae6fd;
+      --badge-text: #0369a1;
+      --wa: #25d366;
+      --shadow-card: 0 4px 18px rgba(15, 23, 42, 0.05);
+      --shadow-hover: 0 14px 28px rgba(15, 23, 42, 0.08);
+
+      /* STAT CARDS PALETTE (SOFT COLORFUL LIGHT) */
+      --stat1-bg: linear-gradient(145deg, #e0f2fe 0%, #f0f9ff 100%);
+      --stat1-shadow: 0 6px 20px -2px rgba(14, 165, 233, 0.15);
+      --stat1-num: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      --stat1-label: #0369a1;
+
+      --stat2-bg: linear-gradient(145deg, #d1fae5 0%, #ecfdf5 100%);
+      --stat2-shadow: 0 6px 20px -2px rgba(16, 185, 129, 0.15);
+      --stat2-num: linear-gradient(135deg, #059669 0%, #047857 100%);
+      --stat2-label: #047857;
+
+      --stat3-bg: linear-gradient(145deg, #fef3c7 0%, #fffbeb 100%);
+      --stat3-shadow: 0 6px 20px -2px rgba(217, 119, 6, 0.15);
+      --stat3-num: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      --stat3-label: #b45309;
+
+      --stat4-bg: linear-gradient(145deg, #ede9fe 0%, #f5f3ff 100%);
+      --stat4-shadow: 0 6px 20px -2px rgba(124, 58, 237, 0.15);
+      --stat4-num: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+      --stat4-label: #6d28d9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      background-color: var(--bg);
+      background-image: var(--bg-pattern);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
     a { color: inherit; text-decoration: none; }
     .container { max-width: 1140px; margin: auto; padding: 0 20px; }
 
+    /* MODERN TECH TICKER */
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .tech-ticker {
+      background: var(--ticker-bg);
+      border-top: 1px solid var(--ticker-border);
+      border-bottom: 1px solid var(--ticker-border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      padding: 10px 0;
+      color: var(--ticker-text);
+      position: relative;
+      z-index: 20;
+      text-transform: uppercase;
+      user-select: none;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .tech-ticker-track {
+      display: inline-flex;
+      width: max-content;
+      animation: tickerScroll 34s linear infinite;
+    }
+    .tech-ticker-track span {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    .ticker-sep {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--ticker-dot);
+      margin: 0 16px;
+      box-shadow: 0 0 8px var(--ticker-dot);
+      vertical-align: middle;
+    }
+    .hero-ticker {
+      width: 100%;
+      position: relative;
+      margin-top: auto;
+      margin-bottom: 38px;
+      padding: 9px 0;
+    }
+
     /* NAV */
-    header { position: sticky; top: 0; z-index: 50; background: rgba(7,12,36,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-    .nav { display: flex; justify-content: space-between; align-items: center; height: 72px; }
-    .brand { display: flex; align-items: center; gap: 14px; }
-    .brand-title { font-size: 24px; font-weight: 800; letter-spacing: 2px; }
-    .brand-sub { font-size: 9px; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
-    .brand-bars { display: flex; gap: 4px; height: 26px; }
-    .bar { width: 7px; height: 100%; border-radius: 1px; }
-    .bar-1 { background: var(--accent-1); }
-    .bar-2 { background: var(--accent-2); }
-    .bar-3 { background: var(--accent-3); }
-    .nav-links { display: flex; gap: 24px; font-size: 14px; color: var(--muted); }
-    .nav-links a:hover { color: #fff; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 14px; transition: .2s; }
-    .btn-primary { background: var(--accent-1); color: #070c24; }
-    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
-    .btn-outline { border: 1px solid var(--border); color: #fff; }
-    .btn-outline:hover { background: var(--card); }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--header-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; height: 60px; position: relative; }
+    .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .brand-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      background: linear-gradient(135deg, #ffffff 40%, #eff824 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 16px rgba(239, 248, 36, 0.4));
+    }
+    [data-theme="light"] .brand-title {
+      background: linear-gradient(135deg, #0f172a 35%, #ca8a04 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: none;
+    }
+    .brand-sub { font-size: 8.5px; color: var(--muted); letter-spacing: 0.8px; text-transform: uppercase; font-weight: 600; }
+    .brand-bars { display: flex; gap: 4px; height: 24px; align-items: flex-end; }
+    .bar { width: 5px; height: 100%; border-radius: 2px; animation: barSurgeNav 4s ease-in-out infinite alternate; }
+    .bar-1 { background: #eff824; animation-delay: 0s; box-shadow: 0 0 10px rgba(239, 248, 36, 0.6); }
+    .bar-2 { background: #f4ecb3; animation-delay: 0.3s; box-shadow: 0 0 10px rgba(244, 236, 179, 0.6); }
+    .bar-3 { background: #d1dc9a; animation-delay: 0.6s; box-shadow: 0 0 10px rgba(209, 220, 154, 0.6); }
+    .nav-links { display: flex; gap: 6px; font-size: 14px; color: var(--muted-bright); align-items: center; }
+    .nav-links a {
+      position: relative;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      transition: color 0.25s, background 0.25s;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--primary); background: var(--badge-bg); }
+    .nav-links a:hover::after { width: 65%; }
+
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 9px;
+      background: var(--card-surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+    .theme-toggle-btn:hover {
+      background: var(--card-hover);
+      border-color: var(--border-accent);
+      color: var(--primary);
+      transform: rotate(15deg);
+    }
+    .theme-toggle-btn svg { width: 18px; height: 18px; }
+    [data-theme="dark"] .sun-icon { display: block; }
+    [data-theme="dark"] .moon-icon { display: none; }
+    [data-theme="light"] .sun-icon { display: none; }
+    [data-theme="light"] .moon-icon { display: block; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 42px;
+      height: 42px;
+      background: var(--card-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-toggle:hover {
+      background: var(--card-hover);
+      border-color: var(--border-accent);
+    }
+    .nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      background: var(--header-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      padding: 14px 20px 20px;
+    }
+    .mobile-menu.open { display: block; animation: menuFade 0.22s ease-out; }
+    @keyframes menuFade {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14.5px;
+      background: var(--card-surface);
+      border: 1px solid var(--border);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .mobile-nav-link svg { color: var(--primary); flex-shrink: 0; }
+    .mobile-nav-link:hover, .mobile-nav-link:active {
+      background: var(--badge-bg);
+      color: var(--primary);
+      border-color: var(--border-accent);
+    }
+    .mobile-wa-btn {
+      width: 100%;
+      margin-top: 10px;
+      justify-content: center;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 8px;
+    }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 14px; transition: .25s; cursor: pointer; }
+    .btn-primary {
+      background: var(--primary-gradient);
+      color: #ffffff;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 18px var(--accent-glow);
+    }
+    .btn-primary:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px var(--accent-glow);
+    }
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--card);
+    }
+    .btn-outline:hover {
+      background: var(--card-hover);
+      border-color: var(--border-accent);
+      color: var(--primary);
+    }
     .btn-wa { background: var(--wa); color: #fff; }
+    .nav-wa {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #fff;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.35);
+      border: 1px solid rgba(255,255,255,0.2);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-wa:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 6px 22px rgba(37,211,102,0.5);
+    }
 
     /* HERO */
-    .hero { position: relative; padding: 70px 0 60px; text-align: center; overflow: hidden; }
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 61px);
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      overflow: hidden;
+    }
     #ai-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.65; z-index: 1; }
-    .hero-content { position: relative; z-index: 2; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 50px; background: rgba(239,248,36,0.1); border: 1px solid rgba(239,248,36,0.3); color: var(--accent-1); font-size: 13px; font-weight: 600; margin-bottom: 20px; }
-    .hero-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-1); box-shadow: 0 0 10px var(--accent-1); animation: pulseDot 1.5s infinite; }
-    .hero h1 { font-size: clamp(32px, 5vw, 54px); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
-    .hero h1 span { color: var(--accent-1); text-shadow: 0 0 25px rgba(239,248,36,0.35); }
-    .hero p { max-width: 720px; margin: 0 auto 32px; color: var(--muted); font-size: 17px; }
-    .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .hero-content .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-grow: 1;
+      padding-top: 10px;
+      padding-bottom: 6px;
+      gap: 64px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 0;
+    }
+    .hero-text { text-align: left; }
+    .hero h1 { font-size: clamp(32px, 3.8vw, 46px); font-weight: 800; line-height: 1.16; margin-bottom: 14px; letter-spacing: -0.5px; color: var(--text-heading); }
+    .hero h1 span {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 0 24px var(--accent-glow));
+    }
+    .hero p { max-width: 620px; margin: 0 0 22px; color: var(--muted-bright); font-size: 16px; line-height: 1.65; font-weight: 400; }
+    .hero-cta { display: flex; gap: 14px; justify-content: flex-start; flex-wrap: wrap; }
+    .hero-cta .btn { padding: 10px 20px; font-size: 14px; }
 
     /* AI HOLOGRAM VISUAL */
-    .ai-holo-wrap { max-width: 580px; margin: 20px auto 40px; position: relative; padding: 24px; background: radial-gradient(circle at center, rgba(19,32,87,0.7) 0%, rgba(7,12,36,0) 70%); border-radius: 16px; }
-    .ai-holo-svg { width: 100%; max-width: 460px; height: auto; filter: drop-shadow(0 0 20px rgba(239,248,36,0.25)); }
+    .hero-visual { display: flex; justify-content: center; align-items: center; }
+    .ai-holo-wrap { width: 100%; max-width: 320px; margin: 0 auto; position: relative; padding: 6px; background: radial-gradient(circle at center, rgba(37, 99, 235, 0.15) 0%, transparent 70%); border-radius: 16px; }
+    .ai-holo-svg { width: 100%; max-width: 300px; height: auto; filter: drop-shadow(0 0 16px var(--accent-glow)); display: block; margin: 0 auto; }
     @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     @keyframes spinRev { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
-    @keyframes pulseGlow { 0%, 100% { opacity: 0.35; transform: scale(0.98); } 50% { opacity: 0.9; transform: scale(1.02); } }
+    @keyframes pulseGlow { 0%, 100% { opacity: 0.4; transform: scale(0.98); } 50% { opacity: 0.95; transform: scale(1.02); } }
     @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+    @keyframes barSurgeNav { 0% { height: 14px; } 100% { height: 26px; } }
     .spin-ring { transform-origin: 200px 200px; animation: spinSlow 20s linear infinite; }
     .spin-ring-rev { transform-origin: 200px 200px; animation: spinRev 14s linear infinite; }
     .pulse-core { transform-origin: 200px 200px; animation: pulseGlow 3s ease-in-out infinite; }
 
     /* FLOATING WA */
-    .floating-wa { position: fixed; bottom: 24px; right: 24px; z-index: 100; background: var(--wa); color: #fff; display: flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 50px; font-weight: 700; font-size: 14px; box-shadow: 0 10px 25px rgba(37,211,102,0.4); transition: .2s; }
-    .floating-wa:hover { transform: translateY(-3px) scale(1.03); filter: brightness(1.1); color: #fff; }
+    .floating-wa {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.45);
+      transition: transform 0.3s ease, filter 0.3s ease;
+      animation: waRipple 2.8s infinite;
+    }
+    .floating-wa:hover {
+      transform: translateY(-4px) scale(1.08);
+      filter: brightness(1.15);
+      color: #fff;
+    }
+    @keyframes waRipple {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.65), 0 8px 24px rgba(37,211,102,0.45); }
+      70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0), 0 8px 24px rgba(37,211,102,0.45); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 24px rgba(37,211,102,0.45); }
+    }
 
     /* STATS */
-    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 40px 0; }
-    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px 14px; text-align: center; }
-    .stat-num { font-size: 28px; font-weight: 800; color: var(--accent-1); }
-    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 0; perspective: 1000px; }
+    .stat-card {
+      border: none;
+      border-radius: 14px;
+      padding: 16px 18px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: perspective(900px) translateY(35px) rotateX(14deg) scale(0.95);
+      transition: opacity 0.65s cubic-bezier(0.2, 0.9, 0.2, 1),
+                  transform 0.65s cubic-bezier(0.2, 0.9, 0.2, 1),
+                  box-shadow 0.3s ease,
+                  background 0.3s ease;
+      will-change: transform, opacity;
+    }
+    .stat-card.revealed {
+      opacity: 1;
+      transform: perspective(900px) translateY(0) rotateX(0deg) scale(1);
+    }
+    .stat-card.revealed:hover {
+      transition-delay: 0s !important;
+      transform: perspective(900px) translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+    .stat-card:nth-child(1) { transition-delay: 0.04s; }
+    .stat-card:nth-child(2) { transition-delay: 0.12s; }
+    .stat-card:nth-child(3) { transition-delay: 0.20s; }
+    .stat-card:nth-child(4) { transition-delay: 0.28s; }
+
+    /* INDIVIDUAL COLORFUL STAT CARDS */
+    .stat-card.stat-1 {
+      background: var(--stat1-bg);
+      box-shadow: var(--stat1-shadow);
+    }
+    .stat-card.stat-1 .stat-num {
+      background: var(--stat1-num);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-card.stat-1 .stat-label { color: var(--stat1-label); }
+
+    .stat-card.stat-2 {
+      background: var(--stat2-bg);
+      box-shadow: var(--stat2-shadow);
+    }
+    .stat-card.stat-2 .stat-num {
+      background: var(--stat2-num);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-card.stat-2 .stat-label { color: var(--stat2-label); }
+
+    .stat-card.stat-3 {
+      background: var(--stat3-bg);
+      box-shadow: var(--stat3-shadow);
+    }
+    .stat-card.stat-3 .stat-num {
+      background: var(--stat3-num);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-card.stat-3 .stat-label { color: var(--stat3-label); }
+
+    .stat-card.stat-4 {
+      background: var(--stat4-bg);
+      box-shadow: var(--stat4-shadow);
+    }
+    .stat-card.stat-4 .stat-num {
+      background: var(--stat4-num);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-card.stat-4 .stat-label { color: var(--stat4-label); }
+
+    .stat-num {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .stat-label { font-size: 11.5px; margin-top: 3px; font-weight: 600; }
 
     /* SERVICES */
-    .section { padding: 70px 0; }
-    .sec-head { text-align: center; margin-bottom: 48px; }
-    .sec-head h2 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
-    .sec-head p { color: var(--muted); font-size: 15px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 24px; transition: .2s; position: relative; }
-    .card:hover { border-color: var(--accent-1); transform: translateY(-3px); background: var(--card-hover); }
-    .card-icon { width: 44px; height: 44px; border-radius: 8px; background: rgba(239,248,36,0.12); display: flex; align-items: center; justify-content: center; color: var(--accent-1); margin-bottom: 16px; }
-    .card h3 { font-size: 18px; margin-bottom: 8px; }
-    .card p { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+    .section { padding: 34px 0 60px; }
+    .sec-head { text-align: center; margin-bottom: 24px; }
+    .sec-head h2 { font-size: 27px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.5px; color: var(--text-heading); }
+    .sec-head p { color: var(--muted-bright); font-size: 14.5px; max-width: 680px; margin: 0 auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 28px; perspective: 1200px; }
+    .card {
+      background: var(--card);
+      border: none;
+      border-radius: 14px;
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transform-style: preserve-3d;
+      box-shadow: var(--shadow-card);
+      opacity: 0;
+      transform: perspective(900px) translateY(45px) rotateX(18deg) rotateY(-8deg) scale(0.93);
+      transition: opacity 0.75s cubic-bezier(0.18, 0.9, 0.2, 1),
+                  transform 0.75s cubic-bezier(0.18, 0.9, 0.2, 1),
+                  box-shadow 0.3s ease,
+                  background-color 0.3s ease;
+      will-change: transform, opacity;
+    }
+    .card.revealed {
+      opacity: 1;
+      transform: perspective(900px) translateY(0) rotateX(0deg) rotateY(0deg) scale(1);
+    }
+    .card.revealed:hover {
+      transition-delay: 0s !important;
+      transform: perspective(900px) translateY(-7px) scale(1.01);
+      box-shadow: var(--shadow-hover);
+    }
+    .card:nth-child(1) { transition-delay: 0.04s; }
+    .card:nth-child(2) { transition-delay: 0.12s; }
+    .card:nth-child(3) { transition-delay: 0.20s; }
+    .card:nth-child(4) { transition-delay: 0.08s; }
+    .card:nth-child(5) { transition-delay: 0.16s; }
+    .card:nth-child(6) { transition-delay: 0.24s; }
+    .card:nth-child(7) { transition-delay: 0.08s; }
+    .card:nth-child(8) { transition-delay: 0.16s; }
+    .card:nth-child(9) { transition-delay: 0.24s; }
+    .card:nth-child(10) { transition-delay: 0.08s; }
+
+    .card-illu {
+      width: 100%;
+      height: 140px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      background: var(--card-surface);
+      border: none;
+      overflow: hidden;
+      position: relative;
+      transition: box-shadow 0.3s;
+    }
+    .card:hover .card-illu {
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .card-illu img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .card:hover .card-illu img {
+      transform: scale(1.08);
+    }
+    .card-illu::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9, 10, 16, 0.05) 0%, rgba(9, 10, 16, 0.6) 100%);
+      pointer-events: none;
+    }
+    .card h3 { font-size: 18px; margin-bottom: 8px; font-weight: 700; color: var(--text-heading); }
+    .card p { color: var(--muted-bright); font-size: 13.5px; line-height: 1.55; margin-bottom: 14px; flex-grow: 1; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { font-size: 11px; padding: 3px 8px; border-radius: 4px; background: #070c24; color: var(--accent-2); border: 1px solid var(--border); }
+    .tag {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border: 1px solid var(--badge-border);
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .card:hover .tag {
+      background: var(--badge-bg);
+      border-color: var(--badge-text);
+    }
 
-    /* WHY US */
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-    .feature { padding: 22px; border-left: 3px solid var(--accent-1); background: var(--card); border-radius: 0 8px 8px 0; }
-    .feature h4 { font-size: 16px; margin-bottom: 6px; }
-    .feature p { font-size: 13px; color: var(--muted); }
+    /* WHY US CARDS */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; perspective: 1000px; }
+    .feature {
+      padding: 24px;
+      border: none;
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: var(--shadow-card);
+      transform-style: preserve-3d;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: perspective(800px) translateY(40px) rotateX(16deg) rotateY(-6deg) scale(0.94);
+      transition: opacity 0.75s cubic-bezier(0.18, 0.9, 0.2, 1),
+                  transform 0.75s cubic-bezier(0.18, 0.9, 0.2, 1),
+                  background-color 0.3s ease,
+                  box-shadow 0.3s ease;
+      will-change: transform, opacity;
+    }
+    .feature.revealed {
+      opacity: 1;
+      transform: perspective(800px) translateY(0) rotateX(0deg) rotateY(0deg) scale(1);
+    }
+    .feature.revealed:hover {
+      transition-delay: 0s !important;
+      transform: perspective(800px) translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .feature:nth-child(1) { transition-delay: 0.06s; }
+    .feature:nth-child(2) { transition-delay: 0.16s; }
+    .feature:nth-child(3) { transition-delay: 0.26s; }
+    .feature:nth-child(4) { transition-delay: 0.36s; }
+    .feature h4 { font-size: 16.5px; margin-bottom: 8px; font-weight: 700; color: var(--text-heading); }
+    .feature p { font-size: 13.5px; color: var(--muted-bright); line-height: 1.55; }
 
-    /* CONTACT / CTA */
-    .contact-box { background: linear-gradient(135deg, #0d163d 0%, #15225c 100%); border: 1px solid var(--border); border-radius: 12px; padding: 40px 24px; text-align: center; }
-    .contact-box h2 { font-size: 30px; margin-bottom: 12px; }
-    .contact-box p { color: var(--muted); max-width: 600px; margin: 0 auto 24px; font-size: 15px; }
+    /* TECH STACK SECTION */
+    .tech-stack-wrap {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .tech-item {
+      background: var(--card);
+      border: none;
+      border-radius: 12px;
+      padding: 18px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .tech-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .tech-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--card-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      transition: transform 0.25s ease;
+    }
+    .tech-item:hover .tech-icon-wrap {
+      transform: scale(1.1);
+    }
+    .tech-icon-wrap svg {
+      width: 26px;
+      height: 26px;
+    }
+    .tech-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-heading);
+      letter-spacing: 0.2px;
+    }
+    .tech-role {
+      font-size: 10.5px;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    /* CONTACT SECTION */
+    #kontak { position: relative; }
+    #kontak::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(100%, 960px);
+      height: 380px;
+      background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 75%);
+      filter: blur(45px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(56, 189, 248, 0.06) 100%), var(--card);
+      border: none;
+      border-radius: 20px;
+      padding: 52px 28px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: perspective(1000px) translateY(40px) rotateX(12deg) scale(0.95);
+      transition: opacity 0.8s cubic-bezier(0.18, 0.9, 0.2, 1),
+                  transform 0.8s cubic-bezier(0.18, 0.9, 0.2, 1),
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease;
+      will-change: transform, opacity;
+      z-index: 1;
+    }
+    .contact-box.revealed {
+      opacity: 1;
+      transform: perspective(1000px) translateY(0) rotateX(0deg) scale(1);
+    }
+    .contact-box h2 { font-size: 30px; margin-bottom: 12px; font-weight: 800; color: var(--text-heading); position: relative; z-index: 2; }
+    .contact-box p { color: var(--muted-bright); max-width: 620px; margin: 0 auto 26px; font-size: 15.5px; line-height: 1.6; position: relative; z-index: 2; }
+    .contact-box .btn { position: relative; z-index: 2; }
 
     /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 30px 0; color: var(--muted); font-size: 13px; text-align: center; }
-
-    /* NAV WA BUTTON */
-    .nav-wa { white-space: nowrap; flex-shrink: 0; padding: 10px 18px; }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0 24px;
+      color: var(--muted);
+      font-size: 13px;
+      background: var(--card-surface);
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-col-brand {
+      max-width: 360px;
+    }
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-heading);
+      font-weight: 800;
+      letter-spacing: 2px;
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+    .footer-desc {
+      color: var(--muted-bright);
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .footer-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+    .footer-contact-item svg {
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .footer-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-heading);
+      letter-spacing: 0.3px;
+      margin-bottom: 4px;
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-links li a {
+      color: var(--muted-bright);
+      text-decoration: none;
+      font-size: 12.5px;
+      transition: color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .footer-links li a:hover {
+      color: var(--primary);
+      transform: translateX(3px);
+    }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .footer-bottom-badges {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted-bright);
+      font-size: 11.5px;
+    }
+    .footer-dot {
+      color: var(--primary);
+    }
 
     /* RESPONSIVE DESKTOP & MOBILE */
     @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+      .hero-text { text-align: center; }
+      .hero-cta { justify-content: center; }
+      .hero p { margin: 0 auto 20px; }
       .stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .tech-stack-wrap { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .footer-col-brand { grid-column: span 2; max-width: 100%; }
+    }
+    @media (max-width: 640px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      .footer-col-brand { grid-column: span 1; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .nav { height: 58px; gap: 8px; }
+      .nav-toggle { display: flex; }
+      .nav { height: 60px; gap: 8px; }
       .brand { gap: 8px; min-width: 0; }
       .brand-title { font-size: 18px; letter-spacing: 1px; }
-      .brand-sub { font-size: 7.5px; max-width: 170px; line-height: 1.2; }
+      .brand-sub { font-size: 7.5px; max-width: 155px; line-height: 1.2; }
       .brand-bars { height: 18px; gap: 3px; }
       .bar { width: 4.5px; }
-      .nav-wa { padding: 8px 10px; border-radius: 50px; font-size: 12px; }
+      .nav-wa { padding: 8px 12px; border-radius: 8px; font-size: 12px; }
       .nav-wa-text { display: none; }
+      .tech-ticker { font-size: 10px; padding: 7px 0; letter-spacing: 1.2px; }
 
       /* Mobile Hero Compact */
-      .hero { padding: 26px 0 16px; }
+      .hero { padding: 18px 0 0; min-height: auto; }
+      .hero-content .container { padding-top: 10px; padding-bottom: 12px; gap: 14px; }
       .hero h1 { font-size: 23px; line-height: 1.22; margin-bottom: 10px; }
       .hero p { font-size: 13.5px; line-height: 1.45; margin-bottom: 16px; }
       .hero-cta { flex-direction: row; gap: 8px; justify-content: center; margin-bottom: 16px; }
@@ -132,158 +956,424 @@
       /* Mobile Hologram Compact */
       .ai-holo-wrap { max-width: 230px; padding: 0; margin: 8px auto 14px; }
       .ai-holo-svg { max-width: 220px; }
+      .hero-ticker { margin-top: 18px; margin-bottom: 18px; }
 
       /* Stats Compact */
-      .stats { grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 16px 0 0; }
+      .stats { grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 0; }
       .stat-card { padding: 10px 6px; }
       .stat-num { font-size: 20px; }
       .stat-label { font-size: 11px; }
 
-      .grid { grid-template-columns: 1fr; gap: 14px; }
-      .card { padding: 18px 16px; }
-      .card-icon { width: 38px; height: 38px; margin-bottom: 10px; }
-      .card h3 { font-size: 16px; margin-bottom: 6px; }
-      .card p { font-size: 13px; margin-bottom: 10px; }
+      /* Mobile Cards: Kotak Rapi (Square 2-Columns) */
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .card {
+        padding: 12px 10px;
+        border-radius: 12px;
+        aspect-ratio: 1 / 1.08;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .card-illu { height: 60px; margin-bottom: 6px; border-radius: 6px; }
+      .card h3 { font-size: 12.5px; margin-bottom: 3px; line-height: 1.25; font-weight: 700; }
+      .card p { font-size: 10px; line-height: 1.35; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      .tags { gap: 3px; margin-top: auto; }
+      .tag { font-size: 8.5px; padding: 2px 5px; }
 
       .section { padding: 36px 0; }
       .sec-head { margin-bottom: 24px; }
       .sec-head h2 { font-size: 22px; }
       .sec-head p { font-size: 13px; }
-      .features { grid-template-columns: 1fr; gap: 10px; }
-      .feature { padding: 14px 16px; }
+      .features { grid-template-columns: 1fr; gap: 12px; }
+      .feature { padding: 18px 16px; border-radius: 12px; }
 
-      .contact-box { padding: 26px 16px; }
-      .contact-box h2 { font-size: 22px; }
-      .contact-box p { font-size: 13px; margin-bottom: 18px; }
+      .tech-stack-wrap { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .tech-item { padding: 14px 8px; }
+      .tech-icon-wrap { width: 38px; height: 38px; }
+      .tech-icon-wrap svg { width: 22px; height: 22px; }
+      .tech-name { font-size: 11.5px; }
+      .tech-role { font-size: 9.5px; }
+
+      .contact-box { padding: 24px 16px; }
+      .contact-box h2 { font-size: 20px; }
+      .contact-box p { font-size: 13px; margin-bottom: 16px; }
       .contact-box .btn { width: 100%; justify-content: center; font-size: 13px; }
 
-      .floating-wa span { display: none; }
-      .floating-wa { padding: 12px; bottom: 16px; right: 16px; }
+      .floating-wa { width: 48px; height: 48px; bottom: 16px; right: 16px; }
+      .floating-wa svg { width: 24px; height: 24px; }
     }
-    @media (max-width: 380px) {
+    @media (max-width: 440px) {
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .card {
+        padding: 10px 8px;
+        border-radius: 10px;
+        aspect-ratio: 1 / 1.1;
+      }
+      .card-illu { height: 52px; margin-bottom: 5px; }
+      .card h3 { font-size: 11.5px; line-height: 1.2; margin-bottom: 3px; }
+      .card p { font-size: 9px; -webkit-line-clamp: 2; line-clamp: 2; line-height: 1.3; margin-bottom: 4px; }
+      .tag { font-size: 8px; padding: 2px 4px; }
       .brand-sub { display: none; }
       .hero-cta { flex-direction: column; }
       .hero-cta .btn { max-width: 100%; width: 100%; }
+      .tech-stack-wrap { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* PRELOADER */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    #preloader.loaded {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .preloader-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .preloader-logo {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .preloader-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: #38bdf8;
+      border-right-color: #2563eb;
+      animation: preSpin 1.4s linear infinite;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+    }
+    .preloader-ring-rev {
+      position: absolute;
+      inset: 10px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-bottom-color: #818cf8;
+      border-left-color: #38bdf8;
+      animation: preSpinRev 1s linear infinite;
+    }
+    .preloader-glow {
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+      animation: prePulse 1.5s ease-in-out infinite;
+    }
+    .preloader-bars {
+      height: 30px;
+      gap: 5px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .preloader-bars .bar {
+      width: 7px;
+      animation: preSurge 1s ease-in-out infinite alternate;
+    }
+    .preloader-bars .bar-1 { background: #eff824; animation-delay: 0s; box-shadow: 0 0 10px rgba(239, 248, 36, 0.6); }
+    .preloader-bars .bar-2 { background: #f4ecb3; animation-delay: 0.15s; box-shadow: 0 0 10px rgba(244, 236, 179, 0.6); }
+    .preloader-bars .bar-3 { background: #d1dc9a; animation-delay: 0.3s; box-shadow: 0 0 10px rgba(209, 220, 154, 0.6); }
+    .preloader-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      color: var(--text-heading);
+      margin-bottom: 6px;
+    }
+    .preloader-sub {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .preloader-track {
+      width: 220px;
+      height: 5px;
+      background: var(--card-surface);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .preloader-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--primary-gradient);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      border-radius: 99px;
+      transition: width 0.15s ease-out;
+    }
+    .preloader-status {
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-top: 10px;
+      font-family: monospace;
+      font-weight: 600;
+      min-height: 16px;
+    }
+    @keyframes preSpin { to { transform: rotate(360deg); } }
+    @keyframes preSpinRev { to { transform: rotate(-360deg); } }
+    @keyframes prePulse { 0%, 100% { opacity: 0.3; transform: scale(0.9); } 50% { opacity: 0.8; transform: scale(1.1); } }
+    @keyframes preSurge { 0% { height: 12px; opacity: 0.4; } 100% { height: 30px; opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .preloader-ring, .preloader-ring-rev, .preloader-bars .bar { animation: none; }
     }
   </style>
 </head>
 <body>
 
+  <!-- PRELOADER -->
+  <div id="preloader" role="status" aria-live="polite">
+    <div class="preloader-inner">
+      <div class="preloader-logo">
+        <div class="preloader-ring"></div>
+        <div class="preloader-ring-rev"></div>
+        <div class="preloader-glow"></div>
+        <div class="brand-bars preloader-bars" aria-hidden="true">
+          <div class="bar bar-1"></div>
+          <div class="bar bar-2"></div>
+          <div class="bar bar-3"></div>
+        </div>
+      </div>
+      <div class="preloader-title">COLUMBIA</div>
+      <div class="preloader-sub">ELECTRICAL &bull; NETWORK &bull; DEV SOLUTIONS</div>
+      <div class="preloader-track" aria-hidden="true">
+        <div class="preloader-bar" id="preloader-bar"></div>
+      </div>
+      <div class="preloader-status" id="preloader-status">INITIALIZING SYSTEM 0%</div>
+    </div>
+  </div>
+
   <!-- HEADER -->
   <header>
     <div class="container nav">
-      <div class="brand">
+      <a href="#" class="brand" aria-label="Columbia Home">
         <div>
           <div class="brand-title">COLUMBIA</div>
-          <div class="brand-sub">Electrical Device Solutions And Partner</div>
+          <div class="brand-sub">Electrical Device Solutions &amp; Partner</div>
         </div>
         <div class="brand-bars" aria-label="Logo Bars">
           <div class="bar bar-1"></div>
           <div class="bar bar-2"></div>
           <div class="bar bar-3"></div>
         </div>
-      </div>
+      </a>
       <nav class="nav-links">
         <a href="#layanan">Layanan</a>
+        <a href="#tech-stack">Tech Stack</a>
         <a href="#keunggulan">Keunggulan</a>
         <a href="#kontak">Kontak</a>
       </nav>
-      <a class="btn btn-wa nav-wa" href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20ingin%20konsultasi%20layanan" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.795.815 3.18 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.767-5.767-5.767zm7.424 5.766c-.002 4.103-3.342 7.443-7.447 7.443-1.25 0-2.43-.314-3.473-.865l-4.535 1.19 1.213-4.426c-.636-1.096-.973-2.348-.973-3.64 0-4.103 3.342-7.443 7.447-7.443 4.104 0 7.445 3.341 7.446 7.443z"/></svg>
-        <span class="nav-wa-text">WhatsApp</span>
-      </a>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Ganti Tema (Dark/Light)" title="Ganti Mode Gelap / Terang">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a class="btn btn-wa nav-wa" href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20ingin%20konsultasi%20layanan" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.795.815 3.18 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.767-5.767-5.767zm7.424 5.766c-.002 4.103-3.342 7.443-7.447 7.443-1.25 0-2.43-.314-3.473-.865l-4.535 1.19 1.213-4.426c-.636-1.096-.973-2.348-.973-3.64 0-4.103 3.342-7.443 7.447-7.443 4.104 0 7.445 3.341 7.446 7.443z"/></svg>
+          <span class="nav-wa-text">Konsultasi</span>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE NAV DROPDOWN -->
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-inner">
+        <a href="#layanan" class="mobile-nav-link">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <span>Layanan &amp; Solusi</span>
+        </a>
+        <a href="#tech-stack" class="mobile-nav-link">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+          <span>Tech Stack &amp; Partner</span>
+        </a>
+        <a href="#keunggulan" class="mobile-nav-link">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Keunggulan Kami</span>
+        </a>
+        <a href="#kontak" class="mobile-nav-link">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>Kontak &amp; Jadwal Survei</span>
+        </a>
+        <button class="mobile-nav-link" id="theme-toggle-mobile" style="width:100%; border:none; cursor:pointer; text-align:left;">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <span>Ganti Tema (Dark / Light)</span>
+        </button>
+        <a href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20ingin%20konsultasi%20layanan" target="_blank" rel="noopener" class="btn btn-wa mobile-wa-btn">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.795.815 3.18 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.767-5.767-5.767zm7.424 5.766c-.002 4.103-3.342 7.443-7.447 7.443-1.25 0-2.43-.314-3.473-.865l-4.535 1.19 1.213-4.426c-.636-1.096-.973-2.348-.973-3.64 0-4.103 3.342-7.443 7.447-7.443 4.104 0 7.445 3.341 7.446 7.443z"/></svg>
+          Hubungi WhatsApp Tim Ahli
+        </a>
+      </div>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
     <canvas id="ai-canvas"></canvas>
-    <div class="container hero-content">
-      <h1>Mitra Terpercaya <span>Teknologi, Listrik & Jaringan</span></h1>
-      <p>Layanan terpadu mulai dari CCTV, pemasangan WiFi, perbaikan komputer, instalasi jaringan & MikroTik, DevOps, web development, kelistrikan, pipa plumbing, hingga sistem penangkal petir.</p>
-      <div class="hero-cta">
-        <a href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20butuh%20penawaran%20harga" class="btn btn-primary" target="_blank" rel="noopener">Minta Penawaran Cepat</a>
-        <a href="#layanan" class="btn btn-outline">Lihat Layanan Kami</a>
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <h1>Solusi <span>Infrastruktur IT &amp; Kelistrikan</span></h1>
+            <p>Layanan instalasi jaringan internet, sistem CCTV, kelistrikan gedung, hingga maintenance komputer dan sistem IT. Pengerjaan rapi, teknisi berpengalaman, dan bergaransi.</p>
+            <div class="hero-cta">
+              <a href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20butuh%20konsultasi%20layanan" class="btn btn-primary" target="_blank" rel="noopener">Konsultasi Gratis Sekarang</a>
+              <a href="#layanan" class="btn btn-primary">Lihat Daftar Layanan</a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <!-- AI ANIMATED HOLOGRAM GRAPHIC -->
+            <div class="ai-holo-wrap">
+              <svg class="ai-holo-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="aiGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#eff824" stop-opacity="0.6"/>
+                    <stop offset="40%" stop-color="#22d3ee" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#070c24" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#eff824"/>
+                    <stop offset="50%" stop-color="#38bdf8"/>
+                    <stop offset="100%" stop-color="#d1dc9a"/>
+                  </linearGradient>
+                </defs>
+                <!-- Background Glow -->
+                <circle cx="200" cy="200" r="160" fill="url(#aiGlow)" class="pulse-core"/>
+
+                <!-- Outer Tech Ring (Rotating) -->
+                <g class="spin-ring">
+                  <circle cx="200" cy="200" r="145" stroke="#1d2a63" stroke-width="2" stroke-dasharray="8 6"/>
+                  <circle cx="200" cy="200" r="130" stroke="#eff824" stroke-width="2.5" stroke-dasharray="40 25 15 25" opacity="0.85"/>
+                  <circle cx="200" cy="55" r="5" fill="#eff824"/>
+                  <circle cx="200" cy="345" r="5" fill="#38bdf8"/>
+                  <circle cx="55" cy="200" r="4" fill="#eff824"/>
+                  <circle cx="345" cy="200" r="4" fill="#d1dc9a"/>
+                </g>
+
+                <!-- Inner Reverse Tech Ring -->
+                <g class="spin-ring-rev">
+                  <circle cx="200" cy="200" r="105" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="25 12 8 12" opacity="0.75"/>
+                  <rect x="195" y="90" width="10" height="10" fill="#eff824" transform="rotate(45 200 95)"/>
+                  <rect x="195" y="295" width="10" height="10" fill="#38bdf8" transform="rotate(45 200 300)"/>
+                </g>
+
+                <!-- Circuit Interconnect Lines -->
+                <path d="M 200 150 L 200 115 L 245 80" stroke="#38bdf8" stroke-width="2" fill="none" opacity="0.7"/>
+                <path d="M 200 250 L 200 285 L 155 320" stroke="#eff824" stroke-width="2" fill="none" opacity="0.7"/>
+                <path d="M 150 200 L 115 200 L 85 240" stroke="#d1dc9a" stroke-width="2" fill="none" opacity="0.7"/>
+                <path d="M 250 200 L 285 200 L 315 160" stroke="#eff824" stroke-width="2" fill="none" opacity="0.7"/>
+
+                <!-- Neural Core / AI Brain Polygon -->
+                <polygon points="200,140 250,170 250,230 200,260 150,230 150,170" stroke="url(#aiGrad)" stroke-width="3" fill="#0d163d" fill-opacity="0.9"/>
+
+                <!-- Core Central Chip / AI Symbol -->
+                <circle cx="200" cy="200" r="28" fill="#eff824" fill-opacity="0.15" stroke="#eff824" stroke-width="2"/>
+                <circle cx="200" cy="200" r="14" fill="#eff824" class="pulse-core"/>
+
+                <!-- Data nodes -->
+                <circle cx="200" cy="140" r="5" fill="#eff824"/>
+                <circle cx="250" cy="170" r="5" fill="#38bdf8"/>
+                <circle cx="250" cy="230" r="5" fill="#eff824"/>
+                <circle cx="200" cy="260" r="5" fill="#38bdf8"/>
+                <circle cx="150" cy="230" r="5" fill="#eff824"/>
+                <circle cx="150" cy="170" r="5" fill="#38bdf8"/>
+
+                <!-- Label HUD -->
+                <polygon points="201,192 195,201 199,201 197,208 205,199 201,199" fill="#070c24"/>
+                <text x="200" y="380" text-anchor="middle" fill="#9aa7c7" font-size="11" font-weight="600" letter-spacing="2">COLUMBIA ELECTRICAL & TECH</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- STATS (DI ATAS TICKER) -->
+        <div class="stats">
+          <div class="stat-card stat-1">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Layanan Terintegrasi</div>
+          </div>
+          <div class="stat-card stat-2">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Teknisi Berpengalaman</div>
+          </div>
+          <div class="stat-card stat-3">
+            <div class="stat-num">Garansi</div>
+            <div class="stat-label">Pekerjaan & Purna Jual</div>
+          </div>
+          <div class="stat-card stat-4">
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">Dukungan Siap Tanggap</div>
+          </div>
+        </div>
       </div>
 
-      <!-- AI ANIMATED HOLOGRAM GRAPHIC -->
-      <div class="ai-holo-wrap">
-        <svg class="ai-holo-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="aiGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#eff824" stop-opacity="0.6"/>
-              <stop offset="40%" stop-color="#22d3ee" stop-opacity="0.3"/>
-              <stop offset="100%" stop-color="#070c24" stop-opacity="0"/>
-            </radialGradient>
-            <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#eff824"/>
-              <stop offset="50%" stop-color="#38bdf8"/>
-              <stop offset="100%" stop-color="#d1dc9a"/>
-            </linearGradient>
-          </defs>
-          <!-- Background Glow -->
-          <circle cx="200" cy="200" r="160" fill="url(#aiGlow)" class="pulse-core"/>
-
-          <!-- Outer Tech Ring (Rotating) -->
-          <g class="spin-ring">
-            <circle cx="200" cy="200" r="145" stroke="#1d2a63" stroke-width="2" stroke-dasharray="8 6"/>
-            <circle cx="200" cy="200" r="130" stroke="#eff824" stroke-width="2.5" stroke-dasharray="40 25 15 25" opacity="0.85"/>
-            <circle cx="200" cy="55" r="5" fill="#eff824"/>
-            <circle cx="200" cy="345" r="5" fill="#38bdf8"/>
-            <circle cx="55" cy="200" r="4" fill="#eff824"/>
-            <circle cx="345" cy="200" r="4" fill="#d1dc9a"/>
-          </g>
-
-          <!-- Inner Reverse Tech Ring -->
-          <g class="spin-ring-rev">
-            <circle cx="200" cy="200" r="105" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="25 12 8 12" opacity="0.75"/>
-            <rect x="195" y="90" width="10" height="10" fill="#eff824" transform="rotate(45 200 95)"/>
-            <rect x="195" y="295" width="10" height="10" fill="#38bdf8" transform="rotate(45 200 300)"/>
-          </g>
-
-          <!-- Circuit Interconnect Lines -->
-          <path d="M 200 150 L 200 115 L 245 80" stroke="#38bdf8" stroke-width="2" fill="none" opacity="0.7"/>
-          <path d="M 200 250 L 200 285 L 155 320" stroke="#eff824" stroke-width="2" fill="none" opacity="0.7"/>
-          <path d="M 150 200 L 115 200 L 85 240" stroke="#d1dc9a" stroke-width="2" fill="none" opacity="0.7"/>
-          <path d="M 250 200 L 285 200 L 315 160" stroke="#eff824" stroke-width="2" fill="none" opacity="0.7"/>
-
-          <!-- Neural Core / AI Brain Polygon -->
-          <polygon points="200,140 250,170 250,230 200,260 150,230 150,170" stroke="url(#aiGrad)" stroke-width="3" fill="#0d163d" fill-opacity="0.9"/>
-
-          <!-- Core Central Chip / AI Symbol -->
-          <circle cx="200" cy="200" r="28" fill="#eff824" fill-opacity="0.15" stroke="#eff824" stroke-width="2"/>
-          <circle cx="200" cy="200" r="14" fill="#eff824" class="pulse-core"/>
-
-          <!-- Data nodes -->
-          <circle cx="200" cy="140" r="5" fill="#eff824"/>
-          <circle cx="250" cy="170" r="5" fill="#38bdf8"/>
-          <circle cx="250" cy="230" r="5" fill="#eff824"/>
-          <circle cx="200" cy="260" r="5" fill="#38bdf8"/>
-          <circle cx="150" cy="230" r="5" fill="#eff824"/>
-          <circle cx="150" cy="170" r="5" fill="#38bdf8"/>
-
-          <!-- Label HUD -->
-          <polygon points="201,192 195,201 199,201 197,208 205,199 201,199" fill="#070c24"/>
-          <text x="200" y="380" text-anchor="middle" fill="#9aa7c7" font-size="11" font-weight="600" letter-spacing="2">COLUMBIA ELECTRICAL & TECH</text>
-        </svg>
-      </div>
-
-      <div class="stats">
-      <div class="stat-card">
-        <div class="stat-num">10+</div>
-        <div class="stat-label">Layanan Terintegrasi</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Teknisi Berpengalaman</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">Garansi</div>
-        <div class="stat-label">Pekerjaan & Purna Jual</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">Dukungan Siap Tanggap</div>
+      <!-- MODERN TECH TICKER (DI BAWAH STATS) -->
+      <div class="tech-ticker hero-ticker" aria-hidden="true">
+        <div class="tech-ticker-track">
+          <span>
+            <span>⚡ INSTALASI CCTV &amp; IP CAMERA</span><span class="ticker-sep"></span>
+            <span>🌐 ENTERPRISE WIFI &amp; MESH SYSTEM</span><span class="ticker-sep"></span>
+            <span>🚀 FIBER OPTIC &amp; NETWORK INFRASTRUCTURE</span><span class="ticker-sep"></span>
+            <span>⚡ ELECTRICAL &amp; PANEL LISTRIK 3-PHASE</span><span class="ticker-sep"></span>
+            <span>🔧 PLUMBING &amp; SISTEM PEMIPAAN</span><span class="ticker-sep"></span>
+            <span>💻 PEMBUATAN WEBSITE &amp; WEB APPS</span><span class="ticker-sep"></span>
+            <span>☁️ DEVOPS &amp; CLOUD ARCHITECTURE</span><span class="ticker-sep"></span>
+            <span>🛠️ ROUTING &amp; SETTING MIKROTIK</span><span class="ticker-sep"></span>
+            <span>🖥️ SERVICE HARDWARE KOMPUTER</span><span class="ticker-sep"></span>
+            <span>🛡️ PROTEKSI PENANGKAL PETIR STANDAR K3</span><span class="ticker-sep"></span>
+          </span>
+          <span>
+            <span>⚡ INSTALASI CCTV &amp; IP CAMERA</span><span class="ticker-sep"></span>
+            <span>🌐 ENTERPRISE WIFI &amp; MESH SYSTEM</span><span class="ticker-sep"></span>
+            <span>🚀 FIBER OPTIC &amp; NETWORK INFRASTRUCTURE</span><span class="ticker-sep"></span>
+            <span>⚡ ELECTRICAL &amp; PANEL LISTRIK 3-PHASE</span><span class="ticker-sep"></span>
+            <span>🔧 PLUMBING &amp; SISTEM PEMIPAAN</span><span class="ticker-sep"></span>
+            <span>💻 PEMBUATAN WEBSITE &amp; WEB APPS</span><span class="ticker-sep"></span>
+            <span>☁️ DEVOPS &amp; CLOUD ARCHITECTURE</span><span class="ticker-sep"></span>
+            <span>🛠️ ROUTING &amp; SETTING MIKROTIK</span><span class="ticker-sep"></span>
+            <span>🖥️ SERVICE HARDWARE KOMPUTER</span><span class="ticker-sep"></span>
+            <span>🛡️ PROTEKSI PENANGKAL PETIR STANDAR K3</span><span class="ticker-sep"></span>
+          </span>
+        </div>
       </div>
     </div>
   </section>
@@ -298,8 +1388,8 @@
     <div class="grid">
       <!-- 1. CCTV -->
       <div class="card">
-        <div class="card-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        <div class="card-illu">
+          <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80" alt="Pemasangan CCTV &amp; Kamera Keamanan" loading="lazy">
         </div>
         <h3>Pemasangan CCTV</h3>
         <p>Instalasi kamera IP/analog, konfigurasi DVR/NVR, setting live streaming ponsel, dan maintenance kamera pengawas.</p>
@@ -312,8 +1402,8 @@
 
       <!-- 2. Pemasangan WiFi -->
       <div class="card">
-        <div class="card-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg>
+        <div class="card-illu">
+          <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80" alt="Pemasangan WiFi &amp; Access Point" loading="lazy">
         </div>
         <h3>Pemasangan WiFi</h3>
         <p>Instalasi Access Point indoor/outdoor, setup Mesh WiFi tanpa putus (seamless roaming), perluasan jangkauan, dan bebas dead zone.</p>
@@ -326,8 +1416,8 @@
 
       <!-- 3. Jaringan Internet -->
       <div class="card">
-        <div class="card-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        <div class="card-illu">
+          <img src="img/fiber_optic.jpg" alt="Jaringan Internet Fiber Optic &amp; LAN" loading="lazy">
         </div>
         <h3>Jaringan Internet</h3>
         <p>Penarikan kabel LAN/UTP & Fiber Optic, penataan rack server, instalasi switch hub, dan optimalisasi koneksi kantor/rumah.</p>
@@ -338,10 +1428,10 @@
         </div>
       </div>
 
-      <!-- 3. Electrical -->
+      <!-- 4. Electrical -->
       <div class="card">
-        <div class="card-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <div class="card-illu">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80" alt="Instalasi Panel Listrik &amp; Wiring K3" loading="lazy">
         </div>
         <h3>Electrical</h3>
         <p>Pemasangan panel listrik, instalasi kabel daya gedung/rumah, balancing beban 1 & 3 phase, dan perbaikan konsleting.</p>
@@ -352,10 +1442,10 @@
         </div>
       </div>
 
-      <!-- 4. Plumbing -->
+      <!-- 5. Plumbing -->
       <div class="card">
-        <div class="card-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        <div class="card-illu">
+          <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80" alt="Instalasi Plumbing Pipa &amp; Pompa Air" loading="lazy">
         </div>
         <h3>Plumbing</h3>
         <p>Instalasi pipa air bersih & air kotor, pompa pendorong (booster), toren, deteksi kebocoran, serta sistem sanitasi.</p>
@@ -366,10 +1456,10 @@
         </div>
       </div>
 
-      <!-- 5. Website Development -->
+      <!-- 6. Website Development -->
       <div class="card">
-        <div class="card-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <div class="card-illu">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Pembuatan Website &amp; Web App" loading="lazy">
         </div>
         <h3>Pembuatan Website</h3>
         <p>Website company profile, toko online, web apps cepat & responsif, integrasi SEO serta sistem pembayaran online.</p>
@@ -380,10 +1470,10 @@
         </div>
       </div>
 
-      <!-- 6. DevOps -->
+      <!-- 7. DevOps -->
       <div class="card">
-        <div class="card-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        <div class="card-illu">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="DevOps &amp; Cloud Infrastructure" loading="lazy">
         </div>
         <h3>DevOps</h3>
         <p>Setup cloud server (AWS, GCP, VPS), containerization Docker & Kubernetes, pipeline CI/CD, backup rutin, dan monitoring.</p>
@@ -394,10 +1484,10 @@
         </div>
       </div>
 
-      <!-- 7. Setting MikroTik -->
+      <!-- 8. Setting MikroTik -->
       <div class="card">
-        <div class="card-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <div class="card-illu">
+          <img src="img/mikrotik.jpg" alt="Setting Router MikroTik &amp; Switch Networking" loading="lazy">
         </div>
         <h3>Setting MikroTik</h3>
         <p>Bandwidth management, captive portal hotspot voucher, multi-WAN load balancing & failover, firewall protection, dan VPN.</p>
@@ -408,10 +1498,10 @@
         </div>
       </div>
 
-      <!-- 8. Service Computer -->
+      <!-- 9. Service Computer -->
       <div class="card">
-        <div class="card-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <div class="card-illu">
+          <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=600&q=80" alt="Service Komputer &amp; Hardware Repair" loading="lazy">
         </div>
         <h3>Service Computer</h3>
         <p>Perbaikan PC desktop & laptop, install ulang OS, upgrade SSD/RAM, maintenance hardware rutin, dan pemulihan data.</p>
@@ -422,10 +1512,10 @@
         </div>
       </div>
 
-      <!-- 9. Penangkal Petir -->
+      <!-- 10. Penangkal Petir -->
       <div class="card">
-        <div class="card-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <div class="card-illu">
+          <img src="img/petir.jpg" alt="Pemasangan Penangkal Petir &amp; Grounding" loading="lazy">
         </div>
         <h3>Pemasangan Penangkal Petir</h3>
         <p>Instalasi head terminal elektrostatis & konvensional, penanaman grounding rod (tahanan &lt; 5 ohm), dan sertifikasi kelayakan.</p>
@@ -438,28 +1528,180 @@
     </div>
   </section>
 
+  <!-- TECH STACK & INDUSTRY STANDARDS -->
+  <section id="tech-stack" class="container section">
+    <div class="sec-head">
+      <h2>Tech Stack &amp; Standar Industri</h2>
+      <p>Didukung perangkat keras dan ekosistem software bersertifikasi standar global untuk performa andal.</p>
+    </div>
+    <div class="tech-stack-wrap">
+      <!-- 1. Cisco -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="#049fd9">
+            <path d="M4 18h2v-4H4v4zm4 3h2V11H8v10zm4 3h2V8h-2v16zm4 3h2V5h-2v22zm4-3h2V8h-2v16zm4-3h2V11h-2v10zm4-3h2v-4h-2v4z"/>
+          </svg>
+        </div>
+        <div class="tech-name">Cisco Systems</div>
+        <div class="tech-role">Enterprise Switches &amp; Routing</div>
+      </div>
+      <!-- 2. MikroTik -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="#222428"/>
+            <path d="M7 16h3v6H7zm5-4h3v10h-3zm5-5h3v15h-3zm5 9h3v6h-3z" fill="#00d2aa"/>
+          </svg>
+        </div>
+        <div class="tech-name">MikroTik Router</div>
+        <div class="tech-role">RouterOS &amp; Bandwidth Mgmt</div>
+      </div>
+      <!-- 3. Ubiquiti UniFi -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="14" fill="#006fff" fill-opacity="0.12" stroke="#006fff" stroke-width="2"/>
+            <path d="M11 12v6a5 5 0 0010 0v-6" stroke="#006fff" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="16" cy="8" r="1.5" fill="#006fff"/>
+          </svg>
+        </div>
+        <div class="tech-name">Ubiquiti UniFi</div>
+        <div class="tech-role">Enterprise Mesh &amp; Long-Range AP</div>
+      </div>
+      <!-- 4. Hikvision -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="#d71920" fill-opacity="0.12"/>
+            <path d="M7 11h11a3 3 0 013 3v6a3 3 0 01-3 3H7a3 3 0 01-3-3v-6a3 3 0 013-3z" stroke="#d71920" stroke-width="2"/>
+            <path d="M21 14.5l6-3.5v10l-6-3.5v-3z" fill="#d71920"/>
+            <circle cx="12" cy="17" r="2.5" fill="#d71920"/>
+          </svg>
+        </div>
+        <div class="tech-name">Hikvision</div>
+        <div class="tech-role">AI Surveillance &amp; IP Cameras</div>
+      </div>
+      <!-- 5. Dahua -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="13" stroke="#e11d48" stroke-width="2" fill="#e11d48" fill-opacity="0.12"/>
+            <path d="M12 10h5a6 6 0 010 12h-5V10z" fill="#e11d48"/>
+            <circle cx="15.5" cy="16" r="2.5" fill="#ffffff"/>
+          </svg>
+        </div>
+        <div class="tech-name">Dahua Tech</div>
+        <div class="tech-role">Smart NVR &amp; Security Infra</div>
+      </div>
+      <!-- 6. Schneider Electric -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="#009530" fill-opacity="0.12"/>
+            <path d="M18 6L10 17h6l-2 9 8-11h-6l2-6z" fill="#009530"/>
+          </svg>
+        </div>
+        <div class="tech-name">Schneider Electric</div>
+        <div class="tech-role">Panel 3-Phase &amp; Proteksi K3</div>
+      </div>
+      <!-- 7. Linux Server -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="13" fill="#e95420" fill-opacity="0.12" stroke="#e95420" stroke-width="2"/>
+            <circle cx="16" cy="16" r="6" stroke="#e95420" stroke-width="2"/>
+            <circle cx="8" cy="16" r="2.5" fill="#e95420"/>
+            <circle cx="20" cy="9" r="2.5" fill="#e95420"/>
+            <circle cx="20" cy="23" r="2.5" fill="#e95420"/>
+          </svg>
+        </div>
+        <div class="tech-name">Linux / Ubuntu</div>
+        <div class="tech-role">Hardened Enterprise Server OS</div>
+      </div>
+      <!-- 8. Docker -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="#2496ed">
+            <path d="M8 13h3v3H8zm4 0h3v3h-3zm4 0h3v3h-3zm-8 4h3v3H8zm4 0h3v3h-3zm4 0h3v3h-3zm4 0h3v3h-3z"/>
+            <path d="M29 18.5c-.8-.5-1.7-.6-2.5-.2-.5-1.5-1.8-2.6-3.5-2.8l-.5 1.5c1.2.3 2 1.3 2 2.5 0 .2 0 .5-.1.7-1.4 1.3-4.1 2.8-8.4 2.8-5 0-9.2-2.1-11-5.7C4.6 18.2 4 19.8 4 21.5c0 4.7 4.5 8.5 12 8.5 7.2 0 12.3-3.7 13.8-8.5.3-.9.3-2-.8-3z"/>
+          </svg>
+        </div>
+        <div class="tech-name">Docker</div>
+        <div class="tech-role">Containerization &amp; DevOps</div>
+      </div>
+      <!-- 9. Python -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M15.8 4c-4.3 0-4 1.9-4 1.9l.01 2h4.1v.6h-5.8c-2.3 0-4.1 1.4-4.1 4.1 0 2.8 1.8 3.9 1.8 3.9h1.1v-2.3c0-1.6 1.4-3 3-3h5.9c1.4 0 2.5-1.1 2.5-2.5V6.4c0-1.6-2-2.4-4.5-2.4zm-2.3 1.5a.9.9 0 110 1.8.9.9 0 010-1.8z" fill="#3776ab"/>
+            <path d="M16.2 28c4.3 0 4-1.9 4-1.9l-.01-2h-4.1v-.6h5.8c2.3 0 4.1-1.4 4.1-4.1 0-2.8-1.8-3.9-1.8-3.9h-1.1v2.3c0 1.6-1.4 3-3 3h-5.9c-1.4 0-2.5 1.1-2.5 2.5v2.3c0 1.6 2 2.4 4.5 2.4zm2.3-1.5a.9.9 0 110-1.8.9.9 0 010 1.8z" fill="#ffd43b"/>
+          </svg>
+        </div>
+        <div class="tech-name">Python</div>
+        <div class="tech-role">Network Automation &amp; Backend</div>
+      </div>
+      <!-- 10. Node.js -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="#5fa04e">
+            <path d="M16 4l11 6.35v12.7L16 29.4 5 23.05V10.35L16 4zm0 2.3L7 11.5v9.3l9 5.2 9-5.2v-9.3L16 6.3z"/>
+            <circle cx="16" cy="16" r="3.5" fill="#5fa04e"/>
+          </svg>
+        </div>
+        <div class="tech-name">Node.js</div>
+        <div class="tech-role">Fast Scalable Web APIs</div>
+      </div>
+      <!-- 11. React -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="2.5" fill="#61dafb"/>
+            <ellipse cx="16" cy="16" rx="11" ry="4.2" stroke="#61dafb" stroke-width="1.5"/>
+            <ellipse cx="16" cy="16" rx="11" ry="4.2" stroke="#61dafb" stroke-width="1.5" transform="rotate(60 16 16)"/>
+            <ellipse cx="16" cy="16" rx="11" ry="4.2" stroke="#61dafb" stroke-width="1.5" transform="rotate(120 16 16)"/>
+          </svg>
+        </div>
+        <div class="tech-name">React &amp; Next.js</div>
+        <div class="tech-role">Modern Interactive Web Apps</div>
+      </div>
+      <!-- 12. AWS -->
+      <div class="tech-item">
+        <div class="tech-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="#ff9900" fill-opacity="0.12"/>
+            <path d="M8 20c4.5 3 11.5 3 16 0" stroke="#ff9900" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M22 17.5l2.5 2.5-3.5 1.5" fill="#ff9900"/>
+            <path d="M11 11h2.5l2 6 2-6H20l-3 8h-3l-3-8z" fill="#ff9900"/>
+          </svg>
+        </div>
+        <div class="tech-name">AWS Cloud</div>
+        <div class="tech-role">Cloud Architecture &amp; Hosting</div>
+      </div>
+    </div>
+  </section>
+
   <!-- WHY US -->
   <section id="keunggulan" class="container section">
     <div class="sec-head">
-      <h2>Mengapa Memilih Columbia?</h2>
-      <p>Kombinasi keahlian teknis mekanikal elektrikal dan teknologi informasi.</p>
+      <h2>Standar Keunggulan Columbia</h2>
+      <p>Kombinasi integritas teknis mekanikal elektrikal dan keahlian infrastruktur teknologi modern.</p>
     </div>
     <div class="features">
       <div class="feature">
-        <h4>Satu Mitra, Semua Solusi</h4>
-        <p>Tidak perlu banyak vendor. Semua kebutuhan kabel, jaringan, dev, listrik hingga air kami tangani.</p>
+        <h4>Satu Pintu Seluruh Solusi</h4>
+        <p>Solusi komprehensif tanpa ribet banyak vendor. Kebutuhan kabel, jaringan, dev, listrik hingga air kami tangani tuntas.</p>
       </div>
       <div class="feature">
-        <h4>Transparan & Terukur</h4>
-        <p>Survei lokasi, estimasi anggaran detail tanpa biaya tersembunyi, dan pengerjaan tepat waktu.</p>
+        <h4>Estimasi Transparan &amp; Terukur</h4>
+        <p>Survei lokasi cermat, rincian biaya transparan tanpa markup tersembunyi, dan eksekusi tepat waktu.</p>
       </div>
       <div class="feature">
-        <h4>Standar Keamanan Tinggi</h4>
-        <p>Semua instalasi listrik dan petir mengikuti regulasi teknis keselamatan kerja.</p>
+        <h4>Standar Keselamatan K3 Resmi</h4>
+        <p>Seluruh instalasi kelistrikan dan proteksi mematuhi standar keselamatan kerja dan spesifikasi SNI.</p>
       </div>
       <div class="feature">
-        <h4>Dukungan Pasca Instalasi</h4>
-        <p>Kami sediakan masa garansi servis dan dukungan responsif saat terjadi kendala teknis.</p>
+        <h4>Jaminan Garansi &amp; Respon Sigap</h4>
+        <p>Didukung masa garansi purna jual resmi serta respon cepat saat terjadi kebutuhan pemeliharaan teknis.</p>
       </div>
     </div>
   </section>
@@ -467,8 +1709,8 @@
   <!-- CONTACT -->
   <section id="kontak" class="container section">
     <div class="contact-box">
-      <h2>Konsultasi & Penjadwalan Survei</h2>
-      <p>Diskusikan proyek Anda bersama tim teknis Columbia. Kami siap melayani kebutuhan personal, kantor, hingga industri.</p>
+      <h2>Konsultasi Proyek &amp; Penjadwalan Survei</h2>
+      <p>Diskusikan spesifikasi kebutuhan rumah, kantor, atau fasilitas komersial Anda bersama insinyur Columbia. Dapatkan estimasi solusi dan jadwal survei lapangan.</p>
       <a class="btn btn-primary" href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20ingin%20jadwalkan%20survei%20lokasi" target="_blank" rel="noopener">
         <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.795.815 3.18 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.767-5.767-5.767zm7.424 5.766c-.002 4.103-3.342 7.443-7.447 7.443-1.25 0-2.43-.314-3.473-.865l-4.535 1.19 1.213-4.426c-.636-1.096-.973-2.348-.973-3.64 0-4.103 3.342-7.443 7.447-7.443 4.104 0 7.445 3.341 7.446 7.443z"/></svg>
         Hubungi WhatsApp: +62 822-2950-1992
@@ -476,16 +1718,102 @@
     </div>
   </section>
 
-  <!-- FLOATING WA BUTTON -->
+  <!-- FLOATING WA BUTTON (ICON ONLY) -->
   <a class="floating-wa" href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20ingin%20tanya%20layanan" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
-    <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.795.815 3.18 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.767-5.767-5.767zm7.424 5.766c-.002 4.103-3.342 7.443-7.447 7.443-1.25 0-2.43-.314-3.473-.865l-4.535 1.19 1.213-4.426c-.636-1.096-.973-2.348-.973-3.64 0-4.103 3.342-7.443 7.447-7.443 4.104 0 7.445 3.341 7.446 7.443z"/></svg>
-    <span>Chat WhatsApp (+62 822-2950-1992)</span>
+    <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.795.815 3.18 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.767-5.767-5.767zm7.424 5.766c-.002 4.103-3.342 7.443-7.447 7.443-1.25 0-2.43-.314-3.473-.865l-4.535 1.19 1.213-4.426c-.636-1.096-.973-2.348-.973-3.64 0-4.103 3.342-7.443 7.447-7.443 4.104 0 7.445 3.341 7.446 7.443z"/></svg>
   </a>
+
+  <!-- MODERN TECH TICKER ABOVE FOOTER -->
+  <div class="tech-ticker" aria-hidden="true" style="margin-top: 60px;">
+    <div class="tech-ticker-track">
+      <span>ENTERPRISE IT <span class="ticker-sep">&bull;</span> CCTV HIKVISION &amp; DAHUA <span class="ticker-sep">&bull;</span> MIKROTIK ROUTERBOARD <span class="ticker-sep">&bull;</span> FIBER OPTIC &amp; LAN CAT6 <span class="ticker-sep">&bull;</span> INSTALASI LISTRIK &amp; PANEL 3-PHASE <span class="ticker-sep">&bull;</span> PENANGKAL PETIR SNI <span class="ticker-sep">&bull;</span> DOCKER &amp; AWS CLOUD <span class="ticker-sep">&bull;</span> WEB &amp; SOFTWARE DEV <span class="ticker-sep">&bull;</span> 24/7 SUPPORT <span class="ticker-sep">&bull;</span>&nbsp;</span>
+      <span>ENTERPRISE IT <span class="ticker-sep">&bull;</span> CCTV HIKVISION &amp; DAHUA <span class="ticker-sep">&bull;</span> MIKROTIK ROUTERBOARD <span class="ticker-sep">&bull;</span> FIBER OPTIC &amp; LAN CAT6 <span class="ticker-sep">&bull;</span> INSTALASI LISTRIK &amp; PANEL 3-PHASE <span class="ticker-sep">&bull;</span> PENANGKAL PETIR SNI <span class="ticker-sep">&bull;</span> DOCKER &amp; AWS CLOUD <span class="ticker-sep">&bull;</span> WEB &amp; SOFTWARE DEV <span class="ticker-sep">&bull;</span> 24/7 SUPPORT <span class="ticker-sep">&bull;</span>&nbsp;</span>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>&copy; 2026 COLUMBIA - Electrical Device Solutions And Partner. All rights reserved.</p>
+      <div class="footer-grid">
+        <!-- Kolom 1: Profil Perusahaan & Kontak -->
+        <div class="footer-col footer-col-brand">
+          <div class="footer-brand">
+            <div class="brand-bars">
+              <div class="bar bar-1"></div>
+              <div class="bar bar-2"></div>
+              <div class="bar bar-3"></div>
+            </div>
+            COLUMBIA
+          </div>
+          <p class="footer-desc">
+            Partner rekayasa teknologi dan kelistrikan terpercaya. Menyediakan solusi infrastruktur IT, instalasi fiber optic, CCTV keamanan enterprise, mekanikal elektrikal gedung, hingga cloud DevOps terintegrasi dengan standar presisi tinggi, rapi, aman, dan bergaransi resmi.
+          </p>
+          <div class="footer-contacts">
+            <div class="footer-contact-item">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>+62 822-2950-1992</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Dukungan Teknis &amp; Konsultasi 24 Jam Non-Stop</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Layanan On-Site &amp; Remote Seluruh Indonesia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom 2: Layanan IT & Jaringan -->
+        <div class="footer-col">
+          <div class="footer-title">Layanan IT &amp; Jaringan</div>
+          <ul class="footer-links">
+            <li><a href="#layanan">Instalasi CCTV &amp; IP Camera</a></li>
+            <li><a href="#layanan">Enterprise WiFi &amp; Mesh</a></li>
+            <li><a href="#layanan">Fiber Optic &amp; LAN CAT6</a></li>
+            <li><a href="#layanan">Routing &amp; Setting MikroTik</a></li>
+            <li><a href="#layanan">DevOps &amp; Cloud Architecture</a></li>
+            <li><a href="#layanan">Web &amp; Software Development</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Mekanikal & Kelistrikan -->
+        <div class="footer-col">
+          <div class="footer-title">Mekanikal &amp; Kelistrikan</div>
+          <ul class="footer-links">
+            <li><a href="#layanan">Instalasi Listrik &amp; Panel 3-Phase</a></li>
+            <li><a href="#layanan">Proteksi Penangkal Petir SNI</a></li>
+            <li><a href="#layanan">Plumbing &amp; Sistem Pemipaan</a></li>
+            <li><a href="#layanan">Service Hardware Komputer</a></li>
+            <li><a href="#layanan">Audit Beban Listrik Gedung</a></li>
+            <li><a href="#layanan">Troubleshooting Jaringan Darurat</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 4: Komitmen & Standar Mutu -->
+        <div class="footer-col">
+          <div class="footer-title">Komitmen &amp; Mutu</div>
+          <ul class="footer-links">
+            <li><a href="#keunggulan">Teknisi Berpengalaman &amp; Ahli</a></li>
+            <li><a href="#keunggulan">Garansi Resmi Purna Jual</a></li>
+            <li><a href="#keunggulan">SOP Pengerjaan Rapi &amp; Standar K3</a></li>
+            <li><a href="#keunggulan">Estimasi Biaya Transparan</a></li>
+            <li><a href="#keunggulan">Monitoring Terjadwal</a></li>
+            <li><a href="#kontak">Konsultasi Gratis Tanpa Biaya</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 COLUMBIA &bull; Solusi Rekayasa IT &amp; Kelistrikan. All rights reserved.</p>
+        <div class="footer-bottom-badges">
+          <span>Standar K3 &amp; SNI</span>
+          <span class="footer-dot">&bull;</span>
+          <span>Garansi Purna Jual</span>
+          <span class="footer-dot">&bull;</span>
+          <span>Respon Cepat 24/7</span>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -507,7 +1835,6 @@
         this.vx = (Math.random() - 0.5) * 0.7;
         this.vy = (Math.random() - 0.5) * 0.7;
         this.r = Math.random() * 2 + 1;
-        this.color = Math.random() > 0.45 ? '#eff824' : '#38bdf8';
       }
       Particle.prototype.update = function() {
         this.x += this.vx;
@@ -515,11 +1842,11 @@
         if (this.x < 0 || this.x > w) this.vx *= -1;
         if (this.y < 0 || this.y > h) this.vy *= -1;
       };
-      Particle.prototype.draw = function() {
+      Particle.prototype.draw = function(color) {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.shadowColor = this.color;
+        ctx.fillStyle = color;
+        ctx.shadowColor = color;
         ctx.shadowBlur = 6;
         ctx.fill();
         ctx.shadowBlur = 0;
@@ -533,6 +1860,9 @@
       }
       function animate() {
         ctx.clearRect(0, 0, w, h);
+        const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+        const pColor = isDark ? '#38bdf8' : '#2563eb';
+        const lineColor = isDark ? 'rgba(56, 189, 248, ' : 'rgba(37, 99, 235, ';
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[i].x - particles[j].x;
@@ -542,19 +1872,161 @@
               ctx.beginPath();
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = 'rgba(56, 189, 248, ' + (0.22 * (1 - dist / 100)) + ')';
+              ctx.strokeStyle = lineColor + (0.24 * (1 - dist / 100)) + ')';
               ctx.lineWidth = 1;
               ctx.stroke();
             }
           }
           particles[i].update();
-          particles[i].draw();
+          particles[i].draw(pColor);
         }
         requestAnimationFrame(animate);
       }
       window.addEventListener('resize', resize);
       resize();
       animate();
+    })();
+  </script>
+
+  <!-- PRELOADER CONTROLLER (BALANCED PACING ~1.2S - 1.4S) -->
+  <script>
+    (function() {
+      const p = document.getElementById('preloader');
+      const b = document.getElementById('preloader-bar');
+      const s = document.getElementById('preloader-status');
+      if (!p || !b || !s) return;
+
+      let pct = 0;
+      let done = false;
+      const statusMsgs = [
+        { at: 15, msg: 'CONNECTING HARDWARE & NETWORKS' },
+        { at: 35, msg: 'INITIALIZING ENTERPRISE SERVICES' },
+        { at: 60, msg: 'CONFIGURING SECURITY & K3 PROTOCOLS' },
+        { at: 85, msg: 'OPTIMIZING CLOUD & INFRASTRUCTURE' },
+        { at: 100, msg: 'SYSTEM READY // COLUMBIA 100%' }
+      ];
+
+      function updateStatus(val) {
+        for (let i = statusMsgs.length - 1; i >= 0; i--) {
+          if (val >= statusMsgs[i].at) {
+            s.textContent = statusMsgs[i].msg + (val < 100 ? ' ' + val + '%' : '');
+            break;
+          }
+        }
+      }
+
+      function finish() {
+        if (done) return;
+        done = true;
+        b.style.width = '100%';
+        s.textContent = 'SYSTEM READY // COLUMBIA 100%';
+        setTimeout(function() {
+          p.classList.add('loaded');
+          setTimeout(function() { p.remove(); }, 400);
+        }, 220);
+      }
+
+      // Smooth step pacing: ~140ms per step, ~8-9 steps => ~1.2s - 1.4s total
+      const timer = setInterval(function() {
+        pct += Math.floor(Math.random() * 6) + 11;
+        if (pct >= 100) {
+          pct = 100;
+          b.style.width = '100%';
+          updateStatus(100);
+          clearInterval(timer);
+          finish();
+        } else {
+          b.style.width = pct + '%';
+          updateStatus(pct);
+        }
+      }, 140);
+
+      // ponytail: safety fallback if script delays
+      setTimeout(function() {
+        clearInterval(timer);
+        finish();
+      }, 2500);
+    })();
+  </script>
+
+  <!-- THEME TOGGLE CONTROLLER (DARK / LIGHT DUAL THEME WITH LOCALSTORAGE) -->
+  <script>
+    (function() {
+      const storageKey = 'columbia_theme';
+      const root = document.documentElement;
+
+      function updateTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        try { localStorage.setItem(storageKey, theme); } catch(e) {}
+      }
+
+      function toggle() {
+        const cur = root.getAttribute('data-theme') || 'dark';
+        const next = cur === 'dark' ? 'light' : 'dark';
+        updateTheme(next);
+      }
+
+      const btn1 = document.getElementById('theme-toggle');
+      const btn2 = document.getElementById('theme-toggle-mobile');
+      if (btn1) btn1.addEventListener('click', toggle);
+      if (btn2) btn2.addEventListener('click', toggle);
+    })();
+  </script>
+
+  <!-- MOBILE NAV CONTROLLER -->
+  <script>
+    (function() {
+      const toggle = document.getElementById('nav-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (!toggle || !menu) return;
+
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = menu.classList.toggle('open');
+        toggle.classList.toggle('open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+          menu.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+
+  <!-- SCROLL REVEAL (ONCE ON SCROLL INTO VIEW, NO REPEATING WOBBLE) -->
+  <script>
+    (function() {
+      const targets = document.querySelectorAll('.card, .tech-item, .feature, .contact-box, .stat-card');
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function(el) { el.classList.add('revealed'); });
+        return;
+      }
+
+      const observer = new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            obs.unobserve(entry.target); // ponytail: one-time trigger on scroll, never shake again
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -30px 0px'
+      });
+
+      targets.forEach(function(el) { observer.observe(el); });
     })();
   </script>
 
