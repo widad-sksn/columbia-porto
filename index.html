@@ -54,26 +54,30 @@
       --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
       --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.65);
 
-      /* STAT CARDS PALETTE (DARK) */
-      --stat1-bg: linear-gradient(145deg, rgba(14, 165, 233, 0.16) 0%, rgba(15, 23, 42, 0.85) 100%);
-      --stat1-shadow: 0 8px 24px -4px rgba(14, 165, 233, 0.22);
+      /* STAT CARDS PALETTE (DARK - SOLID OPAQUE / TIDAK TRANSPARAN) */
+      --stat1-bg: linear-gradient(145deg, #102a45 0%, #0b1728 100%);
+      --stat1-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.6), 0 0 18px rgba(14, 165, 233, 0.25);
       --stat1-num: linear-gradient(135deg, #38bdf8 0%, #60a5fa 100%);
       --stat1-label: #bae6fd;
+      --stat1-border: rgba(56, 189, 248, 0.4);
 
-      --stat2-bg: linear-gradient(145deg, rgba(16, 185, 129, 0.16) 0%, rgba(15, 23, 42, 0.85) 100%);
-      --stat2-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.22);
+      --stat2-bg: linear-gradient(145deg, #0e3427 0%, #0a1f18 100%);
+      --stat2-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.6), 0 0 18px rgba(16, 185, 129, 0.25);
       --stat2-num: linear-gradient(135deg, #34d399 0%, #10b981 100%);
       --stat2-label: #a7f3d0;
+      --stat2-border: rgba(16, 185, 129, 0.4);
 
-      --stat3-bg: linear-gradient(145deg, rgba(239, 248, 36, 0.14) 0%, rgba(15, 23, 42, 0.85) 100%);
-      --stat3-shadow: 0 8px 24px -4px rgba(239, 248, 36, 0.18);
+      --stat3-bg: linear-gradient(145deg, #303014 0%, #191a0c 100%);
+      --stat3-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.6), 0 0 18px rgba(239, 248, 36, 0.22);
       --stat3-num: linear-gradient(135deg, #eff824 0%, #facc15 100%);
       --stat3-label: #fef08a;
+      --stat3-border: rgba(239, 248, 36, 0.38);
 
-      --stat4-bg: linear-gradient(145deg, rgba(139, 92, 246, 0.16) 0%, rgba(15, 23, 42, 0.85) 100%);
-      --stat4-shadow: 0 8px 24px -4px rgba(139, 92, 246, 0.22);
+      --stat4-bg: linear-gradient(145deg, #2b1b42 0%, #140d24 100%);
+      --stat4-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.6), 0 0 18px rgba(139, 92, 246, 0.25);
       --stat4-num: linear-gradient(135deg, #c084fc 0%, #818cf8 100%);
       --stat4-label: #ddd6fe;
+      --stat4-border: rgba(168, 85, 247, 0.4);
     }
 
     [data-theme="light"] {
@@ -114,21 +118,25 @@
       --stat1-shadow: 0 6px 20px -2px rgba(14, 165, 233, 0.15);
       --stat1-num: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
       --stat1-label: #0369a1;
+      --stat1-border: rgba(14, 165, 233, 0.35);
 
       --stat2-bg: linear-gradient(145deg, #d1fae5 0%, #ecfdf5 100%);
       --stat2-shadow: 0 6px 20px -2px rgba(16, 185, 129, 0.15);
       --stat2-num: linear-gradient(135deg, #059669 0%, #047857 100%);
       --stat2-label: #047857;
+      --stat2-border: rgba(16, 185, 129, 0.35);
 
       --stat3-bg: linear-gradient(145deg, #fef3c7 0%, #fffbeb 100%);
       --stat3-shadow: 0 6px 20px -2px rgba(217, 119, 6, 0.15);
       --stat3-num: linear-gradient(135deg, #d97706 0%, #b45309 100%);
       --stat3-label: #b45309;
+      --stat3-border: rgba(217, 119, 6, 0.35);
 
       --stat4-bg: linear-gradient(145deg, #ede9fe 0%, #f5f3ff 100%);
       --stat4-shadow: 0 6px 20px -2px rgba(124, 58, 237, 0.15);
       --stat4-num: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
       --stat4-label: #6d28d9;
+      --stat4-border: rgba(124, 58, 237, 0.35);
     }
 
     * {
@@ -451,18 +459,111 @@
     .hero-cta { display: flex; gap: 14px; justify-content: flex-start; flex-wrap: wrap; }
     .hero-cta .btn { padding: 10px 20px; font-size: 14px; }
 
-    /* AI HOLOGRAM VISUAL */
-    .hero-visual { display: flex; justify-content: center; align-items: center; }
-    .ai-holo-wrap { width: 100%; max-width: 320px; margin: 0 auto; position: relative; padding: 6px; background: radial-gradient(circle at center, rgba(37, 99, 235, 0.15) 0%, transparent 70%); border-radius: 16px; }
-    .ai-holo-svg { width: 100%; max-width: 300px; height: auto; filter: drop-shadow(0 0 16px var(--accent-glow)); display: block; margin: 0 auto; }
-    @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    @keyframes spinRev { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
-    @keyframes pulseGlow { 0%, 100% { opacity: 0.4; transform: scale(0.98); } 50% { opacity: 0.95; transform: scale(1.02); } }
-    @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+    /* HERO ENGINEER PROFILE VISUAL */
+    .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+    .hero-engineer-card {
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+      margin: 4px auto;
+      perspective: 1000px;
+    }
+    .hero-card-glow {
+      position: absolute;
+      inset: -14px;
+      background: radial-gradient(circle at 60% 40%, rgba(56, 189, 248, 0.28) 0%, rgba(37, 99, 235, 0.16) 45%, transparent 70%);
+      filter: blur(26px);
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 30px;
+    }
+    .hero-img-box {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1.5px solid rgba(56, 189, 248, 0.45);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.55), 0 0 32px rgba(56, 189, 248, 0.22);
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      background: var(--card);
+    }
+    .hero-img-box:hover {
+      transform: translateY(-4px) scale(1.01);
+      border-color: rgba(56, 189, 248, 0.75);
+      box-shadow: 0 28px 55px -12px rgba(0, 0, 0, 0.65), 0 0 45px rgba(56, 189, 248, 0.35);
+    }
+    .hero-engineer-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .hero-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11, 15, 25, 0) 0%, rgba(11, 15, 25, 0.05) 50%, rgba(11, 15, 25, 0.65) 100%);
+      pointer-events: none;
+    }
+    [data-theme="light"] .hero-img-overlay {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(15, 23, 42, 0.05) 50%, rgba(15, 23, 42, 0.45) 100%);
+    }
+
+    /* CLEAN NAMEPLATE ON PHOTO */
+    .hero-nameplate {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      background: rgba(11, 15, 25, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 14px;
+      padding: 8px 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      white-space: nowrap;
+      pointer-events: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    [data-theme="light"] .hero-nameplate {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+    }
+    .nameplate-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+    .nameplate-dot {
+      color: var(--accent);
+      font-size: 12px;
+      line-height: 1;
+      opacity: 0.85;
+    }
+    .nameplate-role {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.3px;
+    }
+    [data-theme="light"] .nameplate-name {
+      color: #0f172a;
+    }
+    [data-theme="light"] .nameplate-dot,
+    [data-theme="light"] .nameplate-role {
+      color: #2563eb;
+    }
     @keyframes barSurgeNav { 0% { height: 14px; } 100% { height: 26px; } }
-    .spin-ring { transform-origin: 200px 200px; animation: spinSlow 20s linear infinite; }
-    .spin-ring-rev { transform-origin: 200px 200px; animation: spinRev 14s linear infinite; }
-    .pulse-core { transform-origin: 200px 200px; animation: pulseGlow 3s ease-in-out infinite; }
 
     /* FLOATING WA */
     .floating-wa {
@@ -496,19 +597,21 @@
     /* STATS */
     .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 0; perspective: 1000px; }
     .stat-card {
-      border: none;
+      border: 1px solid transparent;
       border-radius: 14px;
       padding: 16px 18px;
       text-align: center;
       position: relative;
       overflow: hidden;
       opacity: 0;
+      background-color: #0c1220;
       transform: perspective(900px) translateY(35px) rotateX(14deg) scale(0.95);
       transition: opacity 0.65s cubic-bezier(0.2, 0.9, 0.2, 1),
                   transform 0.65s cubic-bezier(0.2, 0.9, 0.2, 1),
                   box-shadow 0.3s ease,
-                  background 0.3s ease;
+                  border-color 0.3s ease;
       will-change: transform, opacity;
+      z-index: 2;
     }
     .stat-card.revealed {
       opacity: 1;
@@ -524,9 +627,10 @@
     .stat-card:nth-child(3) { transition-delay: 0.20s; }
     .stat-card:nth-child(4) { transition-delay: 0.28s; }
 
-    /* INDIVIDUAL COLORFUL STAT CARDS */
+    /* INDIVIDUAL COLORFUL STAT CARDS (SOLID 100% NON-TRANSPARENT) */
     .stat-card.stat-1 {
       background: var(--stat1-bg);
+      border-color: var(--stat1-border);
       box-shadow: var(--stat1-shadow);
     }
     .stat-card.stat-1 .stat-num {
@@ -539,6 +643,7 @@
 
     .stat-card.stat-2 {
       background: var(--stat2-bg);
+      border-color: var(--stat2-border);
       box-shadow: var(--stat2-shadow);
     }
     .stat-card.stat-2 .stat-num {
@@ -551,6 +656,7 @@
 
     .stat-card.stat-3 {
       background: var(--stat3-bg);
+      border-color: var(--stat3-border);
       box-shadow: var(--stat3-shadow);
     }
     .stat-card.stat-3 .stat-num {
@@ -563,6 +669,7 @@
 
     .stat-card.stat-4 {
       background: var(--stat4-bg);
+      border-color: var(--stat4-border);
       box-shadow: var(--stat4-shadow);
     }
     .stat-card.stat-4 .stat-num {
@@ -862,6 +969,12 @@
       color: var(--text);
       font-size: 12.5px;
       font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s, transform 0.2s;
+    }
+    a.footer-contact-item:hover {
+      color: var(--accent);
+      transform: translateX(2px);
     }
     .footer-contact-item svg {
       color: var(--primary);
@@ -928,9 +1041,91 @@
       .footer-col-brand { grid-column: span 2; max-width: 100%; }
     }
     @media (max-width: 640px) {
-      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
-      .footer-col-brand { grid-column: span 1; }
-      .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
+      footer { padding: 36px 0 85px; }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 14px;
+        margin-bottom: 24px;
+      }
+      .footer-col-brand {
+        grid-column: span 2;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 2px;
+      }
+      .footer-desc {
+        font-size: 12px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+      .footer-contacts {
+        gap: 6px;
+      }
+      .footer-contact-item {
+        font-size: 11.5px;
+        padding: 6px 10px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        text-decoration: none;
+      }
+      [data-theme="light"] .footer-contact-item {
+        background: rgba(0, 0, 0, 0.02);
+      }
+      .footer-col {
+        gap: 8px;
+      }
+      .footer-title {
+        font-size: 12.5px;
+        font-weight: 700;
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: var(--text-heading);
+      }
+      .footer-title::before {
+        content: "";
+        display: inline-block;
+        width: 3px;
+        height: 11px;
+        background: var(--primary);
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+      .footer-links {
+        gap: 5px;
+      }
+      .footer-links li a {
+        font-size: 11.5px;
+        line-height: 1.35;
+        padding: 2px 0;
+        display: block;
+      }
+      /* Kolom 4 (Komitmen & Mutu) membentang 2 kolom dengan 2 sub-kolom tautan */
+      .footer-col:nth-child(4) {
+        grid-column: span 2;
+        padding-top: 14px;
+        border-top: 1px dashed var(--border);
+        margin-top: 4px;
+      }
+      .footer-col:nth-child(4) .footer-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px 14px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding-top: 16px;
+      }
+      .footer-bottom-badges {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 10.5px;
+      }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -953,9 +1148,12 @@
       .hero-cta { flex-direction: row; gap: 8px; justify-content: center; margin-bottom: 16px; }
       .hero-cta .btn { flex: 1; max-width: 180px; padding: 9px 8px; font-size: 12px; justify-content: center; text-align: center; white-space: nowrap; }
 
-      /* Mobile Hologram Compact */
-      .ai-holo-wrap { max-width: 230px; padding: 0; margin: 8px auto 14px; }
-      .ai-holo-svg { max-width: 220px; }
+      /* Mobile Hero Profile Card */
+      .hero-engineer-card { max-width: 275px; margin: 10px auto 14px; }
+      .hero-nameplate { padding: 5px 12px; bottom: 10px; gap: 5px; border-radius: 10px; }
+      .nameplate-name { font-size: 11.5px; }
+      .nameplate-dot { font-size: 9.5px; }
+      .nameplate-role { font-size: 10px; }
       .hero-ticker { margin-top: 18px; margin-bottom: 18px; }
 
       /* Stats Compact */
@@ -964,21 +1162,32 @@
       .stat-num { font-size: 20px; }
       .stat-label { font-size: 11px; }
 
-      /* Mobile Cards: Kotak Rapi (Square 2-Columns) */
-      .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      /* Mobile Cards: 2-Columns dengan Visual Proporsional */
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
       .card {
         padding: 12px 10px;
         border-radius: 12px;
-        aspect-ratio: 1 / 1.08;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        height: 100%;
       }
-      .card-illu { height: 60px; margin-bottom: 6px; border-radius: 6px; }
-      .card h3 { font-size: 12.5px; margin-bottom: 3px; line-height: 1.25; font-weight: 700; }
-      .card p { font-size: 10px; line-height: 1.35; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-      .tags { gap: 3px; margin-top: auto; }
-      .tag { font-size: 8.5px; padding: 2px 5px; }
+      .card-illu {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        height: auto;
+        min-height: 94px;
+        max-height: 140px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+      }
+      .card-illu::after {
+        opacity: 0.45;
+      }
+      .card h3 { font-size: 13px; margin-bottom: 4px; line-height: 1.25; font-weight: 700; }
+      .card p { font-size: 10px; line-height: 1.4; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      .tags { gap: 4px; margin-top: auto; }
+      .tag { font-size: 8.5px; padding: 2px 6px; }
 
       .section { padding: 36px 0; }
       .sec-head { margin-bottom: 24px; }
@@ -1003,20 +1212,37 @@
       .floating-wa svg { width: 24px; height: 24px; }
     }
     @media (max-width: 440px) {
-      .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .card {
         padding: 10px 8px;
         border-radius: 10px;
-        aspect-ratio: 1 / 1.1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
       }
-      .card-illu { height: 52px; margin-bottom: 5px; }
-      .card h3 { font-size: 11.5px; line-height: 1.2; margin-bottom: 3px; }
-      .card p { font-size: 9px; -webkit-line-clamp: 2; line-clamp: 2; line-height: 1.3; margin-bottom: 4px; }
-      .tag { font-size: 8px; padding: 2px 4px; }
+      .card-illu {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        height: auto;
+        min-height: 86px;
+        max-height: 110px;
+        margin-bottom: 6px;
+        border-radius: 7px;
+      }
+      .card-illu::after {
+        opacity: 0.45;
+      }
+      .card h3 { font-size: 11.5px; line-height: 1.25; margin-bottom: 3px; }
+      .card p { font-size: 9px; -webkit-line-clamp: 2; line-clamp: 2; line-height: 1.35; margin-bottom: 6px; }
+      .tag { font-size: 8px; padding: 2px 5px; }
       .brand-sub { display: none; }
       .hero-cta { flex-direction: column; }
       .hero-cta .btn { max-width: 100%; width: 100%; }
       .tech-stack-wrap { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { gap: 16px 10px; }
+      .footer-links li a { font-size: 11px; }
+      .footer-contact-item { font-size: 11px; padding: 5px 8px; }
     }
 
     /* PRELOADER */
@@ -1261,66 +1487,22 @@
           </div>
 
           <div class="hero-visual">
-            <!-- AI ANIMATED HOLOGRAM GRAPHIC -->
-            <div class="ai-holo-wrap">
-              <svg class="ai-holo-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <radialGradient id="aiGlow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#eff824" stop-opacity="0.6"/>
-                    <stop offset="40%" stop-color="#22d3ee" stop-opacity="0.3"/>
-                    <stop offset="100%" stop-color="#070c24" stop-opacity="0"/>
-                  </radialGradient>
-                  <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#eff824"/>
-                    <stop offset="50%" stop-color="#38bdf8"/>
-                    <stop offset="100%" stop-color="#d1dc9a"/>
-                  </linearGradient>
-                </defs>
-                <!-- Background Glow -->
-                <circle cx="200" cy="200" r="160" fill="url(#aiGlow)" class="pulse-core"/>
+            <div class="hero-engineer-card">
+              <!-- Soft Accent Glow -->
+              <div class="hero-card-glow" aria-hidden="true"></div>
 
-                <!-- Outer Tech Ring (Rotating) -->
-                <g class="spin-ring">
-                  <circle cx="200" cy="200" r="145" stroke="#1d2a63" stroke-width="2" stroke-dasharray="8 6"/>
-                  <circle cx="200" cy="200" r="130" stroke="#eff824" stroke-width="2.5" stroke-dasharray="40 25 15 25" opacity="0.85"/>
-                  <circle cx="200" cy="55" r="5" fill="#eff824"/>
-                  <circle cx="200" cy="345" r="5" fill="#38bdf8"/>
-                  <circle cx="55" cy="200" r="4" fill="#eff824"/>
-                  <circle cx="345" cy="200" r="4" fill="#d1dc9a"/>
-                </g>
+              <!-- Main Photo Frame -->
+              <div class="hero-img-box">
+                <img src="img/engineer.jpg" alt="Obi Oba - Network Engineering" class="hero-engineer-img" loading="eager" width="768" height="768">
+                <div class="hero-img-overlay" aria-hidden="true"></div>
 
-                <!-- Inner Reverse Tech Ring -->
-                <g class="spin-ring-rev">
-                  <circle cx="200" cy="200" r="105" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="25 12 8 12" opacity="0.75"/>
-                  <rect x="195" y="90" width="10" height="10" fill="#eff824" transform="rotate(45 200 95)"/>
-                  <rect x="195" y="295" width="10" height="10" fill="#38bdf8" transform="rotate(45 200 300)"/>
-                </g>
-
-                <!-- Circuit Interconnect Lines -->
-                <path d="M 200 150 L 200 115 L 245 80" stroke="#38bdf8" stroke-width="2" fill="none" opacity="0.7"/>
-                <path d="M 200 250 L 200 285 L 155 320" stroke="#eff824" stroke-width="2" fill="none" opacity="0.7"/>
-                <path d="M 150 200 L 115 200 L 85 240" stroke="#d1dc9a" stroke-width="2" fill="none" opacity="0.7"/>
-                <path d="M 250 200 L 285 200 L 315 160" stroke="#eff824" stroke-width="2" fill="none" opacity="0.7"/>
-
-                <!-- Neural Core / AI Brain Polygon -->
-                <polygon points="200,140 250,170 250,230 200,260 150,230 150,170" stroke="url(#aiGrad)" stroke-width="3" fill="#0d163d" fill-opacity="0.9"/>
-
-                <!-- Core Central Chip / AI Symbol -->
-                <circle cx="200" cy="200" r="28" fill="#eff824" fill-opacity="0.15" stroke="#eff824" stroke-width="2"/>
-                <circle cx="200" cy="200" r="14" fill="#eff824" class="pulse-core"/>
-
-                <!-- Data nodes -->
-                <circle cx="200" cy="140" r="5" fill="#eff824"/>
-                <circle cx="250" cy="170" r="5" fill="#38bdf8"/>
-                <circle cx="250" cy="230" r="5" fill="#eff824"/>
-                <circle cx="200" cy="260" r="5" fill="#38bdf8"/>
-                <circle cx="150" cy="230" r="5" fill="#eff824"/>
-                <circle cx="150" cy="170" r="5" fill="#38bdf8"/>
-
-                <!-- Label HUD -->
-                <polygon points="201,192 195,201 199,201 197,208 205,199 201,199" fill="#070c24"/>
-                <text x="200" y="380" text-anchor="middle" fill="#9aa7c7" font-size="11" font-weight="600" letter-spacing="2">COLUMBIA ELECTRICAL & TECH</text>
-              </svg>
+                <!-- Clean Name Tag: Obi Oba - Network Engineering -->
+                <div class="hero-nameplate">
+                  <span class="nameplate-name">Obi Oba</span>
+                  <span class="nameplate-dot" aria-hidden="true">•</span>
+                  <span class="nameplate-role">Network Engineering</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1749,10 +1931,10 @@
             Partner rekayasa teknologi dan kelistrikan terpercaya. Menyediakan solusi infrastruktur IT, instalasi fiber optic, CCTV keamanan enterprise, mekanikal elektrikal gedung, hingga cloud DevOps terintegrasi dengan standar presisi tinggi, rapi, aman, dan bergaransi resmi.
           </p>
           <div class="footer-contacts">
-            <div class="footer-contact-item">
+            <a href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20ingin%20konsultasi%20layanan" class="footer-contact-item" target="_blank" rel="noopener">
               <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <span>+62 822-2950-1992</span>
-            </div>
+              <span>+62 822-2950-1992 (Hubungi Kami)</span>
+            </a>
             <div class="footer-contact-item">
               <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
               <span>Dukungan Teknis &amp; Konsultasi 24 Jam Non-Stop</span>
