@@ -147,6 +147,9 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+    html, body {
+      overflow-x: clip;
+    }
     body {
       background-color: var(--bg);
       background-image: var(--bg-pattern);
@@ -297,6 +300,23 @@
     [data-theme="dark"] .moon-icon { display: none; }
     [data-theme="light"] .sun-icon { display: none; }
     [data-theme="light"] .moon-icon { display: block; }
+
+    /* CIRCULAR RIPPLE THEME TRANSITION */
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+    ::view-transition-old(root) {
+      z-index: 1;
+    }
+    ::view-transition-new(root) {
+      z-index: 9999;
+    }
+    .theme-transitioning,
+    .theme-transitioning * {
+      transition: none !important;
+    }
 
     .nav-toggle {
       display: none;
@@ -783,6 +803,297 @@
       border-color: var(--badge-text);
     }
 
+    /* FAVORITE SERVICE: WIFI PACKAGES */
+    .wifi-section {
+      padding-top: 40px;
+      padding-bottom: 44px;
+      position: relative;
+    }
+    .fav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      color: var(--badge-text);
+      margin-bottom: 10px;
+      box-shadow: 0 0 18px var(--accent-glow);
+    }
+    .fav-pill svg {
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .wifi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 26px;
+      perspective: 1200px;
+    }
+    .wifi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      opacity: 0;
+      transform: perspective(900px) translateY(36px) scale(0.95);
+      transition: opacity 0.7s cubic-bezier(0.18, 0.9, 0.2, 1),
+                  transform 0.7s cubic-bezier(0.18, 0.9, 0.2, 1),
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease;
+      will-change: transform, opacity;
+    }
+    [data-theme="light"] .wifi-card {
+      border-color: rgba(15, 23, 42, 0.08);
+    }
+    .wifi-card.revealed {
+      opacity: 1;
+      transform: perspective(900px) translateY(0) scale(1);
+    }
+    .wifi-card.revealed:hover {
+      transition-delay: 0s !important;
+      transform: perspective(900px) translateY(-6px) scale(1.015);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--border-accent);
+    }
+    .wifi-card:nth-child(1) { transition-delay: 0.04s; }
+    .wifi-card:nth-child(2) { transition-delay: 0.10s; }
+    .wifi-card:nth-child(3) { transition-delay: 0.16s; }
+    .wifi-card:nth-child(4) { transition-delay: 0.22s; }
+    .wifi-card:nth-child(5) { transition-delay: 0.28s; }
+
+    .wifi-card.wifi-popular {
+      background: linear-gradient(165deg, rgba(37, 99, 235, 0.18) 0%, var(--card) 58%);
+      border: 1.5px solid var(--accent);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45), 0 0 26px var(--accent-glow);
+    }
+    [data-theme="light"] .wifi-card.wifi-popular {
+      background: linear-gradient(165deg, #e0f2fe 0%, #ffffff 55%);
+      border: 1.5px solid var(--primary);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.16);
+    }
+    .wifi-card.wifi-popular.revealed {
+      transform: perspective(900px) translateY(-6px) scale(1);
+    }
+    .wifi-card.wifi-popular.revealed:hover {
+      transform: perspective(900px) translateY(-10px) scale(1.02);
+    }
+
+    .wifi-card.wifi-ultra {
+      background: linear-gradient(165deg, rgba(139, 92, 246, 0.14) 0%, var(--card) 55%);
+    }
+    [data-theme="light"] .wifi-card.wifi-ultra {
+      background: linear-gradient(165deg, #f3e8ff 0%, #ffffff 55%);
+    }
+    .wifi-ultra-left,
+    .wifi-ultra-right {
+      display: contents;
+    }
+
+    .wifi-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .wifi-tier {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border: 1px solid var(--badge-border);
+    }
+    .wifi-popular .wifi-tier {
+      background: var(--primary-gradient);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 3px 12px var(--accent-glow);
+    }
+    .wifi-ultra .wifi-tier {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      color: #ffffff;
+      border-color: transparent;
+    }
+    .wifi-icon-badge {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--card-surface);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .wifi-ultra .wifi-icon-badge {
+      color: #a78bfa;
+    }
+
+    .wifi-speed-row {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+    .wifi-speed-num {
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -1px;
+      color: var(--text-heading);
+    }
+    .wifi-popular .wifi-speed-num {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .wifi-speed-unit {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .wifi-meter {
+      width: 100%;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--card-surface);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .wifi-meter-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--primary-gradient);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+    .wifi-ultra .wifi-meter-fill {
+      background: linear-gradient(90deg, #38bdf8 0%, #8b5cf6 100%);
+    }
+
+    .wifi-price-box {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+      margin-bottom: 8px;
+    }
+    .wifi-currency {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-right: 2px;
+    }
+    .wifi-price {
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      color: var(--text-heading);
+      line-height: 1.05;
+    }
+    .wifi-period {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .wifi-desc {
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--muted-bright);
+      margin-bottom: 14px;
+      min-height: 36px;
+    }
+
+    .wifi-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 12px;
+    }
+    [data-theme="light"] .wifi-divider {
+      background: rgba(15, 23, 42, 0.08);
+    }
+
+    .wifi-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    .wifi-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 11.5px;
+      line-height: 1.35;
+      color: var(--muted-bright);
+    }
+    .wifi-features li svg {
+      width: 14px;
+      height: 14px;
+      color: #10b981;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .wifi-cta {
+      width: 100%;
+      justify-content: center;
+      padding: 9px 12px;
+      font-size: 12.5px;
+      border-radius: 9px;
+      margin-top: auto;
+      text-align: center;
+    }
+    .wifi-cta-outline {
+      background: var(--card-surface);
+      color: var(--text-heading);
+      border: 1px solid var(--border);
+    }
+    [data-theme="light"] .wifi-cta-outline {
+      border-color: rgba(15, 23, 42, 0.12);
+    }
+    .wifi-cta-outline:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+
+    .wifi-note {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .wifi-note strong {
+      color: var(--text-heading);
+    }
+
     /* WHY US CARDS */
     .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; perspective: 1000px; }
     .feature {
@@ -1029,6 +1340,26 @@
     }
 
     /* RESPONSIVE DESKTOP & MOBILE */
+    @media (max-width: 1040px) {
+      .nav-links { gap: 2px; font-size: 13px; }
+      .nav-links a { padding: 7px 10px; }
+      .wifi-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .wifi-card:nth-child(1),
+      .wifi-card:nth-child(2),
+      .wifi-card:nth-child(3) {
+        grid-column: span 2;
+      }
+      .wifi-card:nth-child(4),
+      .wifi-card:nth-child(5) {
+        grid-column: span 3;
+      }
+      .wifi-card.wifi-popular.revealed {
+        transform: perspective(900px) translateY(0) scale(1);
+      }
+    }
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; gap: 24px; text-align: center; }
       .hero-text { text-align: center; }
@@ -1211,8 +1542,83 @@
       .floating-wa { width: 48px; height: 48px; bottom: 16px; right: 16px; }
       .floating-wa svg { width: 24px; height: 24px; }
     }
+    @media (max-width: 680px) {
+      .wifi-section { padding: 28px 0 30px; }
+      .wifi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .wifi-card:nth-child(1),
+      .wifi-card:nth-child(2),
+      .wifi-card:nth-child(3),
+      .wifi-card:nth-child(4) {
+        grid-column: span 1;
+      }
+      .wifi-card:nth-child(5) {
+        grid-column: span 2;
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.18fr);
+        gap: 12px 14px;
+        align-items: center;
+        padding: 16px 14px;
+      }
+      .wifi-card:nth-child(5) .wifi-ultra-left {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .wifi-card:nth-child(5) .wifi-ultra-right {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-width: 0;
+      }
+      .wifi-card:nth-child(5) .wifi-divider {
+        display: none;
+      }
+      .wifi-card:nth-child(5) .wifi-meter {
+        margin-bottom: 10px;
+      }
+      .wifi-card:nth-child(5) .wifi-price-box {
+        margin-bottom: 0;
+      }
+      .wifi-card:nth-child(5) .wifi-desc {
+        min-height: auto;
+        margin-bottom: 8px;
+      }
+      .wifi-card:nth-child(5) .wifi-features {
+        margin-bottom: 10px;
+      }
+    }
     @media (max-width: 440px) {
-      .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .wifi-card {
+        padding: 13px 10px 12px;
+        border-radius: 12px;
+      }
+      .wifi-card-top { margin-bottom: 8px; }
+      .wifi-tier { font-size: 9px; padding: 3px 7px; }
+      .wifi-icon-badge { width: 24px; height: 24px; border-radius: 6px; }
+      .wifi-icon-badge svg { width: 14px; height: 14px; }
+      .wifi-speed-num { font-size: 24px; }
+      .wifi-speed-unit { font-size: 11px; }
+      .wifi-meter { margin-bottom: 10px; height: 4px; }
+      .wifi-currency { font-size: 11px; }
+      .wifi-price { font-size: 21px; }
+      .wifi-period { font-size: 10.5px; }
+      .wifi-desc { font-size: 10.5px; line-height: 1.35; margin-bottom: 10px; min-height: 29px; }
+      .wifi-divider { margin-bottom: 9px; }
+      .wifi-features { gap: 5px; margin-bottom: 12px; }
+      .wifi-features li { font-size: 10px; gap: 5px; line-height: 1.3; }
+      .wifi-features li svg { width: 12px; height: 12px; }
+      .wifi-cta { padding: 8px 6px; font-size: 11px; border-radius: 8px; }
+      .wifi-card:nth-child(5) {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.22fr);
+        gap: 10px;
+        padding: 13px 11px;
+      }
+      .wifi-note { font-size: 11px; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
       .card {
         padding: 10px 8px;
         border-radius: 10px;
@@ -1220,6 +1626,7 @@
         flex-direction: column;
         justify-content: flex-start;
         height: 100%;
+        min-width: 0;
       }
       .card-illu {
         width: 100%;
@@ -1239,7 +1646,8 @@
       .brand-sub { display: none; }
       .hero-cta { flex-direction: column; }
       .hero-cta .btn { max-width: 100%; width: 100%; }
-      .tech-stack-wrap { grid-template-columns: repeat(2, 1fr); }
+      .tech-stack-wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tech-item { min-width: 0; }
       .footer-grid { gap: 16px 10px; }
       .footer-links li a { font-size: 11px; }
       .footer-contact-item { font-size: 11px; padding: 5px 8px; }
@@ -1405,6 +1813,7 @@
         </div>
       </a>
       <nav class="nav-links">
+        <a href="#paket-wifi">Paket WiFi</a>
         <a href="#layanan">Layanan</a>
         <a href="#tech-stack">Tech Stack</a>
         <a href="#keunggulan">Keunggulan</a>
@@ -1442,6 +1851,10 @@
     <!-- MOBILE NAV DROPDOWN -->
     <div class="mobile-menu" id="mobile-menu">
       <div class="mobile-menu-inner">
+        <a href="#paket-wifi" class="mobile-nav-link">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+          <span>Paket WiFi Favorit</span>
+        </a>
         <a href="#layanan" class="mobile-nav-link">
           <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
           <span>Layanan &amp; Solusi</span>
@@ -1458,11 +1871,6 @@
           <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           <span>Kontak &amp; Jadwal Survei</span>
         </a>
-        <button class="mobile-nav-link" id="theme-toggle-mobile" style="width:100%; border:none; cursor:pointer; text-align:left;">
-          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-          <span>Ganti Tema (Dark / Light)</span>
-        </button>
         <a href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20ingin%20konsultasi%20layanan" target="_blank" rel="noopener" class="btn btn-wa mobile-wa-btn">
           <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.795.815 3.18 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.767-5.767-5.767zm7.424 5.766c-.002 4.103-3.342 7.443-7.447 7.443-1.25 0-2.43-.314-3.473-.865l-4.535 1.19 1.213-4.426c-.636-1.096-.973-2.348-.973-3.64 0-4.103 3.342-7.443 7.447-7.443 4.104 0 7.445 3.341 7.446 7.443z"/></svg>
           Hubungi WhatsApp Tim Ahli
@@ -1558,6 +1966,216 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- FAVORITE SERVICE: WIFI PACKAGES -->
+  <section id="paket-wifi" class="container section wifi-section">
+    <div class="sec-head">
+      <div class="fav-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+          <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+          <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+          <line x1="12" y1="20" x2="12.01" y2="20"></line>
+        </svg>
+        Layanan Favorit • WiFi Columbia
+      </div>
+      <h2>Paket Internet WiFi Pilihan</h2>
+      <p>Koneksi WiFi cepat, stabil, dan terawat langsung oleh tim engineer Columbia. Pilih paket sesuai kebutuhan harian hingga usaha Anda.</p>
+    </div>
+
+    <div class="wifi-grid">
+      <!-- 1. 10 Mbps - 100k -->
+      <div class="wifi-card">
+        <div class="wifi-card-top">
+          <span class="wifi-tier">Hemat</span>
+          <span class="wifi-icon-badge" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          </span>
+        </div>
+        <div class="wifi-speed-row">
+          <span class="wifi-speed-num">10</span>
+          <span class="wifi-speed-unit">Mbps</span>
+        </div>
+        <div class="wifi-meter" aria-hidden="true"><div class="wifi-meter-fill" style="width: 24%;"></div></div>
+        <div class="wifi-price-box">
+          <span class="wifi-currency">Rp</span>
+          <span class="wifi-price">100rb</span>
+          <span class="wifi-period">/bln</span>
+        </div>
+        <p class="wifi-desc">Pilihan ekonomis untuk browsing, chat, dan kebutuhan internet ringan harian.</p>
+        <div class="wifi-divider"></div>
+        <ul class="wifi-features">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Kecepatan hingga 10 Mbps</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Stabil untuk harian &amp; sosmed</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Dukungan teknis Columbia</span>
+          </li>
+        </ul>
+        <a href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20tertarik%20Paket%20WiFi%2010%20Mbps%20(100k/bln)" target="_blank" rel="noopener" class="btn wifi-cta wifi-cta-outline">Pilih Paket</a>
+      </div>
+
+      <!-- 2. 10 Mbps - 120k -->
+      <div class="wifi-card">
+        <div class="wifi-card-top">
+          <span class="wifi-tier">Reguler</span>
+          <span class="wifi-icon-badge" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          </span>
+        </div>
+        <div class="wifi-speed-row">
+          <span class="wifi-speed-num">10</span>
+          <span class="wifi-speed-unit">Mbps</span>
+        </div>
+        <div class="wifi-meter" aria-hidden="true"><div class="wifi-meter-fill" style="width: 34%;"></div></div>
+        <div class="wifi-price-box">
+          <span class="wifi-currency">Rp</span>
+          <span class="wifi-price">120rb</span>
+          <span class="wifi-period">/bln</span>
+        </div>
+        <p class="wifi-desc">Lebih nyaman untuk streaming video, belajar online, dan pemakaian rumah.</p>
+        <div class="wifi-divider"></div>
+        <ul class="wifi-features">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Kecepatan stabil 10 Mbps</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Jalur bandwidth lebih optimal</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Monitoring &amp; support 24/7</span>
+          </li>
+        </ul>
+        <a href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20tertarik%20Paket%20WiFi%2010%20Mbps%20(120k/bln)" target="_blank" rel="noopener" class="btn wifi-cta wifi-cta-outline">Pilih Paket</a>
+      </div>
+
+      <!-- 3. 15 Mbps - 150k (HIGHLIGHTED FAVORITE) -->
+      <div class="wifi-card wifi-popular">
+        <div class="wifi-card-top">
+          <span class="wifi-tier">&#9733; Favorit</span>
+          <span class="wifi-icon-badge" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          </span>
+        </div>
+        <div class="wifi-speed-row">
+          <span class="wifi-speed-num">15</span>
+          <span class="wifi-speed-unit">Mbps</span>
+        </div>
+        <div class="wifi-meter" aria-hidden="true"><div class="wifi-meter-fill" style="width: 52%;"></div></div>
+        <div class="wifi-price-box">
+          <span class="wifi-currency">Rp</span>
+          <span class="wifi-price">150rb</span>
+          <span class="wifi-period">/bln</span>
+        </div>
+        <p class="wifi-desc">Paket paling diminati untuk keluarga, WFH, dan streaming HD tanpa buffering.</p>
+        <div class="wifi-divider"></div>
+        <ul class="wifi-features">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Kecepatan hingga 15 Mbps</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Lancar dipakai multi-perangkat</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Support prioritas tim ahli</span>
+          </li>
+        </ul>
+        <a href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20tertarik%20Paket%20WiFi%20Favorit%2015%20Mbps%20(150k/bln)" target="_blank" rel="noopener" class="btn btn-primary wifi-cta">Pilih Paket</a>
+      </div>
+
+      <!-- 4. 20 Mbps - 200k -->
+      <div class="wifi-card">
+        <div class="wifi-card-top">
+          <span class="wifi-tier">Populer</span>
+          <span class="wifi-icon-badge" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          </span>
+        </div>
+        <div class="wifi-speed-row">
+          <span class="wifi-speed-num">20</span>
+          <span class="wifi-speed-unit">Mbps</span>
+        </div>
+        <div class="wifi-meter" aria-hidden="true"><div class="wifi-meter-fill" style="width: 72%;"></div></div>
+        <div class="wifi-price-box">
+          <span class="wifi-currency">Rp</span>
+          <span class="wifi-price">200rb</span>
+          <span class="wifi-period">/bln</span>
+        </div>
+        <p class="wifi-desc">Responsif untuk gaming online, video meeting lancar, dan perangkat lebih banyak.</p>
+        <div class="wifi-divider"></div>
+        <ul class="wifi-features">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Kecepatan hingga 20 Mbps</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Ping rendah &amp; minim latency</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Monitoring &amp; support 24/7</span>
+          </li>
+        </ul>
+        <a href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20tertarik%20Paket%20WiFi%2020%20Mbps%20(200k/bln)" target="_blank" rel="noopener" class="btn wifi-cta wifi-cta-outline">Pilih Paket</a>
+      </div>
+
+      <!-- 5. 50 Mbps - 300k -->
+      <div class="wifi-card wifi-ultra">
+        <div class="wifi-ultra-left">
+          <div class="wifi-card-top">
+            <span class="wifi-tier">Ultra</span>
+            <span class="wifi-icon-badge" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </span>
+          </div>
+          <div class="wifi-speed-row">
+            <span class="wifi-speed-num">50</span>
+            <span class="wifi-speed-unit">Mbps</span>
+          </div>
+          <div class="wifi-meter" aria-hidden="true"><div class="wifi-meter-fill" style="width: 100%;"></div></div>
+          <div class="wifi-price-box">
+            <span class="wifi-currency">Rp</span>
+            <span class="wifi-price">300rb</span>
+            <span class="wifi-period">/bln</span>
+          </div>
+        </div>
+        <div class="wifi-ultra-right">
+          <p class="wifi-desc">Bandwidth super lega untuk kantor, kafe, usaha, maupun rumah dengan banyak user aktif.</p>
+          <div class="wifi-divider"></div>
+          <ul class="wifi-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Kecepatan tinggi hingga 50 Mbps</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Optimal untuk banyak pengguna</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Full maintenance &amp; respon cepat</span>
+            </li>
+          </ul>
+          <a href="https://wa.me/6282229501992?text=Halo%20Columbia,%20saya%20tertarik%20Paket%20WiFi%20Ultra%2050%20Mbps%20(300k/bln)" target="_blank" rel="noopener" class="btn wifi-cta wifi-cta-outline">Pilih Paket</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="wifi-note">Butuh penyesuaian paket khusus kantor atau area luas? <strong>Konsultasikan gratis</strong> bersama tim network engineer kami via WhatsApp.</p>
   </section>
 
   <!-- SERVICES -->
@@ -1950,6 +2568,7 @@
         <div class="footer-col">
           <div class="footer-title">Layanan IT &amp; Jaringan</div>
           <ul class="footer-links">
+            <li><a href="#paket-wifi">Paket WiFi Favorit (Mulai 100rb)</a></li>
             <li><a href="#layanan">Instalasi CCTV &amp; IP Camera</a></li>
             <li><a href="#layanan">Enterprise WiFi &amp; Mesh</a></li>
             <li><a href="#layanan">Fiber Optic &amp; LAN CAT6</a></li>
@@ -2131,11 +2750,13 @@
     })();
   </script>
 
-  <!-- THEME TOGGLE CONTROLLER (DARK / LIGHT DUAL THEME WITH LOCALSTORAGE) -->
+  <!-- THEME TOGGLE CONTROLLER (CIRCULAR RIPPLE EXPANSION + LOCALSTORAGE) -->
   <script>
     (function() {
       const storageKey = 'columbia_theme';
       const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+      let transitionId = 0;
 
       function updateTheme(theme) {
         root.setAttribute('data-theme', theme);
@@ -2145,13 +2766,52 @@
       function toggle() {
         const cur = root.getAttribute('data-theme') || 'dark';
         const next = cur === 'dark' ? 'light' : 'dark';
-        updateTheme(next);
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!document.startViewTransition || reduceMotion || !btn) {
+          updateTheme(next);
+          return;
+        }
+
+        const rect = btn.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        const endRadius = Math.hypot(
+          Math.max(x, window.innerWidth - x),
+          Math.max(y, window.innerHeight - y)
+        );
+
+        const id = ++transitionId;
+        root.classList.add('theme-transitioning');
+
+        const transition = document.startViewTransition(function() {
+          updateTheme(next);
+        });
+
+        transition.ready.then(function() {
+          document.documentElement.animate(
+            {
+              clipPath: [
+                'circle(0px at ' + x + 'px ' + y + 'px)',
+                'circle(' + endRadius + 'px at ' + x + 'px ' + y + 'px)'
+              ]
+            },
+            {
+              duration: 600,
+              easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+              pseudoElement: '::view-transition-new(root)'
+            }
+          );
+        }).catch(function() {});
+
+        transition.finished.finally(function() {
+          if (id === transitionId) {
+            root.classList.remove('theme-transitioning');
+          }
+        });
       }
 
-      const btn1 = document.getElementById('theme-toggle');
-      const btn2 = document.getElementById('theme-toggle-mobile');
-      if (btn1) btn1.addEventListener('click', toggle);
-      if (btn2) btn2.addEventListener('click', toggle);
+      if (btn) btn.addEventListener('click', toggle);
     })();
   </script>
 
@@ -2190,7 +2850,7 @@
   <!-- SCROLL REVEAL (ONCE ON SCROLL INTO VIEW, NO REPEATING WOBBLE) -->
   <script>
     (function() {
-      const targets = document.querySelectorAll('.card, .tech-item, .feature, .contact-box, .stat-card');
+      const targets = document.querySelectorAll('.wifi-card, .card, .tech-item, .feature, .contact-box, .stat-card');
       if (!('IntersectionObserver' in window)) {
         targets.forEach(function(el) { el.classList.add('revealed'); });
         return;
@@ -2204,8 +2864,8 @@
           }
         });
       }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -30px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -15px 0px'
       });
 
       targets.forEach(function(el) { observer.observe(el); });
