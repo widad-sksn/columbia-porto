@@ -1471,16 +1471,22 @@
       .nav-wa-text { display: none; }
       .tech-ticker { font-size: 10px; padding: 7px 0; letter-spacing: 1.2px; }
 
-      /* Mobile Hero Compact */
+      /* Mobile Hero Compact (Foto tepat di bawah judul H1 khusus mobile) */
       .hero { padding: 18px 0 0; min-height: auto; }
       .hero-content .container { padding-top: 10px; padding-bottom: 12px; gap: 14px; }
-      .hero h1 { font-size: 23px; line-height: 1.22; margin-bottom: 10px; }
-      .hero p { font-size: 13.5px; line-height: 1.45; margin-bottom: 16px; }
-      .hero-cta { flex-direction: row; gap: 8px; justify-content: center; margin-bottom: 16px; }
+      .hero-grid { gap: 12px; }
+      .hero-text { display: contents; }
+      .hero-text h1 { order: 1; margin-bottom: 2px; }
+      .hero-visual { order: 2; }
+      .hero-text p { order: 3; margin: 2px auto 4px; }
+      .hero-text .hero-cta { order: 4; margin-bottom: 8px; }
+      .hero h1 { font-size: 23px; line-height: 1.22; margin-bottom: 2px; }
+      .hero p { font-size: 13.5px; line-height: 1.45; }
+      .hero-cta { flex-direction: row; gap: 8px; justify-content: center; }
       .hero-cta .btn { flex: 1; max-width: 180px; padding: 9px 8px; font-size: 12px; justify-content: center; text-align: center; white-space: nowrap; }
 
       /* Mobile Hero Profile Card */
-      .hero-engineer-card { max-width: 275px; margin: 10px auto 14px; }
+      .hero-engineer-card { max-width: 265px; margin: 2px auto 4px; }
       .hero-nameplate { padding: 5px 12px; bottom: 10px; gap: 5px; border-radius: 10px; }
       .nameplate-name { font-size: 11.5px; }
       .nameplate-dot { font-size: 9.5px; }
