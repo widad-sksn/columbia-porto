@@ -436,7 +436,7 @@
     /* HERO */
     .hero {
       position: relative;
-      min-height: calc(100vh - 61px);
+      min-height: min(calc(100vh - 61px), 740px);
       display: flex;
       flex-direction: column;
       padding: 0;
@@ -457,9 +457,9 @@
       flex-direction: column;
       justify-content: center;
       flex-grow: 1;
-      padding-top: 10px;
-      padding-bottom: 6px;
-      gap: 64px;
+      padding-top: 14px;
+      padding-bottom: 10px;
+      gap: 36px;
     }
     .hero-grid {
       display: grid;
@@ -1375,6 +1375,26 @@
     }
 
     /* RESPONSIVE DESKTOP & MOBILE */
+    /* PORTRAIT ORIENTATION / MOBILE DESKTOP SITE: Cegah hero memanjang berlebihan */
+    @media (orientation: portrait) {
+      .hero {
+        min-height: auto;
+        padding-top: 24px;
+        padding-bottom: 0;
+      }
+      .hero-content {
+        flex-grow: 0;
+        justify-content: flex-start;
+      }
+      .hero-content .container {
+        flex-grow: 0;
+        justify-content: flex-start;
+        padding-top: 14px;
+        padding-bottom: 16px;
+        gap: 32px;
+      }
+    }
+
     @media (max-width: 1040px) {
       .nav-links { gap: 2px; font-size: 13px; }
       .nav-links a { padding: 7px 10px; }
