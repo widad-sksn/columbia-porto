@@ -95,7 +95,7 @@
       --primary-gradient: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
       --accent: #0369a1;
       --accent-glow: rgba(29, 78, 216, 0.16);
-      --header-bg: #c4cfdd;
+      --header-bg: #111a2e;
       --ticker-bg: #bac6d6;
       --ticker-border: rgba(15, 23, 42, 0.16);
       --ticker-text: #000000;
@@ -1388,22 +1388,64 @@
     [data-theme="light"] body {
       color: #090d16;
     }
+
+    /* NAVBAR ATAS: Sama seperti Dark Mode namun sedikit lebih terang (Sleek Dark Navy #111a2e) */
+    [data-theme="light"] header {
+      background: #111a2e;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.16);
+    }
     [data-theme="light"] .brand-title {
-      background: linear-gradient(135deg, #000000 35%, #b45309 100%);
+      background: linear-gradient(135deg, #ffffff 40%, #eff824 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 16px rgba(239, 248, 36, 0.4));
     }
     [data-theme="light"] .brand-sub {
-      color: #090d16;
-      font-weight: 700;
+      color: #cbd5e1;
+      font-weight: 600;
     }
     [data-theme="light"] .nav-links a {
-      color: #090d16;
-      font-weight: 700;
+      color: #e2e8f0;
+      font-weight: 600;
     }
     [data-theme="light"] .nav-links a:hover {
-      color: var(--primary);
+      color: #38bdf8;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    [data-theme="light"] .theme-toggle-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+    }
+    [data-theme="light"] .theme-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(56, 189, 248, 0.5);
+      color: #38bdf8;
+    }
+    [data-theme="light"] .nav-toggle {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+    [data-theme="light"] .nav-toggle span {
+      background: #ffffff;
+    }
+    [data-theme="light"] .mobile-menu {
+      background: #111a2e;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    [data-theme="light"] .mobile-nav-link {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-weight: 600;
+    }
+    [data-theme="light"] .mobile-nav-link:hover,
+    [data-theme="light"] .mobile-nav-link:active {
+      background: rgba(37, 99, 235, 0.2);
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.4);
     }
     [data-theme="light"] .hero h1 {
       color: #000000;
@@ -1507,44 +1549,64 @@
       color: #090d16;
       font-weight: 500;
     }
+    /* FOOTER PALING BAWAH: Sama seperti Dark Mode namun sedikit lebih terang (Sleek Dark Navy #111a2e) */
     [data-theme="light"] footer {
-      color: #090d16;
+      background: #111a2e;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
     }
     [data-theme="light"] .footer-brand {
-      color: #000000;
-      font-weight: 900;
-    }
-    [data-theme="light"] .footer-desc {
-      color: #090d16;
-      font-weight: 500;
-    }
-    [data-theme="light"] .footer-title {
-      color: #000000;
+      color: #ffffff;
       font-weight: 800;
     }
+    [data-theme="light"] .footer-desc {
+      color: #cbd5e1;
+      font-weight: 400;
+    }
+    [data-theme="light"] .footer-title {
+      color: #ffffff;
+      font-weight: 800;
+    }
+    [data-theme="light"] .footer-title::before {
+      background: #eff824;
+    }
     [data-theme="light"] .footer-links li a {
-      color: #090d16;
-      font-weight: 600;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+    [data-theme="light"] .footer-links li a:hover {
+      color: #38bdf8;
     }
     [data-theme="light"] .footer-contact-item {
-      color: #090d16;
-      font-weight: 600;
+      color: #f1f5f9;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    [data-theme="light"] .footer-contact-item:hover,
+    [data-theme="light"] a.footer-contact-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+    [data-theme="light"] .footer-contact-item svg {
+      color: #38bdf8;
     }
     [data-theme="light"] .footer-bottom {
-      color: #0f172a;
-      font-weight: 600;
+      border-top-color: rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      font-weight: 500;
     }
     [data-theme="light"] .footer-bottom-badges {
-      color: #090d16;
-      font-weight: 600;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+    [data-theme="light"] .footer-dot {
+      color: #38bdf8;
     }
     [data-theme="light"] .tech-ticker {
       color: #000000;
       font-weight: 800;
-    }
-    [data-theme="light"] .mobile-nav-link {
-      color: #000000;
-      font-weight: 700;
     }
 
     /* RESPONSIVE DESKTOP & MOBILE */
@@ -1629,7 +1691,11 @@
         text-decoration: none;
       }
       [data-theme="light"] .footer-contact-item {
-        background: rgba(0, 0, 0, 0.02);
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+      [data-theme="light"] .footer-col:nth-child(4) {
+        border-top-color: rgba(255, 255, 255, 0.1);
       }
       .footer-col {
         gap: 8px;
