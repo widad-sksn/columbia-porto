@@ -79,8 +79,13 @@
 
     [data-theme="light"] {
       /* CRISP BLUE-ACCENTED LIGHT PALETTE (AKSEN BIRU ELEGAN, FONT TEGAS & JELAS) */
-      --bg: #eaf0f9;
-      --bg-pattern: none;
+      --bg: #ebf2fa;
+      --bg-pattern: 
+        radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 100% 35%, rgba(2, 132, 199, 0.09) 0%, transparent 45%),
+        radial-gradient(circle at 0% 70%, rgba(37, 99, 235, 0.09) 0%, transparent 50%),
+        linear-gradient(to right, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
       --card: #ffffff;
       --card-surface: #e1ebf8;
       --card-hover: #ffffff;
@@ -151,6 +156,9 @@
       color: var(--text);
       line-height: 1.6;
       transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    [data-theme="light"] body {
+      background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
     }
     a { color: inherit; text-decoration: none; }
     .container { max-width: 1140px; margin: auto; padding: 0 20px; }
@@ -477,6 +485,40 @@
       margin-bottom: 0;
     }
     .hero-text { text-align: left; }
+    .hero-tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      margin-bottom: 14px;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+    }
+    .badge-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.85);
+      animation: badgePulse 2s infinite ease-in-out;
+    }
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.25); opacity: 1; }
+    }
+    [data-theme="light"] .hero-tech-badge {
+      background: #eff6ff;
+      border: 1.5px solid rgba(37, 99, 235, 0.32);
+      color: #1d4ed8;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.12);
+    }
     .hero h1 { font-size: clamp(32px, 3.8vw, 46px); font-weight: 800; line-height: 1.16; margin-bottom: 14px; letter-spacing: -0.5px; color: var(--text-heading); }
     .hero h1 span {
       background: var(--primary-gradient);
@@ -504,6 +546,17 @@
     }
     .hero-card-glow {
       display: none;
+    }
+    [data-theme="light"] .hero-card-glow {
+      display: block;
+      position: absolute;
+      inset: -14px;
+      border-radius: 28px;
+      background: radial-gradient(circle at center, rgba(37, 99, 235, 0.22) 0%, rgba(56, 189, 248, 0.16) 45%, transparent 70%);
+      filter: blur(18px);
+      z-index: 0;
+      pointer-events: none;
+      animation: prePulse 3.5s ease-in-out infinite alternate;
     }
     .hero-img-box {
       position: relative;
@@ -587,7 +640,16 @@
       color: #0f172a;
     }
     [data-theme="light"] .nameplate-dot {
-      color: #1d4ed8;
+      display: inline-block;
+      width: 6.5px;
+      height: 6.5px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.75);
+      margin: 0 4px;
+      font-size: 0;
+      vertical-align: middle;
+      animation: badgePulse 2s infinite ease-in-out;
     }
     [data-theme="light"] .nameplate-role {
       color: #1d4ed8;
@@ -753,7 +815,11 @@
       filter: blur(1.5px) saturate(0.8) brightness(0.96);
     }
     [data-theme="light"] .sec-bg-media::after {
-      background: linear-gradient(180deg, rgba(234, 240, 249, 0.88) 0%, rgba(220, 234, 252, 0.90) 100%);
+      background-color: rgba(235, 242, 250, 0.88);
+      background-image: 
+        radial-gradient(rgba(37, 99, 235, 0.12) 1.2px, transparent 1.2px),
+        radial-gradient(circle at 80% 20%, rgba(2, 132, 199, 0.10) 0%, transparent 50%);
+      background-size: 24px 24px, 100% 100%;
     }
     .has-bg-photo .sec-head h2,
     .has-bg-photo .sec-head p {
@@ -1647,6 +1713,43 @@
       color: #090d16;
       font-weight: 500;
     }
+    /* HIGH TECH CARD LASER ACCENT (Hanya Layanan .card & WiFi .wifi-card, BUKAN Keunggulan .feature) */
+    [data-theme="light"] .card::before,
+    [data-theme="light"] .wifi-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #1d4ed8 0%, #0284c7 60%, transparent 100%);
+      border-radius: 14px 14px 0 0;
+      opacity: 0.85;
+      transition: height 0.3s ease, opacity 0.3s ease;
+      z-index: 2;
+      pointer-events: none;
+    }
+    [data-theme="light"] .card:hover::before,
+    [data-theme="light"] .wifi-card:hover::before {
+      height: 4px;
+      opacity: 1;
+      background: linear-gradient(90deg, #1d4ed8 0%, #38bdf8 60%, #eff824 100%);
+    }
+    [data-theme="light"] .wifi-card.wifi-popular::before {
+      height: 4px;
+      background: linear-gradient(90deg, #1d4ed8 0%, #38bdf8 50%, #eff824 100%);
+      opacity: 1;
+    }
+    [data-theme="light"] .sec-head h2::after {
+      content: "";
+      display: block;
+      width: 44px;
+      height: 3px;
+      background: linear-gradient(90deg, #1d4ed8 0%, #0284c7 60%, #eff824 100%);
+      border-radius: 99px;
+      margin: 10px auto 0;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
     /* FOOTER PALING BAWAH: Sama seperti Dark Mode namun sedikit lebih terang (Sleek Dark Navy #111a2e) */
     [data-theme="light"] footer {
       background: #111a2e;
@@ -1872,6 +1975,7 @@
       .hero-content .container { padding-top: 10px; padding-bottom: 12px; gap: 14px; }
       .hero-grid { gap: 12px; }
       .hero-text { display: contents; }
+      .hero-tech-badge { order: 0; margin: 0 auto 6px; font-size: 10px; padding: 4px 10px; }
       .hero-text h1 { order: 1; margin-bottom: 2px; }
       .hero-visual { order: 2; }
       .hero-text p { order: 3; margin: 2px auto 4px; }
@@ -2297,6 +2401,10 @@
       <div class="container">
         <div class="hero-grid">
           <div class="hero-text">
+            <div class="hero-tech-badge">
+              <span class="badge-pulse-dot"></span>
+              <span>INTEGRATED IT &amp; ELECTRICAL ENGINEERING</span>
+            </div>
             <h1>Solusi <span>Infrastruktur IT &amp; Kelistrikan</span></h1>
             <p>Layanan instalasi jaringan internet, sistem CCTV, kelistrikan gedung, hingga maintenance komputer dan sistem IT. Pengerjaan rapi, teknisi berpengalaman, dan bergaransi.</p>
             <div class="hero-cta">
