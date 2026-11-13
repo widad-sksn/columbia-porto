@@ -2182,6 +2182,54 @@
     @media (prefers-reduced-motion: reduce) {
       .preloader-ring, .preloader-ring-rev, .preloader-bars .bar { animation: none; }
     }
+
+    /* PRELOADER DI LIGHT MODE: TAMPILAN BIRU HIGH-TECH & FUTURISTIK */
+    [data-theme="light"] #preloader {
+      background: radial-gradient(circle at 50% 45%, #1d4ed8 0%, #153785 45%, #0b1a3d 100%);
+    }
+    [data-theme="light"] .preloader-ring {
+      border-top-color: #38bdf8;
+      border-right-color: #93c5fd;
+      box-shadow: 0 0 28px rgba(56, 189, 248, 0.55);
+    }
+    [data-theme="light"] .preloader-ring-rev {
+      border-bottom-color: #60a5fa;
+      border-left-color: #38bdf8;
+    }
+    [data-theme="light"] .preloader-glow {
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.45) 0%, transparent 70%);
+    }
+    [data-theme="light"] .preloader-bars .bar {
+      background: #eff824;
+      box-shadow: 0 0 14px rgba(239, 248, 36, 0.85);
+    }
+    [data-theme="light"] .preloader-title {
+      color: #ffffff;
+      background: linear-gradient(135deg, #ffffff 40%, #eff824 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 16px rgba(239, 248, 36, 0.45));
+    }
+    [data-theme="light"] .preloader-sub {
+      color: #7dd3fc;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+      font-weight: 700;
+    }
+    [data-theme="light"] .preloader-track {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(125, 211, 252, 0.4);
+      box-shadow: 0 0 16px rgba(37, 99, 235, 0.4);
+    }
+    [data-theme="light"] .preloader-bar {
+      background: linear-gradient(90deg, #38bdf8 0%, #60a5fa 50%, #eff824 100%);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.8);
+    }
+    [data-theme="light"] .preloader-status {
+      color: #bae6fd;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
