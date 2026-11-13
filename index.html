@@ -78,64 +78,59 @@
     }
 
     [data-theme="light"] {
-      /* CRISP BLUE-ACCENTED LIGHT PALETTE (AKSEN BIRU ELEGAN, FONT TEGAS & JELAS) */
-      --bg: #ebf2fa;
-      --bg-pattern: 
-        radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 100% 35%, rgba(2, 132, 199, 0.09) 0%, transparent 45%),
-        radial-gradient(circle at 0% 70%, rgba(37, 99, 235, 0.09) 0%, transparent 50%),
-        linear-gradient(to right, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+      /* MODERN, SIMPLE, JELAS, DAN ENAK DIPANDANG (CLEAN MINIMAL TECH AESTHETIC) */
+      --bg: #f8fafc;
+      --bg-pattern: none;
       --card: #ffffff;
-      --card-surface: #e1ebf8;
+      --card-surface: #f1f5f9;
       --card-hover: #ffffff;
-      --border: rgba(37, 99, 235, 0.18);
+      --border: #e2e8f0;
       --border-accent: #2563eb;
-      --text: #090d16;
-      --text-heading: #000000;
-      --muted: #1e293b;
-      --muted-bright: #090d16;
-      --primary: #1d4ed8;
-      --primary-hover: #1e40af;
-      --primary-gradient: linear-gradient(135deg, #1d4ed8 0%, #0284c7 100%);
+      --text: #334155;
+      --text-heading: #0f172a;
+      --muted: #64748b;
+      --muted-bright: #475569;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-gradient: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
       --accent: #0284c7;
-      --accent-glow: rgba(37, 99, 235, 0.22);
+      --accent-glow: rgba(37, 99, 235, 0.12);
       --header-bg: #111a2e;
-      --ticker-bg: linear-gradient(90deg, #dbeafe 0%, #e0e7ff 50%, #dbeafe 100%);
-      --ticker-border: rgba(37, 99, 235, 0.22);
-      --ticker-text: #0f2963;
+      --ticker-bg: #f1f5f9;
+      --ticker-border: #e2e8f0;
+      --ticker-text: #475569;
       --ticker-dot: #2563eb;
       --badge-bg: #eff6ff;
-      --badge-border: rgba(37, 99, 235, 0.35);
+      --badge-border: #bfdbfe;
       --badge-text: #1d4ed8;
       --wa: #15803d;
-      --shadow-card: 0 6px 20px rgba(37, 99, 235, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
-      --shadow-hover: 0 14px 34px rgba(37, 99, 235, 0.18);
+      --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+      --shadow-hover: 0 12px 28px -4px rgba(37, 99, 235, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
 
       /* STAT CARDS PALETTE (CRISP LIGHT WITH VIBRANT ACCENTS) */
       --stat1-bg: #ffffff;
-      --stat1-shadow: 0 6px 20px rgba(37, 99, 235, 0.09);
+      --stat1-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
       --stat1-num: #1d4ed8;
-      --stat1-label: #090d16;
-      --stat1-border: rgba(37, 99, 235, 0.25);
+      --stat1-label: #334155;
+      --stat1-border: #e2e8f0;
 
       --stat2-bg: #ffffff;
-      --stat2-shadow: 0 6px 20px rgba(5, 150, 105, 0.09);
+      --stat2-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
       --stat2-num: #047857;
-      --stat2-label: #090d16;
-      --stat2-border: rgba(5, 150, 105, 0.25);
+      --stat2-label: #334155;
+      --stat2-border: #e2e8f0;
 
       --stat3-bg: #ffffff;
-      --stat3-shadow: 0 6px 20px rgba(217, 119, 6, 0.09);
+      --stat3-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
       --stat3-num: #b45309;
-      --stat3-label: #090d16;
-      --stat3-border: rgba(217, 119, 6, 0.25);
+      --stat3-label: #334155;
+      --stat3-border: #e2e8f0;
 
       --stat4-bg: #ffffff;
-      --stat4-shadow: 0 6px 20px rgba(124, 58, 237, 0.09);
+      --stat4-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
       --stat4-num: #6d28d9;
-      --stat4-label: #090d16;
-      --stat4-border: rgba(124, 58, 237, 0.25);
+      --stat4-label: #334155;
+      --stat4-border: #e2e8f0;
     }
 
     * {
@@ -158,7 +153,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
     [data-theme="light"] body {
-      background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      background-size: auto;
     }
     a { color: inherit; text-decoration: none; }
     .container { max-width: 1140px; margin: auto; padding: 0 20px; }
@@ -515,9 +510,12 @@
     }
     [data-theme="light"] .hero-tech-badge {
       background: #eff6ff;
-      border: 1.5px solid rgba(37, 99, 235, 0.32);
+      border: 1px solid #bfdbfe;
       color: #1d4ed8;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.12);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      box-shadow: 0 1px 4px rgba(37, 99, 235, 0.08);
     }
     .hero h1 { font-size: clamp(32px, 3.8vw, 46px); font-weight: 800; line-height: 1.16; margin-bottom: 14px; letter-spacing: -0.5px; color: var(--text-heading); }
     .hero h1 span {
@@ -547,17 +545,6 @@
     .hero-card-glow {
       display: none;
     }
-    [data-theme="light"] .hero-card-glow {
-      display: block;
-      position: absolute;
-      inset: -14px;
-      border-radius: 28px;
-      background: radial-gradient(circle at center, rgba(37, 99, 235, 0.22) 0%, rgba(56, 189, 248, 0.16) 45%, transparent 70%);
-      filter: blur(18px);
-      z-index: 0;
-      pointer-events: none;
-      animation: prePulse 3.5s ease-in-out infinite alternate;
-    }
     .hero-img-box {
       position: relative;
       z-index: 1;
@@ -572,8 +559,8 @@
       background: #0d1f3c;
     }
     [data-theme="light"] .hero-img-box {
-      border: 2px solid rgba(37, 99, 235, 0.35);
-      box-shadow: 0 18px 42px -10px rgba(37, 99, 235, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.12);
       background: #ffffff;
     }
     .hero-img-box:hover {
@@ -582,8 +569,8 @@
       box-shadow: 0 26px 52px -12px rgba(0, 0, 0, 0.7);
     }
     [data-theme="light"] .hero-img-box:hover {
-      border-color: #1d4ed8;
-      box-shadow: 0 24px 50px -10px rgba(37, 99, 235, 0.32);
+      border-color: #93c5fd;
+      box-shadow: 0 20px 44px -8px rgba(37, 99, 235, 0.16);
     }
     .hero-engineer-img {
       width: 100%;
@@ -811,101 +798,38 @@
       background: rgba(11, 15, 25, 0.78);
     }
     [data-theme="light"] .sec-bg-media {
-      opacity: 1;
-      filter: blur(1.5px) saturate(0.8) brightness(0.96);
+      opacity: 0.85;
+      filter: blur(2px) saturate(0.6) brightness(1.02);
     }
     [data-theme="light"] .sec-bg-media::after {
-      background-color: rgba(235, 242, 250, 0.88);
-      background-image: 
-        radial-gradient(rgba(37, 99, 235, 0.12) 1.2px, transparent 1.2px),
-        radial-gradient(circle at 80% 20%, rgba(2, 132, 199, 0.10) 0%, transparent 50%);
-      background-size: 24px 24px, 100% 100%;
+      background: rgba(248, 250, 252, 0.94);
     }
 
-    /* 3D TACTILE SECTION BOUNDARIES (BATASAN ANTAR SEKSI BERDIMENSI 3D DI LIGHT MODE) */
+    /* MODERN, SIMPLE & CRISP SECTION DESIGN (LIGHT MODE) */
     [data-theme="light"] .has-bg-photo {
-      border-bottom: none;
+      border-bottom: 1px solid #e2e8f0;
       position: relative;
     }
-    [data-theme="light"] .has-bg-photo::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(255, 255, 255, 0.95) 15%, 
-        rgba(37, 99, 235, 0.55) 50%, 
-        rgba(255, 255, 255, 0.95) 85%, 
-        transparent 100%
-      );
-      box-shadow: 0 1px 6px rgba(37, 99, 235, 0.25);
-      z-index: 4;
-      pointer-events: none;
-    }
-    [data-theme="light"] .hero::before {
+    [data-theme="light"] .has-bg-photo::before,
+    [data-theme="light"] .has-bg-photo::after {
       display: none;
     }
-    [data-theme="light"] .has-bg-photo::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      background: linear-gradient(180deg, rgba(37, 99, 235, 0.08) 0%, rgba(15, 23, 42, 0.06) 100%);
-      border-bottom: 2px solid rgba(37, 99, 235, 0.24);
-      box-shadow: 0 6px 14px -3px rgba(15, 23, 42, 0.12);
-      z-index: 4;
-      pointer-events: none;
-    }
 
-    /* PER-SECTION UNIQUE 3D HIGH-TECH GRAPHICS (BIAR TIAP HALAMAN/SEKSI TERLIHAT BEDA & BERKARAKTER) */
+    /* CLEAN MODERN ALTERNATING SECTION TINTS */
     [data-theme="light"] #paket-wifi .sec-bg-media::after {
-      background-color: rgba(238, 245, 254, 0.89);
-      background-image: 
-        radial-gradient(circle at 85% 15%, rgba(2, 132, 199, 0.16) 0%, transparent 50%),
-        radial-gradient(circle at 10% 85%, rgba(37, 99, 235, 0.12) 0%, transparent 45%),
-        repeating-linear-gradient(45deg, rgba(37, 99, 235, 0.022) 0px, rgba(37, 99, 235, 0.022) 1.5px, transparent 1.5px, transparent 20px);
-      background-size: 100% 100%, 100% 100%, 28px 28px;
+      background: rgba(255, 255, 255, 0.96);
     }
     [data-theme="light"] #layanan .sec-bg-media::after {
-      background-color: rgba(234, 242, 251, 0.90);
-      background-image: 
-        radial-gradient(circle at 50% 8%, rgba(37, 99, 235, 0.14) 0%, transparent 55%),
-        linear-gradient(to right, rgba(37, 99, 235, 0.055) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(37, 99, 235, 0.055) 1px, transparent 1px);
-      background-size: 100% 100%, 32px 32px, 32px 32px;
+      background: rgba(248, 250, 252, 0.96);
     }
     [data-theme="light"] #tech-stack .sec-bg-media::after {
-      background-color: rgba(223, 233, 248, 0.93);
-      background-image: 
-        radial-gradient(circle at 25% 50%, rgba(37, 99, 235, 0.16) 0%, transparent 50%),
-        radial-gradient(circle at 75% 50%, rgba(2, 132, 199, 0.14) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(37, 99, 235, 0.035) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(37, 99, 235, 0.035) 25%, transparent 25%);
-      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      background: rgba(255, 255, 255, 0.96);
     }
     [data-theme="light"] #keunggulan .sec-bg-media::after {
-      background-color: rgba(238, 246, 254, 0.90);
-      background-image: 
-        radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.9) 0%, transparent 60%),
-        radial-gradient(rgba(37, 99, 235, 0.10) 1.2px, transparent 1.2px);
-      background-size: 100% 100%, 26px 26px;
+      background: rgba(248, 250, 252, 0.96);
     }
-
-    /* PENUTUP BACKGROUND PALING BAWAH (#KONTAK): 3D CYBER GRID FLOOR & ELEVATED DEPTH */
     [data-theme="light"] #kontak .sec-bg-media::after {
-      background-color: rgba(228, 238, 251, 0.86);
-      background-image: 
-        radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.22) 0%, transparent 70%),
-        radial-gradient(circle at 15% 85%, rgba(2, 132, 199, 0.18) 0%, transparent 50%),
-        radial-gradient(circle at 85% 85%, rgba(37, 99, 235, 0.18) 0%, transparent 50%),
-        linear-gradient(to right, rgba(37, 99, 235, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+      background: linear-gradient(180deg, rgba(248, 250, 252, 0.96) 0%, rgba(239, 246, 255, 0.94) 100%);
     }
     .has-bg-photo .sec-head h2,
     .has-bg-photo .sec-head p {
@@ -1604,255 +1528,232 @@
       border-color: rgba(56, 189, 248, 0.4);
     }
     [data-theme="light"] .hero h1 {
-      color: #000000;
-      font-weight: 900;
+      color: #0f172a;
+      font-weight: 800;
     }
     [data-theme="light"] .hero h1 span {
-      background: linear-gradient(135deg, #1d4ed8 0%, #0284c7 100%);
+      background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 14px rgba(37, 99, 235, 0.25));
+      filter: none;
     }
     [data-theme="light"] .hero p {
-      color: #090d16;
-      font-weight: 500;
+      color: #475569;
+      font-weight: 450;
     }
     [data-theme="light"] .stat-card {
       background: #ffffff;
-      border: 1px solid rgba(37, 99, 235, 0.18);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.08);
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.05);
     }
     [data-theme="light"] .stat-card:hover {
-      border-color: #1d4ed8;
-      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.16);
+      border-color: #93c5fd;
+      box-shadow: 0 10px 24px -4px rgba(37, 99, 235, 0.10);
     }
     [data-theme="light"] .stat-num {
-      font-weight: 900;
+      font-weight: 800;
     }
     [data-theme="light"] .stat-label {
-      color: #090d16;
-      font-weight: 700;
+      color: #475569;
+      font-weight: 500;
     }
     [data-theme="light"] .sec-head h2 {
-      color: #000000;
-      font-weight: 900;
+      color: #0f172a;
+      font-weight: 800;
+      letter-spacing: -0.5px;
     }
     [data-theme="light"] .sec-head p {
-      color: #090d16;
-      font-weight: 500;
+      color: #475569;
+      font-weight: 450;
+      font-size: 15px;
     }
     [data-theme="light"] .card {
       background: #ffffff;
-      border: 1px solid rgba(37, 99, 235, 0.18);
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.07);
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
     [data-theme="light"] .card:hover {
-      border-color: #1d4ed8;
-      box-shadow: 0 16px 36px rgba(37, 99, 235, 0.16);
+      border-color: #93c5fd;
+      box-shadow: 0 12px 28px -4px rgba(37, 99, 235, 0.10);
+      transform: translateY(-3px);
     }
     [data-theme="light"] .card:hover h3 {
-      color: #1d4ed8;
+      color: #2563eb;
     }
     [data-theme="light"] .card-illu {
-      background: #eff6ff;
-      border: 1px solid rgba(37, 99, 235, 0.14);
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
     }
     [data-theme="light"] .card h3 {
-      color: #000000;
-      font-weight: 800;
-      transition: color 0.25s ease;
+      color: #0f172a;
+      font-weight: 700;
+      transition: color 0.2s ease;
     }
     [data-theme="light"] .card p {
-      color: #090d16;
-      font-weight: 500;
+      color: #475569;
+      font-weight: 400;
       line-height: 1.6;
     }
     [data-theme="light"] .fav-pill {
       background: #eff6ff;
-      border: 1px solid rgba(37, 99, 235, 0.35);
+      border: 1px solid #bfdbfe;
       color: #1d4ed8;
-      font-weight: 800;
+      font-weight: 700;
     }
     [data-theme="light"] .wifi-card {
       background: #ffffff;
-      border: 1px solid rgba(37, 99, 235, 0.18);
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.07);
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
     [data-theme="light"] .wifi-card:hover {
-      border-color: #1d4ed8;
-      box-shadow: 0 16px 36px rgba(37, 99, 235, 0.16);
+      border-color: #93c5fd;
+      box-shadow: 0 12px 28px -4px rgba(37, 99, 235, 0.10);
+      transform: translateY(-3px);
+    }
+    [data-theme="light"] .wifi-card.wifi-popular {
+      border: 2px solid #2563eb;
+      box-shadow: 0 8px 24px -2px rgba(37, 99, 235, 0.12);
     }
     [data-theme="light"] .wifi-tier {
       background: #eff6ff;
       color: #1d4ed8;
-      border: 1px solid rgba(37, 99, 235, 0.35);
+      border: 1px solid #bfdbfe;
     }
     [data-theme="light"] .wifi-icon-badge {
       background: #eff6ff;
       color: #1d4ed8;
-      border: 1px solid rgba(37, 99, 235, 0.2);
+      border: 1px solid #bfdbfe;
     }
     [data-theme="light"] .wifi-speed-num {
-      color: #000000;
-      font-weight: 900;
+      color: #0f172a;
+      font-weight: 800;
     }
     [data-theme="light"] .wifi-speed-unit {
-      color: #1d4ed8;
-      font-weight: 800;
+      color: #2563eb;
+      font-weight: 700;
     }
     [data-theme="light"] .wifi-meter {
-      background: #e2edfa;
+      background: #e2e8f0;
     }
     [data-theme="light"] .wifi-price {
-      color: #000000;
-      font-weight: 900;
+      color: #0f172a;
+      font-weight: 800;
     }
     [data-theme="light"] .wifi-currency {
-      color: #090d16;
-      font-weight: 800;
-    }
-    [data-theme="light"] .wifi-period {
-      color: #1e293b;
-      font-weight: 700;
-    }
-    [data-theme="light"] .wifi-desc {
-      color: #090d16;
-      font-weight: 500;
-    }
-    [data-theme="light"] .wifi-features li {
-      color: #090d16;
+      color: #475569;
       font-weight: 600;
     }
-    [data-theme="light"] .wifi-cta-outline {
-      color: #1d4ed8;
-      font-weight: 700;
-      background: #eff6ff;
-      border: 1.5px solid rgba(37, 99, 235, 0.35);
-    }
-    [data-theme="light"] .wifi-cta-outline:hover {
-      background: #1d4ed8;
-      color: #ffffff;
-      border-color: #1d4ed8;
-    }
-    [data-theme="light"] .wifi-note {
-      color: #090d16;
+    [data-theme="light"] .wifi-period {
+      color: #64748b;
       font-weight: 500;
     }
+    [data-theme="light"] .wifi-desc {
+      color: #475569;
+      font-weight: 450;
+    }
+    [data-theme="light"] .wifi-features li {
+      color: #475569;
+      font-weight: 500;
+    }
+    [data-theme="light"] .wifi-cta-outline {
+      color: #2563eb;
+      font-weight: 600;
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+    }
+    [data-theme="light"] .wifi-cta-outline:hover {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+    [data-theme="light"] .wifi-note {
+      color: #64748b;
+      font-weight: 450;
+    }
     [data-theme="light"] .wifi-note strong {
-      color: #000000;
-      font-weight: 800;
+      color: #0f172a;
+      font-weight: 700;
     }
     [data-theme="light"] .tech-item {
       background: #ffffff;
-      border: 1px solid rgba(37, 99, 235, 0.18);
-      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.06);
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
     [data-theme="light"] .tech-item:hover {
-      border-color: #1d4ed8;
-      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.16);
+      border-color: #93c5fd;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
+      transform: translateY(-2px);
     }
     [data-theme="light"] .tech-item:hover .tech-name {
-      color: #1d4ed8;
+      color: #2563eb;
     }
     [data-theme="light"] .tech-icon-wrap {
-      background: #eff6ff;
-      border: 1px solid rgba(37, 99, 235, 0.18);
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
     }
     [data-theme="light"] .tech-name {
-      color: #000000;
-      font-weight: 800;
-      transition: color 0.25s ease;
+      color: #0f172a;
+      font-weight: 700;
+      transition: color 0.2s ease;
     }
     [data-theme="light"] .tech-role {
-      color: #090d16;
-      font-weight: 600;
+      color: #64748b;
+      font-weight: 500;
     }
     [data-theme="light"] .feature {
       background: #ffffff;
       border: none;
-      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     [data-theme="light"] .feature:hover {
       border: none;
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.10);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+      transform: translateY(-3px);
     }
     [data-theme="light"] .feature h4 {
-      color: #000000;
-      font-weight: 800;
-      transition: color 0.25s ease;
+      color: #0f172a;
+      font-weight: 700;
     }
     [data-theme="light"] .feature p {
-      color: #090d16;
-      font-weight: 500;
+      color: #475569;
+      font-weight: 450;
     }
     [data-theme="light"] .contact-box {
-      background: linear-gradient(150deg, #ffffff 0%, #f6faff 50%, #e6f0fc 100%);
-      border: 1.5px solid rgba(37, 99, 235, 0.35);
-      border-radius: 24px;
-      box-shadow: 
-        0 30px 65px -12px rgba(15, 23, 42, 0.20),
-        0 12px 24px -6px rgba(37, 99, 235, 0.15),
-        inset 0 2px 0 rgba(255, 255, 255, 0.98),
-        inset 0 -2px 0 rgba(37, 99, 235, 0.15);
+      background: linear-gradient(135deg, #ffffff 0%, #f0f6ff 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 20px;
+      box-shadow: 0 14px 34px -8px rgba(37, 99, 235, 0.10), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
       position: relative;
     }
     [data-theme="light"] .contact-box::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4.5px;
-      background: linear-gradient(90deg, #1d4ed8 0%, #38bdf8 50%, #eff824 100%);
-      border-radius: 24px 24px 0 0;
-      box-shadow: 0 2px 12px rgba(56, 189, 248, 0.5);
-      z-index: 3;
+      display: none;
     }
     [data-theme="light"] .contact-box h2 {
-      color: #000000;
-      font-weight: 900;
+      color: #0f172a;
+      font-weight: 800;
     }
     [data-theme="light"] .contact-box p {
-      color: #090d16;
-      font-weight: 500;
+      color: #475569;
+      font-weight: 450;
     }
-    /* HIGH TECH CARD LASER ACCENT (Hanya Layanan .card & WiFi .wifi-card, BUKAN Keunggulan .feature) */
     [data-theme="light"] .card::before,
     [data-theme="light"] .wifi-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #1d4ed8 0%, #0284c7 60%, transparent 100%);
-      border-radius: 14px 14px 0 0;
-      opacity: 0.85;
-      transition: height 0.3s ease, opacity 0.3s ease;
-      z-index: 2;
-      pointer-events: none;
-    }
-    [data-theme="light"] .card:hover::before,
-    [data-theme="light"] .wifi-card:hover::before {
-      height: 4px;
-      opacity: 1;
-      background: linear-gradient(90deg, #1d4ed8 0%, #38bdf8 60%, #eff824 100%);
-    }
-    [data-theme="light"] .wifi-card.wifi-popular::before {
-      height: 4px;
-      background: linear-gradient(90deg, #1d4ed8 0%, #38bdf8 50%, #eff824 100%);
-      opacity: 1;
+      display: none;
     }
     [data-theme="light"] .sec-head h2::after {
-      content: "";
-      display: block;
-      width: 44px;
-      height: 3px;
-      background: linear-gradient(90deg, #1d4ed8 0%, #0284c7 60%, #eff824 100%);
-      border-radius: 99px;
-      margin: 10px auto 0;
-      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+      display: none;
+    }
+    [data-theme="light"] #ai-canvas {
+      opacity: 0.35;
     }
     /* FOOTER PALING BAWAH: Sama seperti Dark Mode namun sedikit lebih terang (Sleek Dark Navy #111a2e) */
     [data-theme="light"] footer {
@@ -1910,18 +1811,18 @@
       color: #38bdf8;
     }
     [data-theme="light"] .tech-ticker {
-      background: #0f172a;
-      border-top: 2px solid #2563eb;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      color: #38bdf8;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      font-weight: 800;
+      background: #f1f5f9;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      color: #475569;
+      box-shadow: none;
+      font-weight: 700;
     }
     [data-theme="light"] .tech-ticker-track span {
-      color: #93c5fd;
+      color: #475569;
     }
     [data-theme="light"] .ticker-sep {
-      background: #38bdf8;
+      background: #94a3b8;
     }
 
     /* RESPONSIVE DESKTOP & MOBILE */
