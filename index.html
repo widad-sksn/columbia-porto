@@ -78,58 +78,58 @@
     }
 
     [data-theme="light"] {
-      /* DIM MATTE SLATE PALETTE (LEBIH REDUP, TEDUH, ANTI SILAU) */
+      /* CRISP HIGH-CONTRAST PALETTE (FONT TEGAS, HITAM PEKAT, JELAS & ANTI-SILAU) */
       --bg: #cbd5e1;
       --bg-pattern: none;
       --card: #dde4ed;
       --card-surface: #c0ccd9;
       --card-hover: #e5ebf3;
-      --border: rgba(15, 23, 42, 0.14);
-      --border-accent: rgba(29, 78, 216, 0.42);
-      --text: #1e293b;
-      --text-heading: #0f172a;
-      --muted: #475569;
-      --muted-bright: #1e293b;
+      --border: rgba(15, 23, 42, 0.16);
+      --border-accent: rgba(29, 78, 216, 0.5);
+      --text: #090d16;
+      --text-heading: #000000;
+      --muted: #1e293b;
+      --muted-bright: #090d16;
       --primary: #1d4ed8;
       --primary-hover: #1e40af;
-      --primary-gradient: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      --primary-gradient: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
       --accent: #0369a1;
-      --accent-glow: rgba(29, 78, 216, 0.14);
+      --accent-glow: rgba(29, 78, 216, 0.16);
       --header-bg: #c4cfdd;
       --ticker-bg: #bac6d6;
-      --ticker-border: rgba(15, 23, 42, 0.14);
-      --ticker-text: #0f172a;
+      --ticker-border: rgba(15, 23, 42, 0.16);
+      --ticker-text: #000000;
       --ticker-dot: #1d4ed8;
       --badge-bg: #c6d8f5;
-      --badge-border: rgba(29, 78, 216, 0.28);
-      --badge-text: #1e3a8a;
-      --wa: #16a34a;
-      --shadow-card: 0 4px 16px rgba(15, 23, 42, 0.09), 0 1px 2px rgba(15, 23, 42, 0.05);
-      --shadow-hover: 0 12px 24px rgba(15, 23, 42, 0.14);
+      --badge-border: rgba(29, 78, 216, 0.35);
+      --badge-text: #0f2963;
+      --wa: #15803d;
+      --shadow-card: 0 4px 16px rgba(15, 23, 42, 0.10), 0 1px 2px rgba(15, 23, 42, 0.06);
+      --shadow-hover: 0 12px 24px rgba(15, 23, 42, 0.16);
 
-      /* STAT CARDS PALETTE (DIM SOLID MATTE LIGHT) */
+      /* STAT CARDS PALETTE (HIGH CONTRAST BOLD LIGHT) */
       --stat1-bg: #c3d7f4;
-      --stat1-shadow: 0 4px 14px rgba(29, 78, 216, 0.10);
-      --stat1-num: #1e3a8a;
-      --stat1-label: #1e40af;
-      --stat1-border: #3b82f6;
+      --stat1-shadow: 0 4px 14px rgba(29, 78, 216, 0.12);
+      --stat1-num: #172554;
+      --stat1-label: #090d16;
+      --stat1-border: #2563eb;
 
       --stat2-bg: #bae6d5;
-      --stat2-shadow: 0 4px 14px rgba(5, 150, 105, 0.10);
-      --stat2-num: #065f46;
-      --stat2-label: #064e3b;
-      --stat2-border: #10b981;
+      --stat2-shadow: 0 4px 14px rgba(5, 150, 105, 0.12);
+      --stat2-num: #022c22;
+      --stat2-label: #090d16;
+      --stat2-border: #059669;
 
       --stat3-bg: #ebdcad;
-      --stat3-shadow: 0 4px 14px rgba(180, 83, 9, 0.10);
-      --stat3-num: #78350f;
-      --stat3-label: #78350f;
+      --stat3-shadow: 0 4px 14px rgba(180, 83, 9, 0.12);
+      --stat3-num: #451a03;
+      --stat3-label: #090d16;
       --stat3-border: #d97706;
 
       --stat4-bg: #d8cdf5;
-      --stat4-shadow: 0 4px 14px rgba(109, 40, 217, 0.10);
-      --stat4-num: #4c1d95;
-      --stat4-label: #5b21b6;
+      --stat4-shadow: 0 4px 14px rgba(109, 40, 217, 0.12);
+      --stat4-num: #2e1065;
+      --stat4-label: #090d16;
       --stat4-border: #7c3aed;
     }
 
@@ -1382,6 +1382,169 @@
     }
     .footer-dot {
       color: var(--primary);
+    }
+
+    /* LIGHT MODE EXPLICIT HIGH CONTRAST TYPOGRAPHY (FONT TEGAS, HITAM PEKAT & SANGAT JELAS) */
+    [data-theme="light"] body {
+      color: #090d16;
+    }
+    [data-theme="light"] .brand-title {
+      background: linear-gradient(135deg, #000000 35%, #b45309 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    [data-theme="light"] .brand-sub {
+      color: #090d16;
+      font-weight: 700;
+    }
+    [data-theme="light"] .nav-links a {
+      color: #090d16;
+      font-weight: 700;
+    }
+    [data-theme="light"] .nav-links a:hover {
+      color: var(--primary);
+    }
+    [data-theme="light"] .hero h1 {
+      color: #000000;
+      font-weight: 900;
+    }
+    [data-theme="light"] .hero p {
+      color: #090d16;
+      font-weight: 500;
+    }
+    [data-theme="light"] .stat-num {
+      font-weight: 900;
+    }
+    [data-theme="light"] .stat-label {
+      color: #090d16;
+      font-weight: 700;
+    }
+    [data-theme="light"] .sec-head h2 {
+      color: #000000;
+      font-weight: 900;
+    }
+    [data-theme="light"] .sec-head p {
+      color: #090d16;
+      font-weight: 500;
+    }
+    [data-theme="light"] .card h3 {
+      color: #000000;
+      font-weight: 800;
+    }
+    [data-theme="light"] .card p {
+      color: #090d16;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+    [data-theme="light"] .fav-pill {
+      color: #0f2963;
+      font-weight: 800;
+    }
+    [data-theme="light"] .wifi-speed-num {
+      color: #000000;
+      font-weight: 900;
+    }
+    [data-theme="light"] .wifi-speed-unit {
+      color: #1d4ed8;
+      font-weight: 800;
+    }
+    [data-theme="light"] .wifi-price {
+      color: #000000;
+      font-weight: 900;
+    }
+    [data-theme="light"] .wifi-currency {
+      color: #090d16;
+      font-weight: 800;
+    }
+    [data-theme="light"] .wifi-period {
+      color: #1e293b;
+      font-weight: 700;
+    }
+    [data-theme="light"] .wifi-desc {
+      color: #090d16;
+      font-weight: 500;
+    }
+    [data-theme="light"] .wifi-features li {
+      color: #090d16;
+      font-weight: 600;
+    }
+    [data-theme="light"] .wifi-cta-outline {
+      color: #090d16;
+      font-weight: 700;
+      background: #ffffff;
+      border-color: rgba(15, 23, 42, 0.18);
+    }
+    [data-theme="light"] .wifi-note {
+      color: #090d16;
+      font-weight: 500;
+    }
+    [data-theme="light"] .wifi-note strong {
+      color: #000000;
+      font-weight: 800;
+    }
+    [data-theme="light"] .tech-name {
+      color: #000000;
+      font-weight: 800;
+    }
+    [data-theme="light"] .tech-role {
+      color: #090d16;
+      font-weight: 600;
+    }
+    [data-theme="light"] .feature h4 {
+      color: #000000;
+      font-weight: 800;
+    }
+    [data-theme="light"] .feature p {
+      color: #090d16;
+      font-weight: 500;
+    }
+    [data-theme="light"] .contact-box h2 {
+      color: #000000;
+      font-weight: 900;
+    }
+    [data-theme="light"] .contact-box p {
+      color: #090d16;
+      font-weight: 500;
+    }
+    [data-theme="light"] footer {
+      color: #090d16;
+    }
+    [data-theme="light"] .footer-brand {
+      color: #000000;
+      font-weight: 900;
+    }
+    [data-theme="light"] .footer-desc {
+      color: #090d16;
+      font-weight: 500;
+    }
+    [data-theme="light"] .footer-title {
+      color: #000000;
+      font-weight: 800;
+    }
+    [data-theme="light"] .footer-links li a {
+      color: #090d16;
+      font-weight: 600;
+    }
+    [data-theme="light"] .footer-contact-item {
+      color: #090d16;
+      font-weight: 600;
+    }
+    [data-theme="light"] .footer-bottom {
+      color: #0f172a;
+      font-weight: 600;
+    }
+    [data-theme="light"] .footer-bottom-badges {
+      color: #090d16;
+      font-weight: 600;
+    }
+    [data-theme="light"] .tech-ticker {
+      color: #000000;
+      font-weight: 800;
+    }
+    [data-theme="light"] .mobile-nav-link {
+      color: #000000;
+      font-weight: 700;
     }
 
     /* RESPONSIVE DESKTOP & MOBILE */
