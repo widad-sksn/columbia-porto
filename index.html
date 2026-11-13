@@ -238,13 +238,21 @@
     }
     .brand-sub { font-size: 8.5px; color: var(--muted); letter-spacing: 0.8px; text-transform: uppercase; font-weight: 600; }
     .brand-bars { display: flex; gap: 4px; height: 24px; align-items: flex-end; }
-    .bar { width: 5px; height: 100%; border-radius: 2px; animation: barSurgeNav 4s ease-in-out infinite alternate; }
-    .bar-1 { background: #eff824; animation-delay: 0s; box-shadow: 0 0 10px rgba(239, 248, 36, 0.6); }
-    .bar-2 { background: #f4ecb3; animation-delay: 0.3s; box-shadow: 0 0 10px rgba(244, 236, 179, 0.6); }
-    .bar-3 { background: #d1dc9a; animation-delay: 0.6s; box-shadow: 0 0 10px rgba(209, 220, 154, 0.6); }
-    [data-theme="light"] .bar-1 { background: #b45309; box-shadow: none; }
-    [data-theme="light"] .bar-2 { background: #ca8a04; box-shadow: none; }
-    [data-theme="light"] .bar-3 { background: #1d4ed8; box-shadow: none; }
+    .bar {
+      width: 5px;
+      height: 100%;
+      border-radius: 2px;
+      animation: barSurgeNav 4s ease-in-out infinite alternate;
+      background: #eff824;
+      box-shadow: 0 0 10px rgba(239, 248, 36, 0.6);
+    }
+    .bar-1 { animation-delay: 0s; }
+    .bar-2 { animation-delay: 0.3s; }
+    .bar-3 { animation-delay: 0.6s; }
+    [data-theme="light"] .bar {
+      background: #eff824;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.12), 0 0 8px rgba(239, 248, 36, 0.5);
+    }
     .nav-links { display: flex; gap: 6px; font-size: 14px; color: var(--muted-bright); align-items: center; }
     .nav-links a {
       position: relative;
@@ -1791,10 +1799,12 @@
     .preloader-bars .bar {
       width: 7px;
       animation: preSurge 1s ease-in-out infinite alternate;
+      background: #eff824;
+      box-shadow: 0 0 10px rgba(239, 248, 36, 0.6);
     }
-    .preloader-bars .bar-1 { background: #eff824; animation-delay: 0s; box-shadow: 0 0 10px rgba(239, 248, 36, 0.6); }
-    .preloader-bars .bar-2 { background: #f4ecb3; animation-delay: 0.15s; box-shadow: 0 0 10px rgba(244, 236, 179, 0.6); }
-    .preloader-bars .bar-3 { background: #d1dc9a; animation-delay: 0.3s; box-shadow: 0 0 10px rgba(209, 220, 154, 0.6); }
+    .preloader-bars .bar-1 { animation-delay: 0s; }
+    .preloader-bars .bar-2 { animation-delay: 0.15s; }
+    .preloader-bars .bar-3 { animation-delay: 0.3s; }
     .preloader-title {
       font-size: 22px;
       font-weight: 800;
