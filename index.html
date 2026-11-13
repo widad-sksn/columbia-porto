@@ -821,6 +821,92 @@
         radial-gradient(circle at 80% 20%, rgba(2, 132, 199, 0.10) 0%, transparent 50%);
       background-size: 24px 24px, 100% 100%;
     }
+
+    /* 3D TACTILE SECTION BOUNDARIES (BATASAN ANTAR SEKSI BERDIMENSI 3D DI LIGHT MODE) */
+    [data-theme="light"] .has-bg-photo {
+      border-bottom: none;
+      position: relative;
+    }
+    [data-theme="light"] .has-bg-photo::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.95) 15%, 
+        rgba(37, 99, 235, 0.55) 50%, 
+        rgba(255, 255, 255, 0.95) 85%, 
+        transparent 100%
+      );
+      box-shadow: 0 1px 6px rgba(37, 99, 235, 0.25);
+      z-index: 4;
+      pointer-events: none;
+    }
+    [data-theme="light"] .hero::before {
+      display: none;
+    }
+    [data-theme="light"] .has-bg-photo::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(180deg, rgba(37, 99, 235, 0.08) 0%, rgba(15, 23, 42, 0.06) 100%);
+      border-bottom: 2px solid rgba(37, 99, 235, 0.24);
+      box-shadow: 0 6px 14px -3px rgba(15, 23, 42, 0.12);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    /* PER-SECTION UNIQUE 3D HIGH-TECH GRAPHICS (BIAR TIAP HALAMAN/SEKSI TERLIHAT BEDA & BERKARAKTER) */
+    [data-theme="light"] #paket-wifi .sec-bg-media::after {
+      background-color: rgba(238, 245, 254, 0.89);
+      background-image: 
+        radial-gradient(circle at 85% 15%, rgba(2, 132, 199, 0.16) 0%, transparent 50%),
+        radial-gradient(circle at 10% 85%, rgba(37, 99, 235, 0.12) 0%, transparent 45%),
+        repeating-linear-gradient(45deg, rgba(37, 99, 235, 0.022) 0px, rgba(37, 99, 235, 0.022) 1.5px, transparent 1.5px, transparent 20px);
+      background-size: 100% 100%, 100% 100%, 28px 28px;
+    }
+    [data-theme="light"] #layanan .sec-bg-media::after {
+      background-color: rgba(234, 242, 251, 0.90);
+      background-image: 
+        radial-gradient(circle at 50% 8%, rgba(37, 99, 235, 0.14) 0%, transparent 55%),
+        linear-gradient(to right, rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37, 99, 235, 0.055) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px, 32px 32px;
+    }
+    [data-theme="light"] #tech-stack .sec-bg-media::after {
+      background-color: rgba(223, 233, 248, 0.93);
+      background-image: 
+        radial-gradient(circle at 25% 50%, rgba(37, 99, 235, 0.16) 0%, transparent 50%),
+        radial-gradient(circle at 75% 50%, rgba(2, 132, 199, 0.14) 0%, transparent 50%),
+        linear-gradient(135deg, rgba(37, 99, 235, 0.035) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(37, 99, 235, 0.035) 25%, transparent 25%);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+    }
+    [data-theme="light"] #keunggulan .sec-bg-media::after {
+      background-color: rgba(238, 246, 254, 0.90);
+      background-image: 
+        radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.9) 0%, transparent 60%),
+        radial-gradient(rgba(37, 99, 235, 0.10) 1.2px, transparent 1.2px);
+      background-size: 100% 100%, 26px 26px;
+    }
+
+    /* PENUTUP BACKGROUND PALING BAWAH (#KONTAK): 3D CYBER GRID FLOOR & ELEVATED DEPTH */
+    [data-theme="light"] #kontak .sec-bg-media::after {
+      background-color: rgba(228, 238, 251, 0.86);
+      background-image: 
+        radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.22) 0%, transparent 70%),
+        radial-gradient(circle at 15% 85%, rgba(2, 132, 199, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 85% 85%, rgba(37, 99, 235, 0.18) 0%, transparent 50%),
+        linear-gradient(to right, rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+    }
     .has-bg-photo .sec-head h2,
     .has-bg-photo .sec-head p {
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
@@ -1701,9 +1787,27 @@
       font-weight: 500;
     }
     [data-theme="light"] .contact-box {
-      background: linear-gradient(145deg, #ffffff 0%, #eff6ff 100%);
-      border: 2px solid rgba(37, 99, 235, 0.3);
-      box-shadow: 0 20px 48px rgba(37, 99, 235, 0.14);
+      background: linear-gradient(150deg, #ffffff 0%, #f6faff 50%, #e6f0fc 100%);
+      border: 1.5px solid rgba(37, 99, 235, 0.35);
+      border-radius: 24px;
+      box-shadow: 
+        0 30px 65px -12px rgba(15, 23, 42, 0.20),
+        0 12px 24px -6px rgba(37, 99, 235, 0.15),
+        inset 0 2px 0 rgba(255, 255, 255, 0.98),
+        inset 0 -2px 0 rgba(37, 99, 235, 0.15);
+      position: relative;
+    }
+    [data-theme="light"] .contact-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4.5px;
+      background: linear-gradient(90deg, #1d4ed8 0%, #38bdf8 50%, #eff824 100%);
+      border-radius: 24px 24px 0 0;
+      box-shadow: 0 2px 12px rgba(56, 189, 248, 0.5);
+      z-index: 3;
     }
     [data-theme="light"] .contact-box h2 {
       color: #000000;
@@ -1806,11 +1910,18 @@
       color: #38bdf8;
     }
     [data-theme="light"] .tech-ticker {
-      background: linear-gradient(90deg, #dbeafe 0%, #e0e7ff 50%, #dbeafe 100%);
-      border-top: 1px solid rgba(37, 99, 235, 0.22);
-      border-bottom: 1px solid rgba(37, 99, 235, 0.22);
-      color: #0f2963;
+      background: #0f172a;
+      border-top: 2px solid #2563eb;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: #38bdf8;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
       font-weight: 800;
+    }
+    [data-theme="light"] .tech-ticker-track span {
+      color: #93c5fd;
+    }
+    [data-theme="light"] .ticker-sep {
+      background: #38bdf8;
     }
 
     /* RESPONSIVE DESKTOP & MOBILE */
