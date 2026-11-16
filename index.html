@@ -345,6 +345,120 @@
       margin-bottom: 38px;
     }
 
+    /* MODERN TECH CARDS MARQUEE */
+    .tech-card-ticker {
+      padding: 18px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      background: var(--ticker-bg);
+      border-top: 1px solid var(--ticker-border);
+      border-bottom: 1px solid var(--ticker-border);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+      user-select: none;
+      z-index: 20;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .tech-card-track {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      width: max-content;
+      animation: tickerCardsScroll 34s linear infinite;
+      will-change: transform;
+    }
+    .tech-card-ticker:hover .tech-card-track {
+      animation-play-state: paused;
+    }
+    @keyframes tickerCardsScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .tech-card-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+      flex-shrink: 0;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      cursor: default;
+    }
+    .tech-card-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+    .tech-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .tech-card-icon svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+    .tech-card-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+    .tech-card-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.25;
+      letter-spacing: 0.2px;
+      text-transform: none;
+    }
+    .tech-card-sub {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted-bright);
+      line-height: 1.25;
+      margin-top: 2px;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+    [data-theme="light"] .tech-card-ticker {
+      background: #e2e8f0;
+      border-top: 1px solid #cbd5e1;
+      border-bottom: 1px solid #cbd5e1;
+    }
+    [data-theme="light"] .tech-card-item {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+    [data-theme="light"] .tech-card-item:hover {
+      border-color: #0284c7;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.14);
+    }
+    [data-theme="light"] .tech-card-icon {
+      background: #f1f5f9;
+      border-color: #e2e8f0;
+    }
+    [data-theme="light"] .tech-card-title {
+      color: #0f172a;
+    }
+    [data-theme="light"] .tech-card-sub {
+      color: #64748b;
+    }
+
     /* NAV */
     header {
       position: sticky;
@@ -2702,33 +2816,284 @@
         </div>
       </div>
 
-      <!-- MODERN TECH TICKER (DI BAWAH STATS) -->
-      <div class="tech-ticker hero-ticker" aria-hidden="true">
-        <div class="tech-ticker-track">
-          <span>
-            <span>⚡ INSTALASI CCTV &amp; IP CAMERA</span><span class="ticker-sep"></span>
-            <span>🌐 ENTERPRISE WIFI &amp; MESH SYSTEM</span><span class="ticker-sep"></span>
-            <span>🚀 FIBER OPTIC &amp; NETWORK INFRASTRUCTURE</span><span class="ticker-sep"></span>
-            <span>⚡ ELECTRICAL &amp; PANEL LISTRIK 3-PHASE</span><span class="ticker-sep"></span>
-            <span>🔧 PLUMBING &amp; SISTEM PEMIPAAN</span><span class="ticker-sep"></span>
-            <span>💻 PEMBUATAN WEBSITE &amp; WEB APPS</span><span class="ticker-sep"></span>
-            <span>☁️ DEVOPS &amp; CLOUD ARCHITECTURE</span><span class="ticker-sep"></span>
-            <span>🛠️ ROUTING &amp; SETTING MIKROTIK</span><span class="ticker-sep"></span>
-            <span>🖥️ SERVICE HARDWARE KOMPUTER</span><span class="ticker-sep"></span>
-            <span>🛡️ PROTEKSI PENANGKAL PETIR STANDAR K3</span><span class="ticker-sep"></span>
-          </span>
-          <span>
-            <span>⚡ INSTALASI CCTV &amp; IP CAMERA</span><span class="ticker-sep"></span>
-            <span>🌐 ENTERPRISE WIFI &amp; MESH SYSTEM</span><span class="ticker-sep"></span>
-            <span>🚀 FIBER OPTIC &amp; NETWORK INFRASTRUCTURE</span><span class="ticker-sep"></span>
-            <span>⚡ ELECTRICAL &amp; PANEL LISTRIK 3-PHASE</span><span class="ticker-sep"></span>
-            <span>🔧 PLUMBING &amp; SISTEM PEMIPAAN</span><span class="ticker-sep"></span>
-            <span>💻 PEMBUATAN WEBSITE &amp; WEB APPS</span><span class="ticker-sep"></span>
-            <span>☁️ DEVOPS &amp; CLOUD ARCHITECTURE</span><span class="ticker-sep"></span>
-            <span>🛠️ ROUTING &amp; SETTING MIKROTIK</span><span class="ticker-sep"></span>
-            <span>🖥️ SERVICE HARDWARE KOMPUTER</span><span class="ticker-sep"></span>
-            <span>🛡️ PROTEKSI PENANGKAL PETIR STANDAR K3</span><span class="ticker-sep"></span>
-          </span>
+      <!-- MODERN TECH CARDS TICKER (DI BAWAH STATS) -->
+      <div class="tech-card-ticker hero-ticker" aria-hidden="true">
+        <div class="tech-card-track">
+          <!-- SET 1 -->
+          <div class="tech-card-item">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22">
+                <path fill="#3776ab" d="M11.9 2c-3.1 0-2.9 1.3-2.9 1.3l.01 1.4h3v.4H7.8c-1.6 0-2.9 1-2.9 2.9 0 2 1.3 2.8 1.3 2.8h.8V9.2c0-1.2 1-2.2 2.2-2.2h4.2c1 0 1.8-.8 1.8-1.8V3.7c0-1.1-1.4-1.7-3.2-1.7zm-1.6 1.1c.4 0 .7.3.7.7s-.3.7-.7.7-.7-.3-.7-.7.3-.7.7-.7z"/>
+                <path fill="#ffd43b" d="M12.1 22c3.1 0 2.9-1.3 2.9-1.3l-.01-1.4h-3v-.4h4.2c1.6 0 2.9-1 2.9-2.9 0-2-1.3-2.8-1.3-2.8h-.8v1.6c0 1.2-1 2.2-2.2 2.2H8.8c-1 0-1.8.8-1.8 1.8v1.6c0 1.1 1.4 1.7 3.2 1.7zm1.6-1.1c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7z"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Python</div>
+              <div class="tech-card-sub">Automation Scripting</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="#009639">
+                <path d="M12 2L3 7.2v9.6L12 22l9-5.2V7.2L12 2zm4.5 13.5h-2.1l-4.8-6.4v6.4H7.5V8.5h2.1l4.8 6.4V8.5h2.1v7z"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Nginx</div>
+              <div class="tech-card-sub">Reverse Proxy / SSL</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22">
+                <path fill="#0284c7" d="M19 19c-3.5-1.5-6-3.5-7.5-6-1.5-2.5-1.8-5.5-1.5-8.5-3 3-5 7-5 11.5 0 1 .1 2 .3 3h13.7z"/>
+                <path fill="#38bdf8" d="M11.5 4.5c.3 3 .1 6-1.5 8.5C8.5 15.5 6 17.5 2.5 19h7.5c3-1 6-3 7.5-5.5 1.5-2.5 1.8-5.5 1.5-8.5-2.5 0-5-.5-7.5-.5z"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Wireshark</div>
+              <div class="tech-card-sub">Packet Analysis</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#326ce5" stroke-width="1.8">
+                <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="3.2" fill="#326ce5" stroke="none"/>
+                <line x1="12" y1="2" x2="12" y2="8.8"/>
+                <line x1="21" y1="7" x2="15.2" y2="10.4"/>
+                <line x1="21" y1="17" x2="15.2" y2="13.6"/>
+                <line x1="12" y1="22" x2="12" y2="15.2"/>
+                <line x1="3" y1="17" x2="8.8" y2="13.6"/>
+                <line x1="3" y1="7" x2="8.8" y2="10.4"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Kubernetes</div>
+              <div class="tech-card-sub">DevOps Orchestration</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                <ellipse cx="12" cy="14" rx="6" ry="7" fill="#1e293b" stroke="#eab308" stroke-width="1.5"/>
+                <ellipse cx="12" cy="15.5" rx="3.8" ry="4.8" fill="#f8fafc"/>
+                <circle cx="12" cy="7" r="4" fill="#1e293b"/>
+                <circle cx="10.5" cy="6.5" r="0.9" fill="#f8fafc"/>
+                <circle cx="13.5" cy="6.5" r="0.9" fill="#f8fafc"/>
+                <polygon points="12,7.5 10.5,9.5 13.5,9.5" fill="#eab308"/>
+                <ellipse cx="8.5" cy="20.5" rx="2.5" ry="1.2" fill="#eab308"/>
+                <ellipse cx="15.5" cy="20.5" rx="2.5" ry="1.2" fill="#eab308"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Linux OS</div>
+              <div class="tech-card-sub">Ubuntu / Debian</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="#00d2aa">
+                <rect x="2" y="10" width="3" height="6" rx="1.5"/>
+                <rect x="7" y="6" width="3" height="12" rx="1.5"/>
+                <rect x="12" y="3" width="3" height="16" rx="1.5"/>
+                <rect x="17" y="8" width="3" height="9" rx="1.5"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">MikroTik</div>
+              <div class="tech-card-sub">RouterOS / BGP</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="#2496ed">
+                <rect x="3" y="10" width="2.2" height="2" rx="0.3"/>
+                <rect x="6" y="10" width="2.2" height="2" rx="0.3"/>
+                <rect x="9" y="10" width="2.2" height="2" rx="0.3"/>
+                <rect x="6" y="7.5" width="2.2" height="2" rx="0.3"/>
+                <rect x="9" y="7.5" width="2.2" height="2" rx="0.3"/>
+                <rect x="12" y="7.5" width="2.2" height="2" rx="0.3"/>
+                <path d="M21.5 12.5c-.5-.3-1.2-.4-1.8-.1-.4-1-1.3-1.8-2.5-1.9l-.3 1c.8.2 1.4.9 1.4 1.7 0 .2 0 .3-.1.5-1 1-3 2-6 2-3.8 0-6.8-1.5-8.2-4C3.4 12.3 3 13.5 3 14.7c0 3.3 3.2 6 8.5 6 5.1 0 8.7-2.6 9.8-6 .2-.7.2-1.4-.6-2.1z"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Docker</div>
+              <div class="tech-card-sub">Compose / Containers</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                <polygon points="12 2 20.66 7 20.66 17 12 22 3.34 17 3.34 7" stroke="#ea580c" stroke-width="2" fill="#ea580c" fill-opacity="0.12" stroke-linejoin="round"/>
+                <path d="M9 7h4a3 3 0 0 1 0 6H9V7zm0 6h3" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="13" cy="10" r="1" fill="#ea580c"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Proxmox VE</div>
+              <div class="tech-card-sub">HA Cluster / KVM</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                <path d="M12 2L4 5v6.5C4 16.5 7.4 21 12 22c4.6-1 8-5.5 8-10.5V5l-8-3z" stroke="#ef4444" stroke-width="2" fill="#ef4444" fill-opacity="0.12" stroke-linejoin="round"/>
+                <path d="M9 11c0-1.7 1.3-3 3-3s3 1.3 3 3c0 2-3 4-3 5" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="12" cy="18" r="0.9" fill="#ef4444"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">WireGuard</div>
+              <div class="tech-card-sub">Encrypted VPN</div>
+            </div>
+          </div>
+
+          <!-- SET 2 (DUPLICATE FOR SEAMLESS 100% LOOP) -->
+          <div class="tech-card-item" aria-hidden="true">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22">
+                <path fill="#3776ab" d="M11.9 2c-3.1 0-2.9 1.3-2.9 1.3l.01 1.4h3v.4H7.8c-1.6 0-2.9 1-2.9 2.9 0 2 1.3 2.8 1.3 2.8h.8V9.2c0-1.2 1-2.2 2.2-2.2h4.2c1 0 1.8-.8 1.8-1.8V3.7c0-1.1-1.4-1.7-3.2-1.7zm-1.6 1.1c.4 0 .7.3.7.7s-.3.7-.7.7-.7-.3-.7-.7.3-.7.7-.7z"/>
+                <path fill="#ffd43b" d="M12.1 22c3.1 0 2.9-1.3 2.9-1.3l-.01-1.4h-3v-.4h4.2c1.6 0 2.9-1 2.9-2.9 0-2-1.3-2.8-1.3-2.8h-.8v1.6c0 1.2-1 2.2-2.2 2.2H8.8c-1 0-1.8.8-1.8 1.8v1.6c0 1.1 1.4 1.7 3.2 1.7zm1.6-1.1c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7z"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Python</div>
+              <div class="tech-card-sub">Automation Scripting</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item" aria-hidden="true">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="#009639">
+                <path d="M12 2L3 7.2v9.6L12 22l9-5.2V7.2L12 2zm4.5 13.5h-2.1l-4.8-6.4v6.4H7.5V8.5h2.1l4.8 6.4V8.5h2.1v7z"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Nginx</div>
+              <div class="tech-card-sub">Reverse Proxy / SSL</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item" aria-hidden="true">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22">
+                <path fill="#0284c7" d="M19 19c-3.5-1.5-6-3.5-7.5-6-1.5-2.5-1.8-5.5-1.5-8.5-3 3-5 7-5 11.5 0 1 .1 2 .3 3h13.7z"/>
+                <path fill="#38bdf8" d="M11.5 4.5c.3 3 .1 6-1.5 8.5C8.5 15.5 6 17.5 2.5 19h7.5c3-1 6-3 7.5-5.5 1.5-2.5 1.8-5.5 1.5-8.5-2.5 0-5-.5-7.5-.5z"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Wireshark</div>
+              <div class="tech-card-sub">Packet Analysis</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item" aria-hidden="true">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#326ce5" stroke-width="1.8">
+                <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="3.2" fill="#326ce5" stroke="none"/>
+                <line x1="12" y1="2" x2="12" y2="8.8"/>
+                <line x1="21" y1="7" x2="15.2" y2="10.4"/>
+                <line x1="21" y1="17" x2="15.2" y2="13.6"/>
+                <line x1="12" y1="22" x2="12" y2="15.2"/>
+                <line x1="3" y1="17" x2="8.8" y2="13.6"/>
+                <line x1="3" y1="7" x2="8.8" y2="10.4"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Kubernetes</div>
+              <div class="tech-card-sub">DevOps Orchestration</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item" aria-hidden="true">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                <ellipse cx="12" cy="14" rx="6" ry="7" fill="#1e293b" stroke="#eab308" stroke-width="1.5"/>
+                <ellipse cx="12" cy="15.5" rx="3.8" ry="4.8" fill="#f8fafc"/>
+                <circle cx="12" cy="7" r="4" fill="#1e293b"/>
+                <circle cx="10.5" cy="6.5" r="0.9" fill="#f8fafc"/>
+                <circle cx="13.5" cy="6.5" r="0.9" fill="#f8fafc"/>
+                <polygon points="12,7.5 10.5,9.5 13.5,9.5" fill="#eab308"/>
+                <ellipse cx="8.5" cy="20.5" rx="2.5" ry="1.2" fill="#eab308"/>
+                <ellipse cx="15.5" cy="20.5" rx="2.5" ry="1.2" fill="#eab308"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Linux OS</div>
+              <div class="tech-card-sub">Ubuntu / Debian</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item" aria-hidden="true">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="#00d2aa">
+                <rect x="2" y="10" width="3" height="6" rx="1.5"/>
+                <rect x="7" y="6" width="3" height="12" rx="1.5"/>
+                <rect x="12" y="3" width="3" height="16" rx="1.5"/>
+                <rect x="17" y="8" width="3" height="9" rx="1.5"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">MikroTik</div>
+              <div class="tech-card-sub">RouterOS / BGP</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item" aria-hidden="true">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="#2496ed">
+                <rect x="3" y="10" width="2.2" height="2" rx="0.3"/>
+                <rect x="6" y="10" width="2.2" height="2" rx="0.3"/>
+                <rect x="9" y="10" width="2.2" height="2" rx="0.3"/>
+                <rect x="6" y="7.5" width="2.2" height="2" rx="0.3"/>
+                <rect x="9" y="7.5" width="2.2" height="2" rx="0.3"/>
+                <rect x="12" y="7.5" width="2.2" height="2" rx="0.3"/>
+                <path d="M21.5 12.5c-.5-.3-1.2-.4-1.8-.1-.4-1-1.3-1.8-2.5-1.9l-.3 1c.8.2 1.4.9 1.4 1.7 0 .2 0 .3-.1.5-1 1-3 2-6 2-3.8 0-6.8-1.5-8.2-4C3.4 12.3 3 13.5 3 14.7c0 3.3 3.2 6 8.5 6 5.1 0 8.7-2.6 9.8-6 .2-.7.2-1.4-.6-2.1z"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Docker</div>
+              <div class="tech-card-sub">Compose / Containers</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item" aria-hidden="true">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                <polygon points="12 2 20.66 7 20.66 17 12 22 3.34 17 3.34 7" stroke="#ea580c" stroke-width="2" fill="#ea580c" fill-opacity="0.12" stroke-linejoin="round"/>
+                <path d="M9 7h4a3 3 0 0 1 0 6H9V7zm0 6h3" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="13" cy="10" r="1" fill="#ea580c"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">Proxmox VE</div>
+              <div class="tech-card-sub">HA Cluster / KVM</div>
+            </div>
+          </div>
+
+          <div class="tech-card-item" aria-hidden="true">
+            <div class="tech-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                <path d="M12 2L4 5v6.5C4 16.5 7.4 21 12 22c4.6-1 8-5.5 8-10.5V5l-8-3z" stroke="#ef4444" stroke-width="2" fill="#ef4444" fill-opacity="0.12" stroke-linejoin="round"/>
+                <path d="M9 11c0-1.7 1.3-3 3-3s3 1.3 3 3c0 2-3 4-3 5" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="12" cy="18" r="0.9" fill="#ef4444"/>
+              </svg>
+            </div>
+            <div class="tech-card-text">
+              <div class="tech-card-title">WireGuard</div>
+              <div class="tech-card-sub">Encrypted VPN</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -3258,11 +3623,284 @@
     <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   </a>
 
-  <!-- MODERN TECH TICKER ABOVE FOOTER -->
-  <div class="tech-ticker" aria-hidden="true" style="margin-top: 0;">
-    <div class="tech-ticker-track">
-      <span>ENTERPRISE IT<span class="ticker-sep"></span>CCTV HIKVISION &amp; DAHUA<span class="ticker-sep"></span>MIKROTIK ROUTERBOARD<span class="ticker-sep"></span>FIBER OPTIC &amp; LAN CAT6<span class="ticker-sep"></span>INSTALASI LISTRIK &amp; PANEL 3-PHASE<span class="ticker-sep"></span>PENANGKAL PETIR SNI<span class="ticker-sep"></span>DOCKER &amp; AWS CLOUD<span class="ticker-sep"></span>WEB &amp; SOFTWARE DEV<span class="ticker-sep"></span>24/7 SUPPORT<span class="ticker-sep"></span></span>
-      <span>ENTERPRISE IT<span class="ticker-sep"></span>CCTV HIKVISION &amp; DAHUA<span class="ticker-sep"></span>MIKROTIK ROUTERBOARD<span class="ticker-sep"></span>FIBER OPTIC &amp; LAN CAT6<span class="ticker-sep"></span>INSTALASI LISTRIK &amp; PANEL 3-PHASE<span class="ticker-sep"></span>PENANGKAL PETIR SNI<span class="ticker-sep"></span>DOCKER &amp; AWS CLOUD<span class="ticker-sep"></span>WEB &amp; SOFTWARE DEV<span class="ticker-sep"></span>24/7 SUPPORT<span class="ticker-sep"></span></span>
+  <!-- MODERN TECH CARDS TICKER ABOVE FOOTER -->
+  <div class="tech-card-ticker" aria-hidden="true" style="margin-top: 0;">
+    <div class="tech-card-track">
+      <!-- SET 1 -->
+      <div class="tech-card-item">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <path fill="#3776ab" d="M11.9 2c-3.1 0-2.9 1.3-2.9 1.3l.01 1.4h3v.4H7.8c-1.6 0-2.9 1-2.9 2.9 0 2 1.3 2.8 1.3 2.8h.8V9.2c0-1.2 1-2.2 2.2-2.2h4.2c1 0 1.8-.8 1.8-1.8V3.7c0-1.1-1.4-1.7-3.2-1.7zm-1.6 1.1c.4 0 .7.3.7.7s-.3.7-.7.7-.7-.3-.7-.7.3-.7.7-.7z"/>
+            <path fill="#ffd43b" d="M12.1 22c3.1 0 2.9-1.3 2.9-1.3l-.01-1.4h-3v-.4h4.2c1.6 0 2.9-1 2.9-2.9 0-2-1.3-2.8-1.3-2.8h-.8v1.6c0 1.2-1 2.2-2.2 2.2H8.8c-1 0-1.8.8-1.8 1.8v1.6c0 1.1 1.4 1.7 3.2 1.7zm1.6-1.1c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7z"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Python</div>
+          <div class="tech-card-sub">Automation Scripting</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#009639">
+            <path d="M12 2L3 7.2v9.6L12 22l9-5.2V7.2L12 2zm4.5 13.5h-2.1l-4.8-6.4v6.4H7.5V8.5h2.1l4.8 6.4V8.5h2.1v7z"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Nginx</div>
+          <div class="tech-card-sub">Reverse Proxy / SSL</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <path fill="#0284c7" d="M19 19c-3.5-1.5-6-3.5-7.5-6-1.5-2.5-1.8-5.5-1.5-8.5-3 3-5 7-5 11.5 0 1 .1 2 .3 3h13.7z"/>
+            <path fill="#38bdf8" d="M11.5 4.5c.3 3 .1 6-1.5 8.5C8.5 15.5 6 17.5 2.5 19h7.5c3-1 6-3 7.5-5.5 1.5-2.5 1.8-5.5 1.5-8.5-2.5 0-5-.5-7.5-.5z"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Wireshark</div>
+          <div class="tech-card-sub">Packet Analysis</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#326ce5" stroke-width="1.8">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="3.2" fill="#326ce5" stroke="none"/>
+            <line x1="12" y1="2" x2="12" y2="8.8"/>
+            <line x1="21" y1="7" x2="15.2" y2="10.4"/>
+            <line x1="21" y1="17" x2="15.2" y2="13.6"/>
+            <line x1="12" y1="22" x2="12" y2="15.2"/>
+            <line x1="3" y1="17" x2="8.8" y2="13.6"/>
+            <line x1="3" y1="7" x2="8.8" y2="10.4"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Kubernetes</div>
+          <div class="tech-card-sub">DevOps Orchestration</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <ellipse cx="12" cy="14" rx="6" ry="7" fill="#1e293b" stroke="#eab308" stroke-width="1.5"/>
+            <ellipse cx="12" cy="15.5" rx="3.8" ry="4.8" fill="#f8fafc"/>
+            <circle cx="12" cy="7" r="4" fill="#1e293b"/>
+            <circle cx="10.5" cy="6.5" r="0.9" fill="#f8fafc"/>
+            <circle cx="13.5" cy="6.5" r="0.9" fill="#f8fafc"/>
+            <polygon points="12,7.5 10.5,9.5 13.5,9.5" fill="#eab308"/>
+            <ellipse cx="8.5" cy="20.5" rx="2.5" ry="1.2" fill="#eab308"/>
+            <ellipse cx="15.5" cy="20.5" rx="2.5" ry="1.2" fill="#eab308"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Linux OS</div>
+          <div class="tech-card-sub">Ubuntu / Debian</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#00d2aa">
+            <rect x="2" y="10" width="3" height="6" rx="1.5"/>
+            <rect x="7" y="6" width="3" height="12" rx="1.5"/>
+            <rect x="12" y="3" width="3" height="16" rx="1.5"/>
+            <rect x="17" y="8" width="3" height="9" rx="1.5"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">MikroTik</div>
+          <div class="tech-card-sub">RouterOS / BGP</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#2496ed">
+            <rect x="3" y="10" width="2.2" height="2" rx="0.3"/>
+            <rect x="6" y="10" width="2.2" height="2" rx="0.3"/>
+            <rect x="9" y="10" width="2.2" height="2" rx="0.3"/>
+            <rect x="6" y="7.5" width="2.2" height="2" rx="0.3"/>
+            <rect x="9" y="7.5" width="2.2" height="2" rx="0.3"/>
+            <rect x="12" y="7.5" width="2.2" height="2" rx="0.3"/>
+            <path d="M21.5 12.5c-.5-.3-1.2-.4-1.8-.1-.4-1-1.3-1.8-2.5-1.9l-.3 1c.8.2 1.4.9 1.4 1.7 0 .2 0 .3-.1.5-1 1-3 2-6 2-3.8 0-6.8-1.5-8.2-4C3.4 12.3 3 13.5 3 14.7c0 3.3 3.2 6 8.5 6 5.1 0 8.7-2.6 9.8-6 .2-.7.2-1.4-.6-2.1z"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Docker</div>
+          <div class="tech-card-sub">Compose / Containers</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <polygon points="12 2 20.66 7 20.66 17 12 22 3.34 17 3.34 7" stroke="#ea580c" stroke-width="2" fill="#ea580c" fill-opacity="0.12" stroke-linejoin="round"/>
+            <path d="M9 7h4a3 3 0 0 1 0 6H9V7zm0 6h3" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="13" cy="10" r="1" fill="#ea580c"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Proxmox VE</div>
+          <div class="tech-card-sub">HA Cluster / KVM</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M12 2L4 5v6.5C4 16.5 7.4 21 12 22c4.6-1 8-5.5 8-10.5V5l-8-3z" stroke="#ef4444" stroke-width="2" fill="#ef4444" fill-opacity="0.12" stroke-linejoin="round"/>
+            <path d="M9 11c0-1.7 1.3-3 3-3s3 1.3 3 3c0 2-3 4-3 5" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="12" cy="18" r="0.9" fill="#ef4444"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">WireGuard</div>
+          <div class="tech-card-sub">Encrypted VPN</div>
+        </div>
+      </div>
+
+      <!-- SET 2 (DUPLICATE FOR SEAMLESS 100% LOOP) -->
+      <div class="tech-card-item" aria-hidden="true">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <path fill="#3776ab" d="M11.9 2c-3.1 0-2.9 1.3-2.9 1.3l.01 1.4h3v.4H7.8c-1.6 0-2.9 1-2.9 2.9 0 2 1.3 2.8 1.3 2.8h.8V9.2c0-1.2 1-2.2 2.2-2.2h4.2c1 0 1.8-.8 1.8-1.8V3.7c0-1.1-1.4-1.7-3.2-1.7zm-1.6 1.1c.4 0 .7.3.7.7s-.3.7-.7.7-.7-.3-.7-.7.3-.7.7-.7z"/>
+            <path fill="#ffd43b" d="M12.1 22c3.1 0 2.9-1.3 2.9-1.3l-.01-1.4h-3v-.4h4.2c1.6 0 2.9-1 2.9-2.9 0-2-1.3-2.8-1.3-2.8h-.8v1.6c0 1.2-1 2.2-2.2 2.2H8.8c-1 0-1.8.8-1.8 1.8v1.6c0 1.1 1.4 1.7 3.2 1.7zm1.6-1.1c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7z"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Python</div>
+          <div class="tech-card-sub">Automation Scripting</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item" aria-hidden="true">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#009639">
+            <path d="M12 2L3 7.2v9.6L12 22l9-5.2V7.2L12 2zm4.5 13.5h-2.1l-4.8-6.4v6.4H7.5V8.5h2.1l4.8 6.4V8.5h2.1v7z"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Nginx</div>
+          <div class="tech-card-sub">Reverse Proxy / SSL</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item" aria-hidden="true">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <path fill="#0284c7" d="M19 19c-3.5-1.5-6-3.5-7.5-6-1.5-2.5-1.8-5.5-1.5-8.5-3 3-5 7-5 11.5 0 1 .1 2 .3 3h13.7z"/>
+            <path fill="#38bdf8" d="M11.5 4.5c.3 3 .1 6-1.5 8.5C8.5 15.5 6 17.5 2.5 19h7.5c3-1 6-3 7.5-5.5 1.5-2.5 1.8-5.5 1.5-8.5-2.5 0-5-.5-7.5-.5z"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Wireshark</div>
+          <div class="tech-card-sub">Packet Analysis</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item" aria-hidden="true">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#326ce5" stroke-width="1.8">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="3.2" fill="#326ce5" stroke="none"/>
+            <line x1="12" y1="2" x2="12" y2="8.8"/>
+            <line x1="21" y1="7" x2="15.2" y2="10.4"/>
+            <line x1="21" y1="17" x2="15.2" y2="13.6"/>
+            <line x1="12" y1="22" x2="12" y2="15.2"/>
+            <line x1="3" y1="17" x2="8.8" y2="13.6"/>
+            <line x1="3" y1="7" x2="8.8" y2="10.4"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Kubernetes</div>
+          <div class="tech-card-sub">DevOps Orchestration</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item" aria-hidden="true">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <ellipse cx="12" cy="14" rx="6" ry="7" fill="#1e293b" stroke="#eab308" stroke-width="1.5"/>
+            <ellipse cx="12" cy="15.5" rx="3.8" ry="4.8" fill="#f8fafc"/>
+            <circle cx="12" cy="7" r="4" fill="#1e293b"/>
+            <circle cx="10.5" cy="6.5" r="0.9" fill="#f8fafc"/>
+            <circle cx="13.5" cy="6.5" r="0.9" fill="#f8fafc"/>
+            <polygon points="12,7.5 10.5,9.5 13.5,9.5" fill="#eab308"/>
+            <ellipse cx="8.5" cy="20.5" rx="2.5" ry="1.2" fill="#eab308"/>
+            <ellipse cx="15.5" cy="20.5" rx="2.5" ry="1.2" fill="#eab308"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Linux OS</div>
+          <div class="tech-card-sub">Ubuntu / Debian</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item" aria-hidden="true">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#00d2aa">
+            <rect x="2" y="10" width="3" height="6" rx="1.5"/>
+            <rect x="7" y="6" width="3" height="12" rx="1.5"/>
+            <rect x="12" y="3" width="3" height="16" rx="1.5"/>
+            <rect x="17" y="8" width="3" height="9" rx="1.5"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">MikroTik</div>
+          <div class="tech-card-sub">RouterOS / BGP</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item" aria-hidden="true">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#2496ed">
+            <rect x="3" y="10" width="2.2" height="2" rx="0.3"/>
+            <rect x="6" y="10" width="2.2" height="2" rx="0.3"/>
+            <rect x="9" y="10" width="2.2" height="2" rx="0.3"/>
+            <rect x="6" y="7.5" width="2.2" height="2" rx="0.3"/>
+            <rect x="9" y="7.5" width="2.2" height="2" rx="0.3"/>
+            <rect x="12" y="7.5" width="2.2" height="2" rx="0.3"/>
+            <path d="M21.5 12.5c-.5-.3-1.2-.4-1.8-.1-.4-1-1.3-1.8-2.5-1.9l-.3 1c.8.2 1.4.9 1.4 1.7 0 .2 0 .3-.1.5-1 1-3 2-6 2-3.8 0-6.8-1.5-8.2-4C3.4 12.3 3 13.5 3 14.7c0 3.3 3.2 6 8.5 6 5.1 0 8.7-2.6 9.8-6 .2-.7.2-1.4-.6-2.1z"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Docker</div>
+          <div class="tech-card-sub">Compose / Containers</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item" aria-hidden="true">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <polygon points="12 2 20.66 7 20.66 17 12 22 3.34 17 3.34 7" stroke="#ea580c" stroke-width="2" fill="#ea580c" fill-opacity="0.12" stroke-linejoin="round"/>
+            <path d="M9 7h4a3 3 0 0 1 0 6H9V7zm0 6h3" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="13" cy="10" r="1" fill="#ea580c"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">Proxmox VE</div>
+          <div class="tech-card-sub">HA Cluster / KVM</div>
+        </div>
+      </div>
+
+      <div class="tech-card-item" aria-hidden="true">
+        <div class="tech-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M12 2L4 5v6.5C4 16.5 7.4 21 12 22c4.6-1 8-5.5 8-10.5V5l-8-3z" stroke="#ef4444" stroke-width="2" fill="#ef4444" fill-opacity="0.12" stroke-linejoin="round"/>
+            <path d="M9 11c0-1.7 1.3-3 3-3s3 1.3 3 3c0 2-3 4-3 5" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="12" cy="18" r="0.9" fill="#ef4444"/>
+          </svg>
+        </div>
+        <div class="tech-card-text">
+          <div class="tech-card-title">WireGuard</div>
+          <div class="tech-card-sub">Encrypted VPN</div>
+        </div>
+      </div>
     </div>
   </div>
 
