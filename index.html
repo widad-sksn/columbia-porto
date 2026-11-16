@@ -215,13 +215,13 @@
     }
 
     [data-theme="light"] {
-      /* MODERN, LOW-GLARE EYE-COMFORT SLATE AESTHETIC (ADEM & JELAS DI MATA) */
-      --bg: #dbe4ee;
+      /* MODERN, LOW-GLARE EYE-COMFORT SLATE-BLUE AESTHETIC (SEJUK, ADEM & JELAS DI MATA) */
+      --bg: #c0d6ee;
       --bg-pattern: none;
-      --card: #edf2f7;
-      --card-surface: #d8e2ec;
-      --card-hover: #f1f6fa;
-      --border: #cbd5e1;
+      --card: #edf4fa;
+      --card-surface: #d4e4f4;
+      --card-hover: #f1f7fd;
+      --border: #b2cee8;
       --border-accent: #2563eb;
       --text: #1e293b;
       --text-heading: #0f172a;
@@ -1024,16 +1024,16 @@
       background: rgba(11, 15, 25, 0.78);
     }
     [data-theme="light"] .sec-bg-media {
-      opacity: 0.85;
-      filter: blur(2px) saturate(0.6) brightness(1.02);
+      opacity: 0.9;
+      filter: blur(2px) saturate(0.8) brightness(0.96);
     }
     [data-theme="light"] .sec-bg-media::after {
-      background: rgba(220, 228, 238, 0.93);
+      background: rgba(180, 206, 235, 0.94);
     }
 
     /* MODERN, SIMPLE & CRISP SECTION DESIGN (LIGHT MODE - LOW-GLARE) */
     [data-theme="light"] .has-bg-photo {
-      border-bottom: 1px solid #cbd5e1;
+      border-bottom: 1px solid #b2cee8;
       position: relative;
     }
     [data-theme="light"] .has-bg-photo::before,
@@ -1041,21 +1041,24 @@
       display: none;
     }
 
-    /* CLEAN MODERN ALTERNATING SECTION TINTS (LOW-GLARE EYE COMFORT) */
+    /* CLEAN MODERN ALTERNATING SECTION TINTS (SOOTHING BLUE TONES) */
+    [data-theme="light"] .hero .sec-bg-media::after {
+      background: linear-gradient(180deg, rgba(175, 202, 232, 0.94) 0%, rgba(188, 212, 238, 0.94) 100%);
+    }
     [data-theme="light"] #paket-wifi .sec-bg-media::after {
-      background: rgba(228, 235, 244, 0.93);
+      background: rgba(192, 216, 242, 0.94);
     }
     [data-theme="light"] #layanan .sec-bg-media::after {
-      background: rgba(219, 228, 238, 0.93);
+      background: rgba(182, 208, 236, 0.94);
     }
     [data-theme="light"] #tech-stack .sec-bg-media::after {
-      background: rgba(228, 235, 244, 0.93);
+      background: rgba(192, 216, 242, 0.94);
     }
     [data-theme="light"] #keunggulan .sec-bg-media::after {
-      background: rgba(219, 228, 238, 0.93);
+      background: rgba(182, 208, 236, 0.94);
     }
     [data-theme="light"] #kontak .sec-bg-media::after {
-      background: linear-gradient(180deg, rgba(219, 228, 238, 0.93) 0%, rgba(212, 222, 234, 0.94) 100%);
+      background: linear-gradient(180deg, rgba(182, 208, 236, 0.94) 0%, rgba(170, 198, 228, 0.95) 100%);
     }
     .has-bg-photo .sec-head h2,
     .has-bg-photo .sec-head p {
